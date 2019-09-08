@@ -91,7 +91,7 @@ function CopyFiles()
     $zips1 = [
         ['/.+\.exe$/', 'onix_client/OnixClientCenter', 'OnixCenter'],
         ['/.+\.dll$/', 'onix_client/OnixClientCenter', 'OnixCenter'],
-        ['/.+\.exe/', 'dll_from_lib', 'OnixCenter']
+        ['/.+\.exe/', 'dll_from_lib', 'OnixCenter'] 
     ];
 
     $zips = [ ['OnixCenter.zip', $zips1] ];
