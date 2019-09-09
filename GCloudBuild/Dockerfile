@@ -29,8 +29,8 @@ RUN mkdir -p /wis/windows
 RUN chown onix /wis/system /wis/system/bin /wis/windows
 RUN chgrp onix /wis/system /wis/system/bin /wis/windows
 
-RUN echo ': ${APACHE_HTTP_PORT:=80}' >> /etc/apache2/envvars
-RUN echo 'export APACHE_HTTP_PORT' >> /etc/apache2/envvars
+RUN echo ': ${PORT:=80}' >> /etc/apache2/envvars
+RUN echo 'export PORT' >> /etc/apache2/envvars
 
 RUN echo '<h1>HELLO WORLD</h1>' > /var/www/html/index.html
 
