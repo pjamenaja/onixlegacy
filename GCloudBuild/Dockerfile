@@ -29,6 +29,10 @@ RUN mkdir -p /wis/windows
 RUN chown onix /wis/system /wis/system/bin /wis/windows
 RUN chgrp onix /wis/system /wis/system/bin /wis/windows
 
+RUN echo ': ${APACHE_HTTP_PORT:=80}' >> /etc/apache2/envvars
+RUN echo 'export APACHE_HTTP_PORT' >> /etc/apache2/envvars
+
 COPY GCloudBuild/alias.conf /tmp
+COPY GCloudBuild/ports.conf /etc/apache2
 RUN cat /tmp/alias.conf >> /etc/apache2/apache2.conf
 
