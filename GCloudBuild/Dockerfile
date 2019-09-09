@@ -29,6 +29,6 @@ RUN mkdir -p /wis/windows
 RUN chown onix /wis/system /wis/system/bin /wis/windows
 RUN chgrp onix /wis/system /wis/system/bin /wis/windows
 
-COPY CloudBuild/alias.conf /tmp
+COPY GCloudBuild/alias.conf /tmp
 RUN cat /tmp/alias.conf >> /etc/apache2/apache2.conf
 
