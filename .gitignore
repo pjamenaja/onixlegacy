@@ -18,3 +18,5 @@ app_onix/onix_theme/Onix.Themes.Demo/bin/*
 app_onix/onix_theme/Onix.Themes.Demo/obj/*
 app_onix/onix_theme/Onix.Themes/obj/*
 app_onix/onix_theme/Onix.Themes/obj/*
+build/*
+build_and_run.bash

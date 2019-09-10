@@ -16,6 +16,9 @@ require_once "phar://onix_core_framework.phar/onix_core_include.php";
 $post_param_name = $_ENV['POST_PARAM_NAME'];
 
 $_ENV['ONIX_CORE_FRAMEWORK_VERSION'] = "1.0.38 built on $ONIX_CORE_BUILT_DATE (MM/DD/YYYY)";
+$_ENV['SESSION_DIR'] = getenv('ONIX_SESSION_DIR');
+$_ENV['WIP_DIR'] = getenv('ONIX_WIP_DIR');
+$_ENV['STAGE'] = getenv('ONIX_STAGE');
 
 $xml = '';
 if (array_key_exists($post_param_name, $_POST))
@@ -26,47 +29,9 @@ if (array_key_exists($post_param_name, $_POST))
 $config_file = "";
 $mode = "CGI";
 
-if ($xml == '')
+if ($xml != '')
 {
-    $arguments = CUtils::ParseArguments($argv);
-    CUtils::ValidateArguments($arguments);
-
-    if (!array_key_exists('-cfg', $arguments))
-    {
-        $config_file = CUtils::DeriveConfigFileName();
-    }  
-    else
-    {
-        $config_file = $arguments['-cfg'];
-        CUtils::DeriveConfigFileName();
-    } 
-    
-    $params = CUtils::LoadConfigFile($config_file);
-
-    $prm = $params["DEFAULT"];
-    $_ENV['SYMKEY'] = $prm['KEY']; 
-
-    if (!array_key_exists('-if', $arguments))
-    {
-        $xml = CUtils::ReadXMLFromStdIn();
-        $mode = "STDIN";
-    }
-    else
-    {
-        /* run from command line */
-        printf("Running in command line mode.\n");        
-
-        $xml = CUtils::ReadXMLFromFile($arguments['-if']);
-        $mode = "CMDLINE";
-    }
-}
-else
-{
-    $config_file = CUtils::DeriveConfigFileName();    
-    $params = CUtils::LoadConfigFile($config_file);
-
-    $prm = $params["DEFAULT"];
-    $_ENV['SYMKEY'] = $prm['KEY']; 
+    $_ENV['SYMKEY'] = getenv('ONIX_SYM_KEY');
 
     if (isCGIEncryptedMode())
     {
@@ -77,9 +42,6 @@ else
 $result = "";
 $conn = NULL;
 $_ENV['CALLER_MODE'] = $mode;
-
-$rc_file = $_ENV['BASEPATH'] . '/ops.rc';
-CUtils::OverrideEnv($rc_file);
 
 try 
 {
@@ -94,7 +56,7 @@ try
         CLog::WriteLn($xml);
     }
 
-    list($dsn, $dbuser, $dbpass) = getDBConfig($prm);
+    list($dsn, $dbuser, $dbpass) = getDBConfig();
 
     $startTime = round(microtime(true) * 1000);
 
@@ -179,14 +141,11 @@ function isCGIEncryptedMode()
     return($_ENV['WIS_CORE_ENCRYPTED']);
 }
 
-function getDBConfig($prm)
-{
-    $dbstr = $prm['DSN'];
-    $user = $prm['USERNAME'];
-    $password = $prm['PASSWORD'];
-
-    $dbstr = str_replace('$EQUAL_SIGN', '=', $dbstr);
-//DBI:Pg:dbname=onix_dev_wis_development;host=wiscon.cloudhost.in.th;port=5432
+function getDBConfig()
+{    
+    $dbstr = getenv('ONIX_DSN');
+    $user = getenv('ONIX_DB_USERNAME');
+    $password = getenv('ONIX_DB_PASSWORD');
 
     $pattern = '/dbname=(.*);host=(.*);port=(.*)/s';        
     $match = preg_match_all($pattern, $dbstr, $matches);
