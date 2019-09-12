@@ -20,6 +20,7 @@ $_ENV['SESSION_DIR'] = getenv('ONIX_SESSION_DIR');
 $_ENV['WIP_DIR'] = getenv('ONIX_WIP_DIR');
 $_ENV['STAGE'] = getenv('ONIX_STAGE');
 $_ENV['LOCK_DIR'] = getenv('ONIX_LOCK_DIR');
+$_ENV['STORAGE_DIR'] = getenv('ONIX_STORAGE_DIR');
 
 $xml = '';
 if (array_key_exists($post_param_name, $_POST))
