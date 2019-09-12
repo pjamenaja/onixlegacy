@@ -25,12 +25,6 @@ CDispatcher::AddParamVariable('APP_VERSION_LABEL', "$AppVersion-$AppRevision");
 require_once "phar://onix_erp_framework.phar/services.php";
 require_once "phar://onix_erp_framework.phar/patches.php";
 
-if ($APP_BUILT_PRODUCT == 'sass')
-{
-    require_once "phar://wis_sass_framework.phar/services.php";
-    require_once "phar://wis_sass_framework.phar/patches.php";
-}
-
 require_once "phar://onix_core_framework.phar/onix_core_dispatcher.php";
 
 exit(0);
