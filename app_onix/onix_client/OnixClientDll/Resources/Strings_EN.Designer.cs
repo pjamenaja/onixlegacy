@@ -79,6 +79,15 @@ namespace Onix.Client.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Without Pay.
+        /// </summary>
+        public static string abnormal_leave {
+            get {
+                return ResourceManager.GetString("abnormal_leave", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Late.
         /// </summary>
         public static string absent_late {
@@ -1011,6 +1020,15 @@ namespace Onix.Client.Resources {
         public static string amt_bef_vat {
             get {
                 return ResourceManager.GetString("amt_bef_vat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Annual Leave.
+        /// </summary>
+        public static string annual_leave {
+            get {
+                return ResourceManager.GetString("annual_leave", resourceCulture);
             }
         }
         
@@ -3076,6 +3094,15 @@ namespace Onix.Client.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Deduction Leave.
+        /// </summary>
+        public static string deduction_leave {
+            get {
+                return ResourceManager.GetString("deduction_leave", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Deduction Type.
         /// </summary>
         public static string deduction_type {
@@ -4755,6 +4782,15 @@ namespace Onix.Client.Resources {
         public static string external_cash_xfer {
             get {
                 return ResourceManager.GetString("external_cash_xfer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Extra Leave.
+        /// </summary>
+        public static string extra_personal_leave {
+            get {
+                return ResourceManager.GetString("extra_personal_leave", resourceCulture);
             }
         }
         
@@ -6766,6 +6802,24 @@ namespace Onix.Client.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Late.
+        /// </summary>
+        public static string late {
+            get {
+                return ResourceManager.GetString("late", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Leave Records.
+        /// </summary>
+        public static string leave {
+            get {
+                return ResourceManager.GetString("leave", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Amount Balance (Avg).
         /// </summary>
         public static string left_amount_avg {
@@ -8481,6 +8535,15 @@ namespace Onix.Client.Resources {
         public static string personal_id {
             get {
                 return ResourceManager.GetString("personal_id", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Personal Leave.
+        /// </summary>
+        public static string personal_leave {
+            get {
+                return ResourceManager.GetString("personal_leave", resourceCulture);
             }
         }
         
@@ -11173,6 +11236,15 @@ namespace Onix.Client.Resources {
         public static string ship_to {
             get {
                 return ResourceManager.GetString("ship_to", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sick Leave.
+        /// </summary>
+        public static string sick_leave {
+            get {
+                return ResourceManager.GetString("sick_leave", resourceCulture);
             }
         }
         

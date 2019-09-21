@@ -153,6 +153,7 @@
     <Compile Include="UI\AccountPayable\TaxDocument\PRV3_53\WinTaxDocRendererProgress.xaml.cs">
       <DependentUpon>WinTaxDocRendererProgress.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\HumanResource\Leave\CCriteriaEmployeeLeave.cs" />
     <Compile Include="UI\HumanResource\OrgChart\CWinOrgChartLoadParam.cs" />
     <Compile Include="UI\HumanResource\OrgChart\MVOrgChart.cs" />
     <Compile Include="UI\HumanResource\OTDocument\CCriteriaOTDocument.cs" />
