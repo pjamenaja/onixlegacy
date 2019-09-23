@@ -201,7 +201,7 @@ namespace Onix.ClientCenter.UI.HumanResource.Leave
             param.Mode = "E";
             param.ActualView = currentObj;
             param.ParentItemSources = itemSources;
-            FactoryWindow.ShowWindow("WinAddEditEmployeeInfo", param);
+            FactoryWindow.ShowWindow("WinAddEditEmployeeLeave", param);
         }
 
         #endregion

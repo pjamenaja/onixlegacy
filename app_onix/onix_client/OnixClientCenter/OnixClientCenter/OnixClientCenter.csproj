@@ -154,6 +154,11 @@
       <DependentUpon>WinTaxDocRendererProgress.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\HumanResource\Leave\CCriteriaEmployeeLeave.cs" />
+    <Compile Include="UI\HumanResource\Leave\MLeaveRecord.cs" />
+    <Compile Include="UI\HumanResource\Leave\MEmployeeLeave.cs" />
+    <Compile Include="UI\HumanResource\Leave\WinAddEditEmployeeLeave.xaml.cs">
+      <DependentUpon>WinAddEditEmployeeLeave.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\HumanResource\OrgChart\CWinOrgChartLoadParam.cs" />
     <Compile Include="UI\HumanResource\OrgChart\MVOrgChart.cs" />
     <Compile Include="UI\HumanResource\OTDocument\CCriteriaOTDocument.cs" />
@@ -615,6 +620,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="UI\AccountPayable\TaxDocument\PRV3_53\WinTaxDocRendererProgress.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\HumanResource\Leave\WinAddEditEmployeeLeave.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
