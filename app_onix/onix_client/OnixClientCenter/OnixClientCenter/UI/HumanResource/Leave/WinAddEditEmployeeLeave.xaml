@@ -60,7 +60,21 @@
 
                 <!-- Start Gender -->
 
-                <StackPanel  Grid.Row="2" Grid.Column="3" VerticalAlignment="Center" Orientation="Horizontal"/>
+
+                <Label Grid.Column="0" Grid.Row="2" Content="เดือน"  Name="lblYear"
+                       VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" Margin="5,0,0,0"/>
+
+                <StackPanel Grid.Column="1" Grid.Row="2" Orientation="Horizontal">
+                    <ComboBox Name="cboMonth" DisplayMemberPath="Description" SelectedValuePath="ObjSelf" IsEnabled="False"
+                              SelectionChanged="DefaultComboBox_SelectionChanged" SelectedItem="{Binding TaxMonthObj}" SelectedValue="{Binding TaxMonthObj}" 
+                              ItemsSource="{Binding Source={x:Static lang:CMasterReference.Instance}, Path=Months}"
+                              VerticalContentAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0" Width="150" />
+
+                    <TextBox Width="100" Text="{Binding TaxYear}" Name="txtYear" IsReadOnly="True"
+                             VerticalContentAlignment="Center" HorizontalAlignment="Left" HorizontalContentAlignment="Left" 
+                             Margin="1,0,0,0" TextChanged="DefaultTextBox_TextChanged" PreviewTextInput="DefaultTextBoxNumber_PreviewTextInput"/>
+                </StackPanel>
+                
                 <!-- End Gender -->
 
                 <!-- Start Name Th -->
@@ -68,12 +82,14 @@
                        Content="{Binding Source={x:Static lang:CTextLabel.Instance}, Path=employee_name}" Grid.Row="3" HorizontalAlignment="Right"/>
 
                 <TextBox Name="txtNameTh" Grid.Row="3" Grid.Column="1" Width="300" HorizontalAlignment="Left" Text="{Binding EmployeeName}"
+                         IsReadOnly="True"
                          Margin="5,0,0,5" VerticalContentAlignment="Center"  TextChanged="DefaultTextBox_TextChanged"/>
 
                 <Label Name="lblLastNameTh" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" Grid.Column="2" Grid.Row="3"
                        Content="{Binding Source={x:Static lang:CTextLabel.Instance}, Path=last_name}" HorizontalAlignment="Right"/>
 
                 <TextBox Name="txtLastNameTh" Grid.Row="3" Grid.Column="3" Width="300" HorizontalAlignment="Left" Text="{Binding EmployeeLastName}"
+                         IsReadOnly="True"
                          Margin="5,0,0,5" VerticalContentAlignment="Center"  TextChanged="DefaultTextBox_TextChanged"/>
                 <!-- End Name Th -->
 
@@ -99,7 +115,7 @@
                 <Label Name="lblType" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" Grid.Row="7" Grid.Column="0"
                        Content="{Binding Source={x:Static lang:CTextLabel.Instance}, Path=employee_type}" HorizontalAlignment="Right"/>
 
-                <StackPanel  Grid.Row="7" Grid.Column="1" VerticalAlignment="Center" Orientation="Horizontal">
+                <StackPanel  Grid.Row="7" Grid.Column="1" VerticalAlignment="Center" Orientation="Horizontal" IsEnabled="False">
                     <RadioButton Name="radDaily"   Content="{Binding Source={x:Static lang:CTextLabel.Instance}, Path=daily}" 
                                  IsChecked="{Binding IsDaily, UpdateSourceTrigger=PropertyChanged}" Margin="5,5,0,0" Checked="DefaultRadioButton_Checked" 
                                  VerticalAlignment="Center"/>
@@ -154,50 +170,58 @@
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal">
                                     <Label Name="lblDate" Content="{Binding Source={x:Static lang:CTextLabel.Instance}, Path=date}" VerticalAlignment="Center" 
-                                            VerticalContentAlignment="Center"  HorizontalContentAlignment="Right" Margin="0,0,0,0"  />
+                                           Foreground="Blue" 
+                                           VerticalContentAlignment="Center"  HorizontalContentAlignment="Right" Margin="0,0,0,0"  />
                                     <uc:UDateEntry x:Name="dtLeaveDate" Width="350" HorizontalAlignment="Left" Margin="10,0,0,0"
                                                    SelectedDate="{Binding LeaveDate}"/>
 
                                     <Label Name="lblLate" Content="{Binding Source={x:Static lang:CTextLabel.Instance}, Path=late}" VerticalAlignment="Center" 
-                                            VerticalContentAlignment="Center"  HorizontalContentAlignment="Right" Margin="10,0,0,0"  />
+                                           Foreground="Blue" 
+                                           VerticalContentAlignment="Center"  HorizontalContentAlignment="Right" Margin="10,0,0,0"  />
                                     <TextBox x:Name="txtLate" Text="{Binding Address}" Width="50" Margin="5,0,0,0" VerticalContentAlignment="Center" 
                                              PreviewTextInput="DefaultTextBoxNumber_PreviewTextInput" TextChanged="DefaultTextBox_TextChanged"/>
                                     <Label Name="lblLateUnit" Content="(นาที)" VerticalAlignment="Center" 
-                                            VerticalContentAlignment="Center"  HorizontalContentAlignment="Right" Margin="5,0,0,0"  />
+                                           VerticalContentAlignment="Center"  HorizontalContentAlignment="Right" Margin="5,0,0,0"  />
 
                                     <Label Name="lblSick" Content="{Binding Source={x:Static lang:CTextLabel.Instance}, Path=sick_leave}" VerticalAlignment="Center" 
-                                            VerticalContentAlignment="Center"  HorizontalContentAlignment="Right" Margin="10,0,0,0"  />
+                                           Foreground="Blue" 
+                                           VerticalContentAlignment="Center"  HorizontalContentAlignment="Right" Margin="10,0,0,0"  />
                                     <TextBox x:Name="txtSick" Text="{Binding Address}" Width="50" Margin="5,0,0,0" VerticalContentAlignment="Center" 
                                              PreviewTextInput="DefaultTextBoxNumber_PreviewTextInput" TextChanged="DefaultTextBox_TextChanged"/>
 
                                     <Label Name="lblPersonalLeave" Content="{Binding Source={x:Static lang:CTextLabel.Instance}, Path=personal_leave}" VerticalAlignment="Center" 
-                                            VerticalContentAlignment="Center"  HorizontalContentAlignment="Right" Margin="10,0,0,0"  />
+                                           Foreground="Blue" 
+                                           VerticalContentAlignment="Center"  HorizontalContentAlignment="Right" Margin="10,0,0,0"  />
                                     <TextBox x:Name="txtPersonalLeave" Text="{Binding Address}" Width="50" Margin="5,0,0,0" VerticalContentAlignment="Center" 
                                              PreviewTextInput="DefaultTextBoxNumber_PreviewTextInput" TextChanged="DefaultTextBox_TextChanged"/>
 
                                     <Label Name="lblExtraPersonal" Content="{Binding Source={x:Static lang:CTextLabel.Instance}, Path=extra_personal_leave}" VerticalAlignment="Center" 
-                                            VerticalContentAlignment="Center"  HorizontalContentAlignment="Right" Margin="10,0,0,0"  />
+                                           Foreground="Blue" 
+                                           VerticalContentAlignment="Center"  HorizontalContentAlignment="Right" Margin="10,0,0,0"  />
                                     <TextBox x:Name="txtExtraPersonal" Text="{Binding Address}" Width="50" Margin="5,0,0,0" VerticalContentAlignment="Center" 
                                              PreviewTextInput="DefaultTextBoxNumber_PreviewTextInput" TextChanged="DefaultTextBox_TextChanged"/>
 
                                     <Label Name="lblAnnualLeave" Content="{Binding Source={x:Static lang:CTextLabel.Instance}, Path=annual_leave}" VerticalAlignment="Center" 
-                                            VerticalContentAlignment="Center"  HorizontalContentAlignment="Right" Margin="10,0,0,0"  />
+                                           Foreground="Blue" 
+                                           VerticalContentAlignment="Center"  HorizontalContentAlignment="Right" Margin="10,0,0,0"  />
                                     <TextBox x:Name="txtAnnualLeave" Text="{Binding Address}" Width="50" Margin="5,0,0,0" VerticalContentAlignment="Center" 
                                              PreviewTextInput="DefaultTextBoxNumber_PreviewTextInput" TextChanged="DefaultTextBox_TextChanged"/>
 
                                     <Label Name="lblAbnormalLeave" Content="{Binding Source={x:Static lang:CTextLabel.Instance}, Path=abnormal_leave}" VerticalAlignment="Center" 
-                                            VerticalContentAlignment="Center"  HorizontalContentAlignment="Right" Margin="10,0,0,0"  />
+                                           Foreground="Blue" 
+                                           VerticalContentAlignment="Center"  HorizontalContentAlignment="Right" Margin="10,0,0,0"  />
                                     <TextBox x:Name="txtAbnormalLeave" Text="{Binding Address}" Width="50" Margin="5,0,0,0" VerticalContentAlignment="Center" 
                                              PreviewTextInput="DefaultTextBoxNumber_PreviewTextInput" TextChanged="DefaultTextBox_TextChanged"/>
 
                                     <Label Name="lblDeductionLeave" Content="{Binding Source={x:Static lang:CTextLabel.Instance}, Path=deduction_leave}" VerticalAlignment="Center" 
-                                            VerticalContentAlignment="Center"  HorizontalContentAlignment="Right" Margin="10,0,0,0"  />
+                                           Foreground="Blue" 
+                                           VerticalContentAlignment="Center"  HorizontalContentAlignment="Right" Margin="10,0,0,0"  />
                                     <TextBox x:Name="txtDeductionLeave" Text="{Binding Address}" Width="50" Margin="5,0,0,0" VerticalContentAlignment="Center" 
                                              PreviewTextInput="DefaultTextBoxNumber_PreviewTextInput" TextChanged="DefaultTextBox_TextChanged"/>
                                     <Label Name="lblDeductiveUnit" Content="(ชั่วโมง)" VerticalAlignment="Center" 
-                                            VerticalContentAlignment="Center"  HorizontalContentAlignment="Right" Margin="5,0,0,0"  />
+                                           VerticalContentAlignment="Center"  HorizontalContentAlignment="Right" Margin="5,0,0,0"  />
 
-                                    <Button Name="cmdDelete" Click="CmdDelete_Click" Width="30" Margin="10,0,0,0" Tag="{Binding ObjSelf}">
+                                    <Button Name="cmdDelete" Click="CmdDelete_Click" Width="30" Margin="10,0,0,0" Focusable="False" Tag="{Binding ObjSelf}">
                                         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
                                             <Image Width="12" Height="12" HorizontalAlignment="Center" 
                                                    Source="pack://application:,,,/OnixClient;component/Images/no-icon-16.png"/>

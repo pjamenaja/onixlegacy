@@ -77,6 +77,30 @@ namespace Onix.Client.Model
             }
         }
 
+        public DateTime LeaveMonth
+        {
+            get
+            {
+                if (GetDbObject() == null)
+                {
+                    return (DateTime.Now);
+                }
+
+                String str = GetDbObject().GetFieldValue("LEAVE_MONTH");
+                DateTime dt = CUtil.InternalDateToDate(str);
+
+                return (dt);
+            }
+
+            set
+            {
+                String str = CUtil.DateTimeToDateStringInternal(value);
+
+                GetDbObject().SetFieldValue("LEAVE_MONTH", str);
+                NotifyPropertyChanged();
+            }
+        }
+
         public String EmployeeCode
         {
             get

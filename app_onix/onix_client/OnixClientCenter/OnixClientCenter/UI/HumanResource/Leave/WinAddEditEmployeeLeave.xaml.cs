@@ -28,9 +28,10 @@ namespace Onix.ClientCenter.UI.HumanResource.Leave
         protected override MBaseModel createObject()
         {
             MEmployeeLeave mv = new MEmployeeLeave(new CTable("EMPLOYEE"));
+            mv.LeaveMonth = DateTime.Now;
             
             mv.CreateDefaultValue();
-            mv.AddLeaveRecord(new MLeaveRecord(new CTable("")));
+            //mv.AddLeaveRecord(new MLeaveRecord(new CTable("")));
             
             return (mv);
         }
@@ -53,10 +54,12 @@ namespace Onix.ClientCenter.UI.HumanResource.Leave
 
         private void CmdAdd_Click(object sender, RoutedEventArgs e)
         {
-            MLeaveRecord item = new MLeaveRecord(new CTable(""));
-            item.LeaveDate = DateTime.Now;
+            MEmployeeLeave mv = (MEmployeeLeave)vw;
 
-            (vw as MEmployeeLeave).AddLeaveRecord(item);
+            MLeaveRecord item = new MLeaveRecord(new CTable(""));
+            item.LeaveDate = mv.LeaveMonth;
+
+            mv.AddLeaveRecord(item);
         }
 
         private void CmdDelete_Click(object sender, RoutedEventArgs e)
