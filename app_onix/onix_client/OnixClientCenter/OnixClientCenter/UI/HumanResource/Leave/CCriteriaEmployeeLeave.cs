@@ -27,9 +27,8 @@ namespace Onix.ClientCenter.UI.HumanResource.Leave
         private Boolean isActionEnable = true;
         private String employeeType = "";
 
-        public CCriteriaEmployeeLeave() : base(new MEmployee(new CTable("")), "CCriteriaEmployeeLeave")
+        public CCriteriaEmployeeLeave() : base(new MEmployeeLeave(new CTable("")), "CCriteriaEmployeeLeave")
         {
-            (model as MEmployee).HasResignedFlag = false;
             loadRelatedReferences();
         }
 
@@ -71,13 +70,6 @@ namespace Onix.ClientCenter.UI.HumanResource.Leave
 
         private void loadRelatedReferences()
         {
-            if (!CMasterReference.IsCycleLoad())
-            {
-                CMasterReference.LoadCycle(true, null);
-            }
-
-            CMasterReference.LoadEmployeeDepartments();
-            CMasterReference.LoadEmployeePositions();
         }
 
         #region Criteria Configure
@@ -153,10 +145,10 @@ namespace Onix.ClientCenter.UI.HumanResource.Leave
         private void createCriteriaEntries()
         {
             AddCriteriaControl(new CCriteriaEntry(CriteriaEntryType.ENTRY_LABEL, "", "year"));
-            AddCriteriaControl(new CCriteriaEntry(CriteriaEntryType.ENTRY_TEXT_BOX, "TaxYear", ""));
+            AddCriteriaControl(new CCriteriaEntry(CriteriaEntryType.ENTRY_TEXT_BOX, "LeaveYear", ""));
 
             AddCriteriaControl(new CCriteriaEntry(CriteriaEntryType.ENTRY_LABEL, "", "month"));
-            CCriteriaEntry monthEntry = new CCriteriaEntry(CriteriaEntryType.ENTRY_COMBO_BOX, "TaxMonthObj", "");
+            CCriteriaEntry monthEntry = new CCriteriaEntry(CriteriaEntryType.ENTRY_COMBO_BOX, "LeaveMonthObj", "");
             monthEntry.SetComboItemSources("Months", "Description");
             AddCriteriaControl(monthEntry);
 
@@ -170,6 +162,12 @@ namespace Onix.ClientCenter.UI.HumanResource.Leave
             AddCriteriaControl(new CCriteriaEntry(CriteriaEntryType.ENTRY_TEXT_BOX, "EmployeeLastName", ""));
 
             AddCriteriaControl(new CCriteriaEntry(CriteriaEntryType.ENTRY_CHECK_BOX, "HasResignedFlag", "has_resigned"));
+
+            MEmployeeLeave em = (MEmployeeLeave)model;
+            em.LeaveYear = (DateTime.Now.Year).ToString();
+
+            ObservableCollection<MMasterRef> months = CMasterReference.Instance.Months;
+            em.LeaveMonthObj = months[DateTime.Now.Month];
         }
 
         private ArrayList createAddContextMenu()
@@ -208,10 +206,7 @@ namespace Onix.ClientCenter.UI.HumanResource.Leave
 
         public override Tuple<CTable, ObservableCollection<MBaseModel>> QueryData()
         {
-            MEmployee em = (MEmployee)model;
-            em.EmployeeType = employeeType;
-
-            items = OnixWebServiceAPI.GetEmployeeList(model.GetDbObject());
+            items = OnixWebServiceAPI.GetListAPI("GetEmployeeLeaveDocList", "EMPLOYEE_LEAVE_LIST", model.GetDbObject());
             lastObjectReturned = OnixWebServiceAPI.GetLastObjectReturned();
 
             itemSources.Clear();

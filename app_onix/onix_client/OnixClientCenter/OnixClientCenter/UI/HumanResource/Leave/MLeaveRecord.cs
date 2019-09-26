@@ -6,6 +6,8 @@ namespace Onix.Client.Model
 {
     public class MLeaveRecord : MBaseModel
     {
+        private int seq = 0;
+
         public MLeaveRecord(CTable obj) : base(obj)
         {
         }
@@ -14,6 +16,19 @@ namespace Onix.Client.Model
         {
         }
 
+        public int Seq
+        {
+            get
+            {
+                return (seq);
+            }
+
+            set
+            {
+                GetDbObject().SetFieldValue("INTERNAL_SEQ", value.ToString());
+                seq = value;
+            }
+        }
 
         public DateTime LeaveDate
         {
@@ -33,6 +48,7 @@ namespace Onix.Client.Model
             set
             {
                 String str = CUtil.DateTimeToDateStringInternal(value);
+                updateFlag();
 
                 GetDbObject().SetFieldValue("LEAVE_DATE", str);
                 NotifyPropertyChanged();
@@ -66,12 +82,12 @@ namespace Onix.Client.Model
                     return ("");
                 }
 
-                return (GetDbObject().GetFieldValue("LEAVE_RECORD_ID"));
+                return (GetDbObject().GetFieldValue("EMP_LEAVE_REC_ID"));
             }
 
             set
             {
-                GetDbObject().SetFieldValue("LEAVE_RECORD_ID", value);
+                GetDbObject().SetFieldValue("EMP_LEAVE_REC_ID", value);
             }
         }
 
@@ -90,6 +106,7 @@ namespace Onix.Client.Model
             set
             {
                 GetDbObject().SetFieldValue("LATE", value);
+                updateFlag();
             }
         }
 
@@ -108,6 +125,7 @@ namespace Onix.Client.Model
             set
             {
                 GetDbObject().SetFieldValue("SICK_LEAVE", value);
+                updateFlag();
             }
         }
 
@@ -126,6 +144,7 @@ namespace Onix.Client.Model
             set
             {
                 GetDbObject().SetFieldValue("PERSONAL_LEAVE", value);
+                updateFlag();
             }
         }
 
@@ -144,6 +163,7 @@ namespace Onix.Client.Model
             set
             {
                 GetDbObject().SetFieldValue("EXTRA_LEAVE", value);
+                updateFlag();
             }
         }
 
@@ -162,6 +182,7 @@ namespace Onix.Client.Model
             set
             {
                 GetDbObject().SetFieldValue("ANNUAL_LEAVE", value);
+                updateFlag();
             }
         }
 
@@ -180,6 +201,7 @@ namespace Onix.Client.Model
             set
             {
                 GetDbObject().SetFieldValue("ABNORMAL_LEAVE", value);
+                updateFlag();
             }
         }
 
@@ -198,6 +220,7 @@ namespace Onix.Client.Model
             set
             {
                 GetDbObject().SetFieldValue("DEDUCTION_LEAVE", value);
+                updateFlag();
             }
         }
     }

@@ -15,9 +15,9 @@ namespace Onix.ClientCenter.UI.HumanResource.Leave
         {               
             accessRightName = "HR_LEAVE_EDIT";
 
-            createAPIName = "SaveEmployeeLeave";
-            updateAPIName = "SaveEmployeeLeave";
-            getInfoAPIName = "GetEmployeeLeaveInfo";
+            createAPIName = "SaveEmployeeLeaveDoc";
+            updateAPIName = "SaveEmployeeLeaveDoc";
+            getInfoAPIName = "GetEmployeeLeaveDocInfo";
 
             InitializeComponent();
 
@@ -29,7 +29,7 @@ namespace Onix.ClientCenter.UI.HumanResource.Leave
         protected override MBaseModel createObject()
         {
             MEmployeeLeave mv = new MEmployeeLeave(new CTable("EMPLOYEE"));
-            mv.LeaveMonth = DateTime.Now;
+            mv.DocumentDate = DateTime.Now;
             
             mv.CreateDefaultValue();
             //mv.AddLeaveRecord(new MLeaveRecord(new CTable("")));
@@ -52,7 +52,7 @@ namespace Onix.ClientCenter.UI.HumanResource.Leave
         {            
             MEmployeeLeave mv = (MEmployeeLeave)vw;            
 
-            DateTime parentLeaveDate = mv.LeaveMonth;
+            DateTime parentLeaveDate = mv.DocumentDate;
             var items = mv.LeaveRecords;
 
             foreach (var item in items)
@@ -84,7 +84,7 @@ namespace Onix.ClientCenter.UI.HumanResource.Leave
             mv.IsModified = true;
 
             MLeaveRecord item = new MLeaveRecord(new CTable(""));
-            item.LeaveDate = mv.LeaveMonth;
+            item.LeaveDate = mv.DocumentDate;
 
             mv.AddLeaveRecord(item);
         }
@@ -101,6 +101,24 @@ namespace Onix.ClientCenter.UI.HumanResource.Leave
         private void CmdAdd2_Click(object sender, RoutedEventArgs e)
         {
             postValidate();
+        }
+
+        private void CmdSave_Click(object sender, RoutedEventArgs e)
+        {
+            if (!vw.IsModified)
+            {
+                return;
+            }
+
+            Boolean r = saveData();
+            if (r)
+            {
+                loadParam.ActualView = vw;
+                loadParam.Mode = "E";
+
+                loadData();
+                vw.IsModified = false;
+            }
         }
     }
 }
