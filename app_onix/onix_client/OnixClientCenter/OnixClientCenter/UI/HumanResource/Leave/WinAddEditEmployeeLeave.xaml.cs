@@ -5,6 +5,7 @@ using Onix.Client.Model;
 using Onix.Client.Helper;
 using Onix.ClientCenter.Commons.Windows;
 using System.Windows.Controls;
+using Onix.ClientCenter.Commons.Utils;
 
 namespace Onix.ClientCenter.UI.HumanResource.Leave
 {
@@ -47,6 +48,31 @@ namespace Onix.ClientCenter.UI.HumanResource.Leave
             }
         }
 
+        protected override Boolean postValidate()
+        {            
+            MEmployeeLeave mv = (MEmployeeLeave)vw;            
+
+            DateTime parentLeaveDate = mv.LeaveMonth;
+            var items = mv.LeaveRecords;
+
+            foreach (var item in items)
+            {
+                if (item.ExtFlag.Equals("D"))
+                {
+                    continue;
+                }
+
+                DateTime leaveDate = item.LeaveDate;
+                if ((leaveDate.Month != parentLeaveDate.Month) || (leaveDate.Year != parentLeaveDate.Year))
+                {
+                    CHelper.ShowErorMessage(leaveDate.ToString(), "ERROR_NOT_IN_SAME_MONTH", null);
+                    return false;
+                }
+            }
+
+            return (true);
+        }
+
         private void CboPoc_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
 
@@ -55,6 +81,7 @@ namespace Onix.ClientCenter.UI.HumanResource.Leave
         private void CmdAdd_Click(object sender, RoutedEventArgs e)
         {
             MEmployeeLeave mv = (MEmployeeLeave)vw;
+            mv.IsModified = true;
 
             MLeaveRecord item = new MLeaveRecord(new CTable(""));
             item.LeaveDate = mv.LeaveMonth;
@@ -69,6 +96,11 @@ namespace Onix.ClientCenter.UI.HumanResource.Leave
             MLeaveRecord pp = (MLeaveRecord)(sender as Button).Tag;
             mv.RemoveLeaveRecord(pp);
             mv.IsModified = true;
+        }
+
+        private void CmdAdd2_Click(object sender, RoutedEventArgs e)
+        {
+            postValidate();
         }
     }
 }

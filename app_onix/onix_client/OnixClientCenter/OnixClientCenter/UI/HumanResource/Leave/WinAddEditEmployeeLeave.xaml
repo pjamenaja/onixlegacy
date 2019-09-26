@@ -158,7 +158,7 @@
                     <DockPanel LastChildFill="True">
                         <StackPanel DockPanel.Dock="Right" Orientation="Vertical" >
                             <Button Name="cmdAdd1" Content="เพิ่ม (01-10)" HorizontalAlignment="Center" Width="150"  Margin="5,5,5,5" Click="CmdAdd_Click"/>
-                            <Button Name="cmdAdd2" Content="เพิ่ม (11-20)" HorizontalAlignment="Center" Width="150"  Margin="5,5,5,5" Click="CmdAdd_Click"/>
+                            <Button Name="cmdAdd2" Content="เพิ่ม (11-20)" HorizontalAlignment="Center" Width="150"  Margin="5,5,5,5" Click="CmdAdd2_Click"/>
                             <Button Name="cmdAdd3" Content="เพิ่ม (21-31)" HorizontalAlignment="Center" Width="150"  Margin="5,5,5,5" Click="CmdAdd_Click"/>
                         </StackPanel>
 
@@ -173,7 +173,7 @@
                                            Foreground="Blue" 
                                            VerticalContentAlignment="Center"  HorizontalContentAlignment="Right" Margin="0,0,0,0"  />
                                     <uc:UDateEntry x:Name="dtLeaveDate" Width="350" HorizontalAlignment="Left" Margin="10,0,0,0"
-                                                   SelectedDate="{Binding LeaveDate}"/>
+                                                   SelectedDate="{Binding LeaveDate}" SelectedDateChanged="DefaultUDate_SelectedDateChanged"/>
 
                                     <Label Name="lblLate" Content="{Binding Source={x:Static lang:CTextLabel.Instance}, Path=late}" VerticalAlignment="Center" 
                                            Foreground="Blue" 

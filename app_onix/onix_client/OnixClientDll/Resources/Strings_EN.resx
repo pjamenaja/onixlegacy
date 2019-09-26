@@ -4486,4 +4486,7 @@
   <data name="sick_leave" xml:space="preserve">
     <value>Sick Leave</value>
   </data>
+  <data name="ERROR_NOT_IN_SAME_MONTH" xml:space="preserve">
+    <value>Date need to be in the same month!!! [{0}]</value>
+  </data>
 </root>

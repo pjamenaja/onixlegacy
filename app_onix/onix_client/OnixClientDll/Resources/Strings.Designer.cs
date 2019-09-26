@@ -4390,6 +4390,15 @@ namespace Onix.Client.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to วันที่จะต้องอยู่ในเดือนเดียวกัน [{0}].
+        /// </summary>
+        public static string ERROR_NOT_IN_SAME_MONTH {
+            get {
+                return ResourceManager.GetString("ERROR_NOT_IN_SAME_MONTH", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ไม่สามารถเพิ่มรายการที่กลุ่มไอเท็ม &apos;{0}&apos; ได้ เนื่องจากใช่ไม่กลุ่มไอเท็มสุดท้าย.
         /// </summary>
         public static string ERROR_NOT_LAST_CHILD {

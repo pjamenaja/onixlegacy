@@ -4524,4 +4524,7 @@
   <data name="sick_leave" xml:space="preserve">
     <value>ลาป่วย</value>
   </data>
+  <data name="ERROR_NOT_IN_SAME_MONTH" xml:space="preserve">
+    <value>วันที่จะต้องอยู่ในเดือนเดียวกัน [{0}]</value>
+  </data>
 </root>

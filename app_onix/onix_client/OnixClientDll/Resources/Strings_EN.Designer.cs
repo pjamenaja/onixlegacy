@@ -4345,6 +4345,15 @@ namespace Onix.Client.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Date need to be in the same month!!! [{0}].
+        /// </summary>
+        public static string ERROR_NOT_IN_SAME_MONTH {
+            get {
+                return ResourceManager.GetString("ERROR_NOT_IN_SAME_MONTH", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Unable to add item in &apos;{0}&apos;, Since it is not last child item category.
         /// </summary>
         public static string ERROR_NOT_LAST_CHILD {
