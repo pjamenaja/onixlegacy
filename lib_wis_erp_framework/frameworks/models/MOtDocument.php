@@ -88,7 +88,7 @@ class MOtDocument extends MBaseModel
 
                 'ORDER BY OT_DOC_ID DESC ',
                 
-                'ORDER BY OD.OT_DOC_ID DESC ',   
+                'ORDER BY OD.DOCUMENT_DATE DESC, EM.EMPLOYEE_NAME ASC ',   
                 
                 'ORDER BY OT_DOC_ID DESC ', 
                 

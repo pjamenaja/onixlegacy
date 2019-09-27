@@ -4489,4 +4489,7 @@
   <data name="ERROR_NOT_IN_SAME_MONTH" xml:space="preserve">
     <value>Date need to be in the same month!!! [{0}]</value>
   </data>
+  <data name="ERROR_DUPLICATE_DATE" xml:space="preserve">
+    <value>Date [{0}] is already exist</value>
+  </data>
 </root>

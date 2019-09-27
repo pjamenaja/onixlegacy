@@ -4527,4 +4527,7 @@
   <data name="ERROR_NOT_IN_SAME_MONTH" xml:space="preserve">
     <value>วันที่จะต้องอยู่ในเดือนเดียวกัน [{0}]</value>
   </data>
+  <data name="ERROR_DUPLICATE_DATE" xml:space="preserve">
+    <value>มีวันที่ [{0}] อยู่ในรายการแล้ว</value>
+  </data>
 </root>

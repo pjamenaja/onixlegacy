@@ -4210,6 +4210,15 @@ namespace Onix.Client.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to มีวันที่ [{0}] อยู่ในรายการแล้ว.
+        /// </summary>
+        public static string ERROR_DUPLICATE_DATE {
+            get {
+                return ResourceManager.GetString("ERROR_DUPLICATE_DATE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ข้อมูล &apos;{0}&apos; -&gt; &apos;{1}&apos; อยู่ในระบบแล้ว.
         /// </summary>
         public static string ERROR_DUPLICATE_KEY {

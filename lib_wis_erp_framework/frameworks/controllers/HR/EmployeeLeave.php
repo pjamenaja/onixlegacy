@@ -88,9 +88,13 @@ class EmployeeLeave extends CBaseController
         $leaves = self::LoadEmployeeLeaveDocs($db, $data);
         self::PopulateLeaveDetail($leaves, $data, $data);
         
-        $cfg = self::initSqlConfig($db);
-        $u = new MEmployeeLeaveDoc($db);     
-        self::PopulateChildItems($data, $u, $cfg);
+        $cnt = count($leaves);
+        if ($cnt > 0)
+        {
+            $cfg = self::initSqlConfig($db);
+            $u = new MEmployeeLeaveDoc($db);     
+            self::PopulateChildItems($data, $u, $cfg);
+        }
         
         return(array($param, $data));  
     }

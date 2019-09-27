@@ -120,25 +120,25 @@ namespace Onix.ClientCenter.UI.HumanResource.Leave
             CCriteriaColumnText c3 = new CCriteriaColumnText("colEmployeeType", "employee_type", "EmployeeTypeName", 10, HorizontalAlignment.Left);
             AddGridColumn(c3);
 
-            CCriteriaColumnText l1 = new CCriteriaColumnText("colLeave1", "late", "Late", 6, HorizontalAlignment.Left);
+            CCriteriaColumnText l1 = new CCriteriaColumnText("colLeave1", "late", "LateFmt", 6, HorizontalAlignment.Left);
             AddGridColumn(l1);
 
-            CCriteriaColumnText l2 = new CCriteriaColumnText("colLeave2", "sick_leave", "SickLeave", 6, HorizontalAlignment.Left);
+            CCriteriaColumnText l2 = new CCriteriaColumnText("colLeave2", "sick_leave", "SickLeaveFmt", 6, HorizontalAlignment.Left);
             AddGridColumn(l2);
 
-            CCriteriaColumnText l3 = new CCriteriaColumnText("colLeave3", "personal_leave", "PersonalLeave", 6, HorizontalAlignment.Left);
+            CCriteriaColumnText l3 = new CCriteriaColumnText("colLeave3", "personal_leave", "PersonalLeaveFmt", 6, HorizontalAlignment.Left);
             AddGridColumn(l3);
 
-            CCriteriaColumnText l4 = new CCriteriaColumnText("colLeave4", "extra_personal_leave", "ExtraLeave", 6, HorizontalAlignment.Left);
+            CCriteriaColumnText l4 = new CCriteriaColumnText("colLeave4", "extra_personal_leave", "ExtraLeaveFmt", 6, HorizontalAlignment.Left);
             AddGridColumn(l4);
 
-            CCriteriaColumnText l5 = new CCriteriaColumnText("colLeave5", "annual_leave", "AnnualLeave", 6, HorizontalAlignment.Left);
+            CCriteriaColumnText l5 = new CCriteriaColumnText("colLeave5", "annual_leave", "AnnualLeaveFmt", 6, HorizontalAlignment.Left);
             AddGridColumn(l5);
 
-            CCriteriaColumnText l6 = new CCriteriaColumnText("colLeave6", "abnormal_leave", "AbnormalLeave", 6, HorizontalAlignment.Left);
+            CCriteriaColumnText l6 = new CCriteriaColumnText("colLeave6", "abnormal_leave", "AbnormalLeaveFmt", 6, HorizontalAlignment.Left);
             AddGridColumn(l6);
 
-            CCriteriaColumnText l7 = new CCriteriaColumnText("colLeave7", "deduction_leave", "DeductionLeave", 10, HorizontalAlignment.Left);
+            CCriteriaColumnText l7 = new CCriteriaColumnText("colLeave7", "deduction_leave", "DeductionLeaveFmt", 10, HorizontalAlignment.Left);
             AddGridColumn(l7);
         }
 
@@ -213,7 +213,7 @@ namespace Onix.ClientCenter.UI.HumanResource.Leave
             int idx = 0;
             foreach (CTable o in items)
             {
-                MEmployee v = new MEmployee(o);
+                MEmployeeLeave v = new MEmployeeLeave(o);
 
                 v.RowIndex = idx;
                 itemSources.Add(v);

@@ -4165,6 +4165,15 @@ namespace Onix.Client.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Date [{0}] is already exist.
+        /// </summary>
+        public static string ERROR_DUPLICATE_DATE {
+            get {
+                return ResourceManager.GetString("ERROR_DUPLICATE_DATE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to This &apos;{0}&apos; -&gt; &apos;{1}&apos; already exist.
         /// </summary>
         public static string ERROR_DUPLICATE_KEY {

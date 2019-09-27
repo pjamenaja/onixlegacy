@@ -46,6 +46,8 @@ namespace Onix.Client.Model
 
                 v.ExtFlag = "I";
             }
+
+            CalculateLeaveTotal();
         }
 
         public void RemoveLeaveRecord(MLeaveRecord item)
@@ -67,6 +69,41 @@ namespace Onix.Client.Model
             item.ExtFlag = "A";
             arr.Add(item.GetDbObject());
             leaveItems.Add(item);
+        }
+
+        public void CalculateLeaveTotal()
+        {
+            double totalLate = 0;
+            double totSickLeave = 0;
+            double totPersonalLeave = 0;
+            double totExtraLeave = 0;
+            double totAnnualLeave = 0;
+            double totAbnormalLeave = 0;
+            double totDeductionLeave = 0;
+
+            foreach (MLeaveRecord rec in leaveItems)
+            {
+                if (rec.ExtFlag.Equals("D"))
+                {
+                    continue;
+                }
+
+                totalLate += CUtil.StringToDouble(rec.Late);
+                totSickLeave += CUtil.StringToDouble(rec.SickLeave);
+                totPersonalLeave += CUtil.StringToDouble(rec.PersonalLeave);
+                totExtraLeave += CUtil.StringToDouble(rec.ExtraLeave);
+                totAnnualLeave += CUtil.StringToDouble(rec.AnnualLeave);
+                totAbnormalLeave += CUtil.StringToDouble(rec.AbnormalLeave);
+                totDeductionLeave += CUtil.StringToDouble(rec.DeductionLeave);
+            }
+
+            Late = totalLate.ToString();
+            SickLeave = totSickLeave.ToString();
+            PersonalLeave = totPersonalLeave.ToString();
+            ExtraLeave = totExtraLeave.ToString();
+            AnnualLeave = totAnnualLeave.ToString();
+            AbnormalLeave = totAbnormalLeave.ToString();
+            DeductionLeave = totDeductionLeave.ToString();
         }
 
         public MEmployeeLeave(CTable obj) : base(obj)
@@ -179,6 +216,20 @@ namespace Onix.Client.Model
             set
             {
                 GetDbObject().SetFieldValue("LATE", value);
+                NotifyPropertyChanged("LateFmt");
+            }
+        }
+
+
+        public String LateFmt
+        {
+            get
+            {
+                return (CUtil.FormatNumber(Late));
+            }
+
+            set
+            {
             }
         }
 
@@ -197,6 +248,19 @@ namespace Onix.Client.Model
             set
             {
                 GetDbObject().SetFieldValue("SICK_LEAVE", value);
+                NotifyPropertyChanged("SickLeaveFmt");
+            }
+        }
+
+        public String SickLeaveFmt
+        {
+            get
+            {
+                return (CUtil.FormatNumber(SickLeave));
+            }
+
+            set
+            {
             }
         }
 
@@ -215,6 +279,19 @@ namespace Onix.Client.Model
             set
             {
                 GetDbObject().SetFieldValue("PERSONAL_LEAVE", value);
+                NotifyPropertyChanged("PersonalLeaveFmt");
+            }
+        }
+
+        public String PersonalLeaveFmt
+        {
+            get
+            {
+                return (CUtil.FormatNumber(PersonalLeave));
+            }
+
+            set
+            {
             }
         }
 
@@ -233,6 +310,19 @@ namespace Onix.Client.Model
             set
             {
                 GetDbObject().SetFieldValue("EXTRA_LEAVE", value);
+                NotifyPropertyChanged("ExtraLeaveFmt");
+            }
+        }
+
+        public String ExtraLeaveFmt
+        {
+            get
+            {
+                return (CUtil.FormatNumber(ExtraLeave));
+            }
+
+            set
+            {
             }
         }
 
@@ -251,6 +341,19 @@ namespace Onix.Client.Model
             set
             {
                 GetDbObject().SetFieldValue("ANNUAL_LEAVE", value);
+                NotifyPropertyChanged("AnnualLeaveFmt");
+            }
+        }
+
+        public String AnnualLeaveFmt
+        {
+            get
+            {
+                return (CUtil.FormatNumber(AnnualLeave));
+            }
+
+            set
+            {
             }
         }
 
@@ -269,6 +372,19 @@ namespace Onix.Client.Model
             set
             {
                 GetDbObject().SetFieldValue("ABNORMAL_LEAVE", value);
+                NotifyPropertyChanged("AbnormalLeaveFmt");
+            }
+        }
+
+        public String AbnormalLeaveFmt
+        {
+            get
+            {
+                return (CUtil.FormatNumber(AbnormalLeave));
+            }
+
+            set
+            {
             }
         }
 
@@ -287,6 +403,19 @@ namespace Onix.Client.Model
             set
             {
                 GetDbObject().SetFieldValue("DEDUCTION_LEAVE", value);
+                NotifyPropertyChanged("DeductionLeaveFmt");
+            }
+        }
+
+        public String DeductionLeaveFmt
+        {
+            get
+            {
+                return (CUtil.FormatNumber(DeductionLeave));
+            }
+
+            set
+            {
             }
         }
 
@@ -477,6 +606,44 @@ namespace Onix.Client.Model
         }
 
         #endregion
+
+        public String EmployeeTypeName
+        {
+            get
+            {
+                if (GetDbObject() == null)
+                {
+                    return ("");
+                }
+
+                return (CUtil.EmployeeTypeToString(EmployeeType));
+            }
+
+            set
+            {
+
+            }
+        }
+
+        public String EmployeeType
+        {
+            get
+            {
+                if (GetDbObject() == null)
+                {
+                    return ("");
+                }
+
+                return (GetDbObject().GetFieldValue("EMPLOYEE_TYPE"));
+            }
+
+            set
+            {
+                GetDbObject().SetFieldValue("EMPLOYEE_TYPE", value);
+                //updateFlag();
+                NotifyPropertyChanged();
+            }
+        }
 
         public Boolean? HasResignedFlag
         {

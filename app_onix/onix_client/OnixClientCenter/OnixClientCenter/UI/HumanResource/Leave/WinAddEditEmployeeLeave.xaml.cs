@@ -6,6 +6,7 @@ using Onix.Client.Helper;
 using Onix.ClientCenter.Commons.Windows;
 using System.Windows.Controls;
 using Onix.ClientCenter.Commons.Utils;
+using System.Collections;
 
 namespace Onix.ClientCenter.UI.HumanResource.Leave
 {
@@ -49,7 +50,9 @@ namespace Onix.ClientCenter.UI.HumanResource.Leave
         }
 
         protected override Boolean postValidate()
-        {            
+        {
+            Hashtable hashDups = new Hashtable();
+
             MEmployeeLeave mv = (MEmployeeLeave)vw;            
 
             DateTime parentLeaveDate = mv.DocumentDate;
@@ -63,6 +66,18 @@ namespace Onix.ClientCenter.UI.HumanResource.Leave
                 }
 
                 DateTime leaveDate = item.LeaveDate;
+
+                string key = CUtil.DateTimeToDateString(leaveDate);
+                if (hashDups.ContainsKey(key))
+                {
+                    CHelper.ShowErorMessage(leaveDate.ToString(), "ERROR_DUPLICATE_DATE", null);
+                    return false;
+                }
+                else
+                {
+                    hashDups.Add(key, key);
+                }
+                
                 if ((leaveDate.Month != parentLeaveDate.Month) || (leaveDate.Year != parentLeaveDate.Year))
                 {
                     CHelper.ShowErorMessage(leaveDate.ToString(), "ERROR_NOT_IN_SAME_MONTH", null);
@@ -80,13 +95,15 @@ namespace Onix.ClientCenter.UI.HumanResource.Leave
 
         private void CmdAdd_Click(object sender, RoutedEventArgs e)
         {
-            MEmployeeLeave mv = (MEmployeeLeave)vw;
-            mv.IsModified = true;
+            MEmployeeLeave mv = (MEmployeeLeave)vw;            
 
             MLeaveRecord item = new MLeaveRecord(new CTable(""));
             item.LeaveDate = mv.DocumentDate;
 
+            mv.CalculateLeaveTotal();
             mv.AddLeaveRecord(item);
+
+            mv.IsModified = true;
         }
 
         private void CmdDelete_Click(object sender, RoutedEventArgs e)
@@ -94,8 +111,14 @@ namespace Onix.ClientCenter.UI.HumanResource.Leave
             MEmployeeLeave mv = (MEmployeeLeave) vw;
 
             MLeaveRecord pp = (MLeaveRecord)(sender as Button).Tag;
-            mv.RemoveLeaveRecord(pp);
-            mv.IsModified = true;
+
+            bool result = CHelper.AskConfirmMessage(pp.LeaveDate.ToString(), "CONFIRM_DELETE_ITEM");
+            if (result)
+            {
+                mv.RemoveLeaveRecord(pp);
+                mv.CalculateLeaveTotal();
+                mv.IsModified = true;
+            }
         }
 
         private void CmdAdd2_Click(object sender, RoutedEventArgs e)
@@ -119,6 +142,14 @@ namespace Onix.ClientCenter.UI.HumanResource.Leave
                 loadData();
                 vw.IsModified = false;
             }
+        }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            MEmployeeLeave mv = (MEmployeeLeave)vw;
+
+            mv.CalculateLeaveTotal();
+            vw.IsModified = true;
         }
     }
 }

@@ -146,7 +146,59 @@
                             <Button Name="cmdAdd1" Content="เพิ่ม" HorizontalAlignment="Center" Width="80"  Margin="5,5,5,5" Click="CmdAdd_Click"/>
                         </StackPanel>
 
+                    <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" Margin="0,5,0,0">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
 
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+
+                            <Label Grid.Column="0" Grid.Row="1" Name="lblLateTot"  Content="{Binding Source={x:Static lang:CTextLabel.Instance}, Path=late}" 
+                                   VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" Margin="5,0,0,0"/>
+                            <TextBox Grid.Column="1" Grid.Row="1" Width="120" Text="{Binding LateFmt}" IsEnabled="False" 
+                                     VerticalContentAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0" HorizontalContentAlignment="Right" TextChanged="DefaultTextBox_TextChanged"/>
+
+                            <Label Grid.Column="2" Grid.Row="1" Name="lblSickTot"  Content="{Binding Source={x:Static lang:CTextLabel.Instance}, Path=sick_leave}" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" Margin="5,0,0,0"/>
+                            <TextBox Grid.Column="3" Grid.Row="1" Width="120" Text="{Binding SickLeaveFmt}" IsEnabled="False" VerticalContentAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0" HorizontalContentAlignment="Right" TextChanged="DefaultTextBox_TextChanged"/>
+
+                            <Label Grid.Column="4" Grid.Row="1" Name="lblafterDiscount"  Content="{Binding Source={x:Static lang:CTextLabel.Instance}, Path=personal_leave}" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" Margin="5,0,0,0"/>
+                            <TextBox  Grid.Column="5" Grid.Row="1" Width="120" Text="{Binding PersonalLeaveFmt}" IsEnabled="False" VerticalContentAlignment="Center" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="5,0,0,0" TextChanged="DefaultTextBox_TextChanged" 
+                                              Foreground="Black" FontWeight="Medium"/>
+
+                            <Label Grid.Column="6" Grid.Row="1" Name="lblTotal"  Content="{Binding Source={x:Static lang:CTextLabel.Instance}, Path=extra_personal_leave}" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" Margin="5,0,0,0"/>
+                            <TextBox  Grid.Column="7" Grid.Row="1" Width="120" Text="{Binding ExtraLeaveFmt}" IsEnabled="False" VerticalContentAlignment="Center" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="5,0,0,0" TextChanged="DefaultTextBox_TextChanged" 
+                                              Foreground="Black" FontWeight="Medium"/>
+
+                            <Label Grid.Column="8" Grid.Row="1" Name="lblAnnualTot"  Content="{Binding Source={x:Static lang:CTextLabel.Instance}, Path=annual_leave}" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" Margin="5,0,0,0"/>
+                            <TextBox  Grid.Column="9" Grid.Row="1" Width="120" Text="{Binding AnnualLeaveFmt}" IsEnabled="False" VerticalContentAlignment="Center" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="5,0,0,0" TextChanged="DefaultTextBox_TextChanged" 
+                                              Foreground="Black" FontWeight="Medium"/>
+
+                            <Label Grid.Column="10" Grid.Row="1" Name="lblAbnormalTot"  Content="{Binding Source={x:Static lang:CTextLabel.Instance}, Path=abnormal_leave}" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" Margin="5,0,0,0"/>
+                            <TextBox  Grid.Column="11" Grid.Row="1" Width="120" Text="{Binding AbnormalLeaveFmt}" IsEnabled="False" VerticalContentAlignment="Center" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="5,0,0,0" TextChanged="DefaultTextBox_TextChanged" 
+                                              Foreground="Black" FontWeight="Medium"/>
+
+                            <Label Grid.Column="12" Grid.Row="1" Name="lblDeductTot"  Content="{Binding Source={x:Static lang:CTextLabel.Instance}, Path=deduction_leave}" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" Margin="5,0,0,0"/>
+                            <TextBox  Grid.Column="13" Grid.Row="1" Width="120" Text="{Binding DeductionLeaveFmt}" IsEnabled="False" VerticalContentAlignment="Center" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="5,0,0,0" TextChanged="DefaultTextBox_TextChanged" 
+                                              Foreground="Black" FontWeight="Medium"/>
+                        </Grid>
+                    </StackPanel>
+                        
                     <ListBox DockPanel.Dock="Left" Margin="0,5,0,0" ScrollViewer.VerticalScrollBarVisibility="Visible" ItemsSource="{Binding LeaveRecords}"
                                          Background="{DynamicResource WindowBackgroundBrush_Grid}">
 
@@ -162,46 +214,46 @@
                                     <Label Name="lblLate" Content="{Binding Source={x:Static lang:CTextLabel.Instance}, Path=late}" VerticalAlignment="Center" 
                                            Foreground="Blue" 
                                            VerticalContentAlignment="Center"  HorizontalContentAlignment="Right" Margin="10,0,0,0"  />
-                                    <TextBox x:Name="txtLate" Text="{Binding Late}" Width="50" Margin="5,0,0,0" VerticalContentAlignment="Center" 
-                                             PreviewTextInput="DefaultTextBoxNumber_PreviewTextInput" TextChanged="DefaultTextBox_TextChanged"/>
+                                    <TextBox x:Name="txtLate" Text="{Binding Late, UpdateSourceTrigger=PropertyChanged}" Width="50" Margin="5,0,0,0" VerticalContentAlignment="Center" 
+                                             PreviewTextInput="DefaultTextBoxNumber_PreviewTextInput" TextChanged="TextBox_TextChanged"/>
                                     <Label Name="lblLateUnit" Content="(นาที)" VerticalAlignment="Center" 
                                            VerticalContentAlignment="Center"  HorizontalContentAlignment="Right" Margin="5,0,0,0"  />
 
                                     <Label Name="lblSick" Content="{Binding Source={x:Static lang:CTextLabel.Instance}, Path=sick_leave}" VerticalAlignment="Center" 
                                            Foreground="Blue" 
                                            VerticalContentAlignment="Center"  HorizontalContentAlignment="Right" Margin="10,0,0,0"  />
-                                    <TextBox x:Name="txtSick" Text="{Binding SickLeave}" Width="50" Margin="5,0,0,0" VerticalContentAlignment="Center" 
-                                             PreviewTextInput="DefaultTextBoxNumber_PreviewTextInput" TextChanged="DefaultTextBox_TextChanged"/>
+                                    <TextBox x:Name="txtSick" Text="{Binding SickLeave, UpdateSourceTrigger=PropertyChanged}" Width="50" Margin="5,0,0,0" VerticalContentAlignment="Center" 
+                                             PreviewTextInput="DefaultTextBoxNumber_PreviewTextInput" TextChanged="TextBox_TextChanged"/>
 
                                     <Label Name="lblPersonalLeave" Content="{Binding Source={x:Static lang:CTextLabel.Instance}, Path=personal_leave}" VerticalAlignment="Center" 
                                            Foreground="Blue" 
                                            VerticalContentAlignment="Center"  HorizontalContentAlignment="Right" Margin="10,0,0,0"  />
-                                    <TextBox x:Name="txtPersonalLeave" Text="{Binding PersonalLeave}" Width="50" Margin="5,0,0,0" VerticalContentAlignment="Center" 
-                                             PreviewTextInput="DefaultTextBoxNumber_PreviewTextInput" TextChanged="DefaultTextBox_TextChanged"/>
+                                    <TextBox x:Name="txtPersonalLeave" Text="{Binding PersonalLeave, UpdateSourceTrigger=PropertyChanged}" Width="50" Margin="5,0,0,0" VerticalContentAlignment="Center" 
+                                             PreviewTextInput="DefaultTextBoxNumber_PreviewTextInput" TextChanged="TextBox_TextChanged"/>
 
                                     <Label Name="lblExtraPersonal" Content="{Binding Source={x:Static lang:CTextLabel.Instance}, Path=extra_personal_leave}" VerticalAlignment="Center" 
                                            Foreground="Blue" 
                                            VerticalContentAlignment="Center"  HorizontalContentAlignment="Right" Margin="10,0,0,0"  />
-                                    <TextBox x:Name="txtExtraPersonal" Text="{Binding ExtraLeave}" Width="50" Margin="5,0,0,0" VerticalContentAlignment="Center" 
-                                             PreviewTextInput="DefaultTextBoxNumber_PreviewTextInput" TextChanged="DefaultTextBox_TextChanged"/>
+                                    <TextBox x:Name="txtExtraPersonal" Text="{Binding ExtraLeave, UpdateSourceTrigger=PropertyChanged}" Width="50" Margin="5,0,0,0" VerticalContentAlignment="Center" 
+                                             PreviewTextInput="DefaultTextBoxNumber_PreviewTextInput" TextChanged="TextBox_TextChanged"/>
 
                                     <Label Name="lblAnnualLeave" Content="{Binding Source={x:Static lang:CTextLabel.Instance}, Path=annual_leave}" VerticalAlignment="Center" 
                                            Foreground="Blue" 
                                            VerticalContentAlignment="Center"  HorizontalContentAlignment="Right" Margin="10,0,0,0"  />
-                                    <TextBox x:Name="txtAnnualLeave" Text="{Binding AnnualLeave}" Width="50" Margin="5,0,0,0" VerticalContentAlignment="Center" 
-                                             PreviewTextInput="DefaultTextBoxNumber_PreviewTextInput" TextChanged="DefaultTextBox_TextChanged"/>
+                                    <TextBox x:Name="txtAnnualLeave" Text="{Binding AnnualLeave, UpdateSourceTrigger=PropertyChanged}" Width="50" Margin="5,0,0,0" VerticalContentAlignment="Center" 
+                                             PreviewTextInput="DefaultTextBoxNumber_PreviewTextInput" TextChanged="TextBox_TextChanged"/>
 
                                     <Label Name="lblAbnormalLeave" Content="{Binding Source={x:Static lang:CTextLabel.Instance}, Path=abnormal_leave}" VerticalAlignment="Center" 
                                            Foreground="Blue" 
                                            VerticalContentAlignment="Center"  HorizontalContentAlignment="Right" Margin="10,0,0,0"  />
-                                    <TextBox x:Name="txtAbnormalLeave" Text="{Binding AbnormalLeave}" Width="50" Margin="5,0,0,0" VerticalContentAlignment="Center" 
-                                             PreviewTextInput="DefaultTextBoxNumber_PreviewTextInput" TextChanged="DefaultTextBox_TextChanged"/>
+                                    <TextBox x:Name="txtAbnormalLeave" Text="{Binding AbnormalLeave, UpdateSourceTrigger=PropertyChanged}" Width="50" Margin="5,0,0,0" VerticalContentAlignment="Center" 
+                                             PreviewTextInput="DefaultTextBoxNumber_PreviewTextInput" TextChanged="TextBox_TextChanged"/>
 
                                     <Label Name="lblDeductionLeave" Content="{Binding Source={x:Static lang:CTextLabel.Instance}, Path=deduction_leave}" VerticalAlignment="Center" 
                                            Foreground="Blue" 
                                            VerticalContentAlignment="Center"  HorizontalContentAlignment="Right" Margin="10,0,0,0"  />
-                                    <TextBox x:Name="txtDeductionLeave" Text="{Binding DeductionLeave}" Width="50" Margin="5,0,0,0" VerticalContentAlignment="Center" 
-                                             PreviewTextInput="DefaultTextBoxNumber_PreviewTextInput" TextChanged="DefaultTextBox_TextChanged"/>
+                                    <TextBox x:Name="txtDeductionLeave" Text="{Binding DeductionLeave, UpdateSourceTrigger=PropertyChanged}" Width="50" Margin="5,0,0,0" VerticalContentAlignment="Center" 
+                                             PreviewTextInput="DefaultTextBoxNumber_PreviewTextInput" TextChanged="TextBox_TextChanged"/>
                                     <Label Name="lblDeductiveUnit" Content="(ชั่วโมง)" VerticalAlignment="Center" 
                                            VerticalContentAlignment="Center"  HorizontalContentAlignment="Right" Margin="5,0,0,0"  />
 
