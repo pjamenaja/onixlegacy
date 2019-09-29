@@ -4492,4 +4492,7 @@
   <data name="ERROR_DUPLICATE_DATE" xml:space="preserve">
     <value>Date [{0}] is already exist</value>
   </data>
+  <data name="ERROR_LEAVE_OVER_DAY" xml:space="preserve">
+    <value>Summation more than [{0}] 1 day</value>
+  </data>
 </root>

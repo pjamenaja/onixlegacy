@@ -1,5 +1,6 @@
 ﻿using Onix.Client.Helper;
 using System;
+using System.Collections.ObjectModel;
 using Wis.WsClientAPI;
 
 namespace Onix.Client.Model
@@ -110,6 +111,7 @@ namespace Onix.Client.Model
             }
         }
 
+        #region Sick Leave
         public String SickLeave
         {
             get
@@ -129,6 +131,37 @@ namespace Onix.Client.Model
             }
         }
 
+        public MMasterRef SickLeaveObj
+        {
+            set
+            {
+                if (value == null)
+                {
+                    return;
+                }
+
+                MMasterRef m = value as MMasterRef;
+                SickLeave = m.MasterID;
+
+                updateFlag();
+                NotifyPropertyChanged();
+            }
+
+            get
+            {
+                ObservableCollection<MMasterRef> items = CMasterReference.Instance.LeaveDurations;
+                if (items == null)
+                {
+                    return (null);
+                }
+
+                String tm = SickLeave;
+                return (CUtil.MasterIDToObject(items, tm));                
+            }
+        }
+        #endregion
+
+        #region Personal Leave
         public String PersonalLeave
         {
             get
@@ -148,6 +181,37 @@ namespace Onix.Client.Model
             }
         }
 
+        public MMasterRef PersonalLeaveObj
+        {
+            set
+            {
+                if (value == null)
+                {
+                    return;
+                }
+
+                MMasterRef m = value as MMasterRef;
+                PersonalLeave = m.MasterID;
+
+                updateFlag();
+                NotifyPropertyChanged();
+            }
+
+            get
+            {
+                ObservableCollection<MMasterRef> items = CMasterReference.Instance.LeaveDurations;
+                if (items == null)
+                {
+                    return (null);
+                }
+
+                String tm = PersonalLeave;
+                return (CUtil.MasterIDToObject(items, tm));
+            }
+        }
+        #endregion
+
+        #region Extra Leave
         public String ExtraLeave
         {
             get
@@ -167,6 +231,38 @@ namespace Onix.Client.Model
             }
         }
 
+
+        public MMasterRef ExtraLeaveObj
+        {
+            set
+            {
+                if (value == null)
+                {
+                    return;
+                }
+
+                MMasterRef m = value as MMasterRef;
+                ExtraLeave = m.MasterID;
+
+                updateFlag();
+                NotifyPropertyChanged();
+            }
+
+            get
+            {
+                ObservableCollection<MMasterRef> items = CMasterReference.Instance.LeaveDurations;
+                if (items == null)
+                {
+                    return (null);
+                }
+
+                String tm = ExtraLeave;
+                return (CUtil.MasterIDToObject(items, tm));
+            }
+        }
+        #endregion
+
+        #region Annual Leave
         public String AnnualLeave
         {
             get
@@ -185,6 +281,37 @@ namespace Onix.Client.Model
                 updateFlag();
             }
         }
+
+
+        public MMasterRef AnnualLeaveObj
+        {
+            set
+            {
+                if (value == null)
+                {
+                    return;
+                }
+
+                MMasterRef m = value as MMasterRef;
+                AnnualLeave = m.MasterID;
+
+                updateFlag();
+                NotifyPropertyChanged();
+            }
+
+            get
+            {
+                ObservableCollection<MMasterRef> items = CMasterReference.Instance.LeaveDurations;
+                if (items == null)
+                {
+                    return (null);
+                }
+
+                String tm = AnnualLeave;
+                return (CUtil.MasterIDToObject(items, tm));
+            }
+        }
+        #endregion
 
         public String AbnormalLeave
         {

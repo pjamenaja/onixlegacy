@@ -120,26 +120,26 @@ namespace Onix.ClientCenter.UI.HumanResource.Leave
             CCriteriaColumnText c3 = new CCriteriaColumnText("colEmployeeType", "employee_type", "EmployeeTypeName", 10, HorizontalAlignment.Left);
             AddGridColumn(c3);
 
-            CCriteriaColumnText l1 = new CCriteriaColumnText("colLeave1", "late", "LateFmt", 6, HorizontalAlignment.Left);
-            AddGridColumn(l1);
+            //CCriteriaColumnText l1 = new CCriteriaColumnText("colLeave1", "late", "LateFmt", 6, HorizontalAlignment.Left);
+            //AddGridColumn(l1);
 
-            CCriteriaColumnText l2 = new CCriteriaColumnText("colLeave2", "sick_leave", "SickLeaveFmt", 6, HorizontalAlignment.Left);
+            CCriteriaColumnText l2 = new CCriteriaColumnText("colLeave2", "sick_leave", "SickLeaveFmt", 12, HorizontalAlignment.Left);
             AddGridColumn(l2);
 
-            CCriteriaColumnText l3 = new CCriteriaColumnText("colLeave3", "personal_leave", "PersonalLeaveFmt", 6, HorizontalAlignment.Left);
+            CCriteriaColumnText l3 = new CCriteriaColumnText("colLeave3", "personal_leave", "PersonalLeaveFmt", 12, HorizontalAlignment.Left);
             AddGridColumn(l3);
 
-            CCriteriaColumnText l4 = new CCriteriaColumnText("colLeave4", "extra_personal_leave", "ExtraLeaveFmt", 6, HorizontalAlignment.Left);
+            CCriteriaColumnText l4 = new CCriteriaColumnText("colLeave4", "extra_personal_leave", "ExtraLeaveFmt", 12, HorizontalAlignment.Left);
             AddGridColumn(l4);
 
-            CCriteriaColumnText l5 = new CCriteriaColumnText("colLeave5", "annual_leave", "AnnualLeaveFmt", 6, HorizontalAlignment.Left);
+            CCriteriaColumnText l5 = new CCriteriaColumnText("colLeave5", "annual_leave", "AnnualLeaveFmt", 10, HorizontalAlignment.Left);
             AddGridColumn(l5);
 
-            CCriteriaColumnText l6 = new CCriteriaColumnText("colLeave6", "abnormal_leave", "AbnormalLeaveFmt", 6, HorizontalAlignment.Left);
-            AddGridColumn(l6);
+            //CCriteriaColumnText l6 = new CCriteriaColumnText("colLeave6", "abnormal_leave", "AbnormalLeaveFmt", 6, HorizontalAlignment.Left);
+            //AddGridColumn(l6);
 
-            CCriteriaColumnText l7 = new CCriteriaColumnText("colLeave7", "deduction_leave", "DeductionLeaveFmt", 10, HorizontalAlignment.Left);
-            AddGridColumn(l7);
+            //CCriteriaColumnText l7 = new CCriteriaColumnText("colLeave7", "deduction_leave", "DeductionLeaveFmt", 10, HorizontalAlignment.Left);
+            //AddGridColumn(l7);
         }
 
         private void createCriteriaEntries()

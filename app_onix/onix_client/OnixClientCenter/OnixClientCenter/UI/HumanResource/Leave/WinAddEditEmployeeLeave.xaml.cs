@@ -83,6 +83,14 @@ namespace Onix.ClientCenter.UI.HumanResource.Leave
                     CHelper.ShowErorMessage(leaveDate.ToString(), "ERROR_NOT_IN_SAME_MONTH", null);
                     return false;
                 }
+
+                double sum = CUtil.StringToDouble(item.AnnualLeave) + CUtil.StringToDouble(item.PersonalLeave) +
+                    CUtil.StringToDouble(item.ExtraLeave) + CUtil.StringToDouble(item.SickLeave);
+                if (sum > 1)
+                {
+                    CHelper.ShowErorMessage(leaveDate.ToString(), "ERROR_LEAVE_OVER_DAY", null);
+                    return false;
+                }
             }
 
             return (true);
@@ -90,7 +98,10 @@ namespace Onix.ClientCenter.UI.HumanResource.Leave
 
         private void CboPoc_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
+            MEmployeeLeave mv = (MEmployeeLeave)vw;
 
+            mv.CalculateLeaveTotal();
+            vw.IsModified = true;
         }
 
         private void CmdAdd_Click(object sender, RoutedEventArgs e)

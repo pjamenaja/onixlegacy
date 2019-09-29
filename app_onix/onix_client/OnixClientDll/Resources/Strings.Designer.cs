@@ -4318,6 +4318,15 @@ namespace Onix.Client.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ผลรวมการลา [{0}] เกิน 1 วัน.
+        /// </summary>
+        public static string ERROR_LEAVE_OVER_DAY {
+            get {
+                return ResourceManager.GetString("ERROR_LEAVE_OVER_DAY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ไม่สามารถล็อคอินเข้าสู่ระบบได้ [{0}].
         /// </summary>
         public static string ERROR_LOGIN {

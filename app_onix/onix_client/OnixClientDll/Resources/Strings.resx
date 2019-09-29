@@ -4530,4 +4530,7 @@
   <data name="ERROR_DUPLICATE_DATE" xml:space="preserve">
     <value>มีวันที่ [{0}] อยู่ในรายการแล้ว</value>
   </data>
+  <data name="ERROR_LEAVE_OVER_DAY" xml:space="preserve">
+    <value>ผลรวมการลา [{0}] เกิน 1 วัน</value>
+  </data>
 </root>

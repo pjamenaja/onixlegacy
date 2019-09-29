@@ -41,7 +41,8 @@ namespace Onix.Client.Helper
         private static ObservableCollection<MMasterRef> salePaymentDocTypes = new ObservableCollection<MMasterRef>();        
         private static ObservableCollection<MMasterRef> purchaseWhDocTypes = new ObservableCollection<MMasterRef>();
         private static ObservableCollection<MMasterRef> purchasePaymentDocTypes = new ObservableCollection<MMasterRef>();
-        
+        private static ObservableCollection<MMasterRef> leaveDurations = new ObservableCollection<MMasterRef>();
+
         private static ObservableCollection<MMasterRef> saleRevenueDocTypes = new ObservableCollection<MMasterRef>();
         private static ObservableCollection<MMasterRef> revenueTaxTypes = new ObservableCollection<MMasterRef>();
         private static ObservableCollection<MMasterRef> taxDocTypes = new ObservableCollection<MMasterRef>();
@@ -1177,6 +1178,32 @@ namespace Onix.Client.Helper
                 }
 
                 return (serviceCategories);
+            }
+        }
+        
+        public ObservableCollection<MMasterRef> LeaveDurations
+        {
+            get
+            {
+                if (leaveDurations.Count <= 0)
+                {
+                    MMasterRef p1 = new MMasterRef(new CTable(""));
+                    p1.Description = "";
+                    p1.MasterID = "0.00";
+                    leaveDurations.Add(p1);
+
+                    MMasterRef p3 = new MMasterRef(new CTable(""));
+                    p3.Description = "ครึ่งวัน";
+                    p3.MasterID = "0.50";
+                    leaveDurations.Add(p3);
+
+                    MMasterRef p3_1 = new MMasterRef(new CTable(""));
+                    p3_1.Description = "เต็มวัน";
+                    p3_1.MasterID = "1.00";
+                    leaveDurations.Add(p3_1);                    
+                }
+
+                return (leaveDurations);
             }
         }
 

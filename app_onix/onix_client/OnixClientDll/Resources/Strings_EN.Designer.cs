@@ -4273,6 +4273,15 @@ namespace Onix.Client.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Summation more than [{0}] 1 day.
+        /// </summary>
+        public static string ERROR_LEAVE_OVER_DAY {
+            get {
+                return ResourceManager.GetString("ERROR_LEAVE_OVER_DAY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Unable to login into system [{0}].
         /// </summary>
         public static string ERROR_LOGIN {
