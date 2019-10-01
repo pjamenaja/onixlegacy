@@ -4533,4 +4533,13 @@
   <data name="ERROR_LEAVE_OVER_DAY" xml:space="preserve">
     <value>ผลรวมการลา [{0}] เกิน 1 วัน</value>
   </data>
+  <data name="rpt_employee_leave" xml:space="preserve">
+    <value>HR001_03 - รายงานการลาพนักงานรายบุคคล</value>
+  </data>
+  <data name="hr_employee_leave" xml:space="preserve">
+    <value>ข้อมูลการลาพนักงาน</value>
+  </data>
+  <data name="grpHRLeave" xml:space="preserve">
+    <value>ข้อมูลการลา</value>
+  </data>
 </root>

@@ -5416,6 +5416,15 @@ namespace Onix.Client.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ข้อมูลการลา.
+        /// </summary>
+        public static string grpHRLeave {
+            get {
+                return ResourceManager.GetString("grpHRLeave", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Payroll Slip.
         /// </summary>
         public static string grpHRSlip {
@@ -5637,6 +5646,15 @@ namespace Onix.Client.Resources {
         public static string hr_allowance_form {
             get {
                 return ResourceManager.GetString("hr_allowance_form", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ข้อมูลการลาพนักงาน.
+        /// </summary>
+        public static string hr_employee_leave {
+            get {
+                return ResourceManager.GetString("hr_employee_leave", resourceCulture);
             }
         }
         
@@ -10092,6 +10110,15 @@ namespace Onix.Client.Resources {
         public static string rpt_comm_batch {
             get {
                 return ResourceManager.GetString("rpt_comm_batch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to HR001_03 - Employee Leave Records.
+        /// </summary>
+        public static string rpt_employee_leave {
+            get {
+                return ResourceManager.GetString("rpt_employee_leave", resourceCulture);
             }
         }
         

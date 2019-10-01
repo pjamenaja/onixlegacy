@@ -197,6 +197,10 @@
     <Compile Include="UI\Printing\Forms\AcDesign\HRPayrollDeposit\UFormPayrollDeposit.xaml.cs">
       <DependentUpon>UFormPayrollDeposit.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\Printing\Forms\AcDesign\HREmployeeLeave\CFormEmployeeLeave.cs" />
+    <Compile Include="UI\Printing\Forms\AcDesign\HREmployeeLeave\UFormEmployeeLeave.xaml.cs">
+      <DependentUpon>UFormEmployeeLeave.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\Printing\Forms\AcDesign\HRPayrollWithdraw\CFormPayrollWithdraw.cs" />
     <Compile Include="UI\Printing\Forms\AcDesign\HRPayrollWithdraw\UFormPayrollWithdraw.xaml.cs">
       <DependentUpon>UFormPayrollWithdraw.xaml</DependentUpon>
@@ -220,6 +224,7 @@
     <Compile Include="Commons\CriteriaConfig\CCriteriaContextMenu.cs" />
     <Compile Include="Commons\CriteriaConfig\CCriteriaEntry.cs" />
     <Compile Include="UI\Printing\Reports\CReportInventory000_01_ItemList.cs" />
+    <Compile Include="UI\Printing\Reports\CReportEmployee00_01_EmployeeLeave.cs" />
     <Compile Include="UI\Printing\Reports\CReportPayroll001_02_EmployeeListPayroll.cs" />
     <Compile Include="UI\Printing\Reports\CReportPayroll001_01_EmployeeListPayroll.cs" />
     <Compile Include="UI\ZCriteria\CCriteriaAuxilaryDocSale.cs" />
@@ -656,6 +661,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="UI\Printing\Forms\AcDesign\HRPayrollDeposit\UFormPayrollDeposit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Printing\Forms\AcDesign\HREmployeeLeave\UFormEmployeeLeave.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
