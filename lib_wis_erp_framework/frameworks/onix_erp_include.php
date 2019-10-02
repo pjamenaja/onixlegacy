@@ -78,6 +78,7 @@ require_once "phar://onix_erp_framework.phar/controllers/SalePurchase/CostDocume
 require_once "phar://onix_erp_framework.phar/controllers/HR/PayrollDocument.php";
 require_once "phar://onix_erp_framework.phar/controllers/HR/HrPayrollReport.php";
 require_once "phar://onix_erp_framework.phar/controllers/HR/OtDocument.php";
+require_once "phar://onix_erp_framework.phar/controllers/HR/EmployeeLeave.php";
 
 #Customed
 require_once "phar://onix_erp_framework.phar/controllers/SalePurchase/ACDesign/AcdSalePurchaseReport.php";
@@ -157,5 +158,7 @@ require_once "phar://onix_erp_framework.phar/models/MEmployeeExpenseItem.php";
 require_once "phar://onix_erp_framework.phar/models/MPayrollDeductionItem.php";
 require_once "phar://onix_erp_framework.phar/models/MCostDocument.php";
 require_once "phar://onix_erp_framework.phar/models/MCostDocumentItem.php";
+require_once "phar://onix_erp_framework.phar/models/MEmployeeLeaveDoc.php";
+require_once "phar://onix_erp_framework.phar/models/MEmployeeLeaveRecord.php";
 
 ?>

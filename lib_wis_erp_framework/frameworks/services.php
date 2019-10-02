@@ -182,7 +182,7 @@ $ONIX_SERVICES_LIST = [
     'UpdateEmployee' => [$bp . 'controllers/General/Employee.php', 'UpdateEmployee', $userLvl],
     'DeleteEmployee' => [$bp . 'controllers/General/Employee.php', 'DeleteEmployee', $userLvl],
     'CopyEmployee' => [$bp . 'controllers/General/Employee.php', 'CopyEmployee', $userLvl],
-
+    
     //Voucher Template
     'GetVoucherTemplateList' => [$bp . 'controllers/Promotion/VoucherTemplate.php', 'GetVoucherTemplateList', $userLvl],
     'GetVoucherTemplateInfo' => [$bp . 'controllers/Promotion/VoucherTemplate.php', 'GetVoucherTemplateInfo', $userLvl],
@@ -361,6 +361,13 @@ $ONIX_SERVICES_LIST = [
     'VerifyCheque' => [$bp . 'controllers/Cash/Cheque.php', 'VerifyCheque', $userLvl],    
     'GetChequeListAll' => [$bp . 'controllers/Cash/ChequeReport.php', 'GetChequeListAll', $userLvl],
     
+    //EmployeeLeave
+    'GetEmployeeLeaveDocList' => [$bp . 'controllers/HR/EmployeeLeave.php', 'GetEmployeeLeaveDocList', $userLvl],
+    'GetEmployeeLeaveDocInfo' => [$bp . 'controllers/HR/EmployeeLeave.php', 'GetEmployeeLeaveDocInfo', $userLvl],
+    'CreateEmployeeLeaveDoc' => [$bp . 'controllers/HR/EmployeeLeave.php', 'CreateEmployeeLeaveDoc', $userLvl],
+    'UpdateEmployeeLeaveDoc' => [$bp . 'controllers/HR/EmployeeLeave.php', 'UpdateEmployeeLeaveDoc', $userLvl],
+    'SaveEmployeeLeaveDoc' => [$bp . 'controllers/HR/EmployeeLeave.php', 'SaveEmployeeLeaveDoc', $userLvl],
+
     //PayrollDocument
     'GetPayrollDocList' => [$bp . 'controllers/HR/PayrollDocument.php', 'GetPayrollDocList', $userLvl],
     'GetPayrollDocInfo' => [$bp . 'controllers/HR/PayrollDocument.php', 'GetPayrollDocInfo', $userLvl],

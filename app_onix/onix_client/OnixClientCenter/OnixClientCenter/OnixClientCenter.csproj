@@ -154,6 +154,12 @@
     <Compile Include="UI\AccountPayable\TaxDocument\PRV3_53\WinTaxDocRendererProgress.xaml.cs">
       <DependentUpon>WinTaxDocRendererProgress.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\HumanResource\Leave\CCriteriaEmployeeLeave.cs" />
+    <Compile Include="UI\HumanResource\Leave\MLeaveRecord.cs" />
+    <Compile Include="UI\HumanResource\Leave\MEmployeeLeave.cs" />
+    <Compile Include="UI\HumanResource\Leave\WinAddEditEmployeeLeave.xaml.cs">
+      <DependentUpon>WinAddEditEmployeeLeave.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\HumanResource\OrgChart\CWinOrgChartLoadParam.cs" />
     <Compile Include="UI\HumanResource\OrgChart\MVOrgChart.cs" />
     <Compile Include="UI\HumanResource\OTDocument\CCriteriaOTDocument.cs" />
@@ -192,6 +198,10 @@
     <Compile Include="UI\Printing\Forms\AcDesign\HRPayrollDeposit\UFormPayrollDeposit.xaml.cs">
       <DependentUpon>UFormPayrollDeposit.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\Printing\Forms\AcDesign\HREmployeeLeave\CFormEmployeeLeave.cs" />
+    <Compile Include="UI\Printing\Forms\AcDesign\HREmployeeLeave\UFormEmployeeLeave.xaml.cs">
+      <DependentUpon>UFormEmployeeLeave.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\Printing\Forms\AcDesign\HRPayrollWithdraw\CFormPayrollWithdraw.cs" />
     <Compile Include="UI\Printing\Forms\AcDesign\HRPayrollWithdraw\UFormPayrollWithdraw.xaml.cs">
       <DependentUpon>UFormPayrollWithdraw.xaml</DependentUpon>
@@ -215,6 +225,7 @@
     <Compile Include="Commons\CriteriaConfig\CCriteriaContextMenu.cs" />
     <Compile Include="Commons\CriteriaConfig\CCriteriaEntry.cs" />
     <Compile Include="UI\Printing\Reports\CReportInventory000_01_ItemList.cs" />
+    <Compile Include="UI\Printing\Reports\CReportEmployee00_01_EmployeeLeave.cs" />
     <Compile Include="UI\Printing\Reports\CReportPayroll001_02_EmployeeListPayroll.cs" />
     <Compile Include="UI\Printing\Reports\CReportPayroll001_01_EmployeeListPayroll.cs" />
     <Compile Include="UI\ZCriteria\CCriteriaAuxilaryDocSale.cs" />
@@ -618,6 +629,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="UI\HumanResource\Leave\WinAddEditEmployeeLeave.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="UI\HumanResource\OTDocument\WinAddEditOtDocItem2.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -647,6 +662,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="UI\Printing\Forms\AcDesign\HRPayrollDeposit\UFormPayrollDeposit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Printing\Forms\AcDesign\HREmployeeLeave\UFormEmployeeLeave.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

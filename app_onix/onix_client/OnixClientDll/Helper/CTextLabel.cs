@@ -78,7 +78,79 @@ namespace Onix.Client.Helper
 		}
 
         #region Properties        
-        
+
+        public String hiring_date
+        {
+            get
+            {
+                return (CLanguage.getValueEx());
+            }
+        }
+
+        public String abnormal_leave
+        {
+            get
+            {
+                return (CLanguage.getValueEx());
+            }
+        }
+
+        public String deduction_leave
+        {
+            get
+            {
+                return (CLanguage.getValueEx());
+            }
+        }
+
+        public String annual_leave
+        {
+            get
+            {
+                return (CLanguage.getValueEx());
+            }
+        }
+
+        public String extra_personal_leave
+        {
+            get
+            {
+                return (CLanguage.getValueEx());
+            }
+        }
+
+        public String personal_leave
+        {
+            get
+            {
+                return (CLanguage.getValueEx());
+            }
+        }
+
+        public String late
+        {
+            get
+            {
+                return (CLanguage.getValueEx());
+            }
+        }
+
+        public String sick_leave
+        {
+            get
+            {
+                return (CLanguage.getValueEx());
+            }
+        }
+
+        public String leave
+        {
+            get
+            {
+                return (CLanguage.getValueEx());
+            }
+        }
+
         public String PromptPayID
         {
             get

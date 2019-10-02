@@ -4,6 +4,7 @@ using Wis.WsClientAPI;
 using Onix.Client.Model;
 using Onix.Client.Helper;
 using Onix.ClientCenter.Commons.Windows;
+using Onix.ClientCenter.Windows;
 
 namespace Onix.ClientCenter.UI.HumanResource.EmployeeInfo
 {
@@ -40,6 +41,11 @@ namespace Onix.ClientCenter.UI.HumanResource.EmployeeInfo
             mv.IsMonthly = true;
             mv.IsMale = true;
             mv.HasResignedFlag = false;
+
+            if (loadParam.Mode.Equals("A"))
+            {
+                mv.HiringDate = DateTime.Now;
+            }
             
             return (mv);
         }
@@ -58,6 +64,13 @@ namespace Onix.ClientCenter.UI.HumanResource.EmployeeInfo
         private void CboPoc_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
 
+        }
+
+        private void CmdLeave_Click(object sender, RoutedEventArgs e)
+        {
+            MEmployeeLeave mv = new MEmployeeLeave(new CTable(""));
+            WinFormPrinting w = new WinFormPrinting("grpHRLeave", mv);
+            w.ShowDialog();
         }
     }
 }

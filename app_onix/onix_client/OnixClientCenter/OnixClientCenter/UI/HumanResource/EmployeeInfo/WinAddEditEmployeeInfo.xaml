@@ -145,12 +145,12 @@
                 <TextBox Name="txtDepartment" Grid.Row="6" Grid.Column="1" Width="300" HorizontalAlignment="Left" Text="{Binding IDNumber}"
                          Margin="5,0,0,5" VerticalContentAlignment="Center" TextChanged="DefaultTextBox_TextChanged"/>
 
-                <!--<Label Name="lblPosition" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" Grid.Column="2" Grid.Row="6"
-                       Content="{Binding Source={x:Static lang:CTextLabel.Instance}, Path=position}" HorizontalAlignment="Right"/>
+                <Label Name="lblPosition" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" Grid.Column="2" Grid.Row="6"
+                       Content="{Binding Source={x:Static lang:CTextLabel.Instance}, Path=hiring_date}" HorizontalAlignment="Right"/>
 
-                <TextBox Name="txtPosition" Grid.Row="6" Grid.Column="3" Width="300" HorizontalAlignment="Left" Text="{Binding PositionName}"
-                         Margin="5,0,0,5" VerticalContentAlignment="Center" IsEnabled="False" TextChanged="DefaultTextBox_TextChanged"/>-->
-                <!-- End Department and Position -->
+                <uc:UDateEntry x:Name="dtFromDate" Margin="5,0,5,5" SelectedDate="{Binding HiringDate}" Grid.Row="6" Grid.Column="3"
+                               SelectedDateChanged="DefaultUDate_SelectedDateChanged"  
+                               HorizontalAlignment="Left" VerticalContentAlignment="Center"/>
 
                 <!-- Start Line ID -->
                 <Label Name="lblLineID" VerticalContentAlignment="Center" HorizontalContentAlignment="Right"
@@ -190,6 +190,7 @@
             </Button>
 
             <Button Name="cmdCancel" IsCancel="True" Content="{Binding Source={x:Static lang:CTextLabel.Instance}, Path=cancel}" MinWidth="80"  Margin="5,0,0,5"/>
+            <Button Name="cmdLeave" Content="ข้อมูลการลา" MinWidth="100"  Margin="5,0,0,5" Click="CmdLeave_Click"/>
         </StackPanel>
         
         <TabControl Margin="5, 0, 5, 5" DockPanel.Dock="Bottom">

@@ -4500,4 +4500,49 @@
   <data name="PromptPayID" xml:space="preserve">
     <value>เลขที่พรอมต์เพย์</value>
   </data>
+  <data name="leave" xml:space="preserve">
+    <value>วันลาพนักงาน</value>
+  </data>
+  <data name="abnormal_leave" xml:space="preserve">
+    <value>ขาดงาน</value>
+  </data>
+  <data name="annual_leave" xml:space="preserve">
+    <value>พักร้อน</value>
+  </data>
+  <data name="deduction_leave" xml:space="preserve">
+    <value>ทำงานไม่ครบ</value>
+  </data>
+  <data name="extra_personal_leave" xml:space="preserve">
+    <value>ลากิจพิเศษ</value>
+  </data>
+  <data name="late" xml:space="preserve">
+    <value>สาย</value>
+  </data>
+  <data name="personal_leave" xml:space="preserve">
+    <value>ลากิจ</value>
+  </data>
+  <data name="sick_leave" xml:space="preserve">
+    <value>ลาป่วย</value>
+  </data>
+  <data name="ERROR_NOT_IN_SAME_MONTH" xml:space="preserve">
+    <value>วันที่จะต้องอยู่ในเดือนเดียวกัน [{0}]</value>
+  </data>
+  <data name="ERROR_DUPLICATE_DATE" xml:space="preserve">
+    <value>มีวันที่ [{0}] อยู่ในรายการแล้ว</value>
+  </data>
+  <data name="ERROR_LEAVE_OVER_DAY" xml:space="preserve">
+    <value>ผลรวมการลา [{0}] เกิน 1 วัน</value>
+  </data>
+  <data name="rpt_employee_leave" xml:space="preserve">
+    <value>HR001_03 - รายงานการลาพนักงานรายบุคคล</value>
+  </data>
+  <data name="hr_employee_leave" xml:space="preserve">
+    <value>ข้อมูลการลาพนักงาน</value>
+  </data>
+  <data name="grpHRLeave" xml:space="preserve">
+    <value>ข้อมูลการลา</value>
+  </data>
+  <data name="hiring_date" xml:space="preserve">
+    <value>วันที่เริ่มงาน</value>
+  </data>
 </root>
