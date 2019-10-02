@@ -74,6 +74,42 @@ namespace Onix.Client.Model
             }
         }
 
+        public String LeaveMonth
+        {
+            get
+            {
+                if (GetDbObject() == null)
+                {
+                    return ("");
+                }
+
+                return (GetDbObject().GetFieldValue("LEAVE_MONTH"));
+            }
+
+            set
+            {
+                GetDbObject().SetFieldValue("LEAVE_MONTH", value);
+            }
+        }
+
+        public String LeaveMonthName
+        {
+            get
+            {
+                if (GetDbObject() == null)
+                {
+                    return ("");
+                }
+
+                string name = CUtil.IDToMonth(CUtil.StringToInt(LeaveMonth));
+                return (name);
+            }
+
+            set
+            {
+            }
+        }
+
         public String LeaveRecordID
         {
             get
@@ -108,6 +144,18 @@ namespace Onix.Client.Model
             {
                 GetDbObject().SetFieldValue("LATE", value);
                 updateFlag();
+            }
+        }
+
+        public String LateFmt
+        {
+            get
+            {
+                return (CUtil.FormatNumber(Late));
+            }
+
+            set
+            {
             }
         }
 
@@ -157,6 +205,18 @@ namespace Onix.Client.Model
 
                 String tm = SickLeave;
                 return (CUtil.MasterIDToObject(items, tm));                
+            }
+        }
+
+        public String SickLeaveFmt
+        {
+            get
+            {
+                return (CUtil.FormatNumber(SickLeave));
+            }
+
+            set
+            {
             }
         }
         #endregion
@@ -209,6 +269,18 @@ namespace Onix.Client.Model
                 return (CUtil.MasterIDToObject(items, tm));
             }
         }
+
+        public String PersonalLeaveFmt
+        {
+            get
+            {
+                return (CUtil.FormatNumber(PersonalLeave));
+            }
+
+            set
+            {
+            }
+        }
         #endregion
 
         #region Extra Leave
@@ -230,7 +302,6 @@ namespace Onix.Client.Model
                 updateFlag();
             }
         }
-
 
         public MMasterRef ExtraLeaveObj
         {
@@ -260,6 +331,18 @@ namespace Onix.Client.Model
                 return (CUtil.MasterIDToObject(items, tm));
             }
         }
+
+        public String ExtraLeaveFmt
+        {
+            get
+            {
+                return (CUtil.FormatNumber(ExtraLeave));
+            }
+
+            set
+            {
+            }
+        }
         #endregion
 
         #region Annual Leave
@@ -281,7 +364,6 @@ namespace Onix.Client.Model
                 updateFlag();
             }
         }
-
 
         public MMasterRef AnnualLeaveObj
         {
@@ -311,6 +393,18 @@ namespace Onix.Client.Model
                 return (CUtil.MasterIDToObject(items, tm));
             }
         }
+
+        public String AnnualLeaveFmt
+        {
+            get
+            {
+                return (CUtil.FormatNumber(AnnualLeave));
+            }
+
+            set
+            {
+            }
+        }
         #endregion
 
         public String AbnormalLeave
@@ -332,6 +426,18 @@ namespace Onix.Client.Model
             }
         }
 
+        public String AbnormalLeaveFmt
+        {
+            get
+            {
+                return (CUtil.FormatNumber(AbnormalLeave));
+            }
+
+            set
+            {
+            }
+        }
+
         public String DeductionLeave
         {
             get
@@ -348,6 +454,18 @@ namespace Onix.Client.Model
             {
                 GetDbObject().SetFieldValue("DEDUCTION_LEAVE", value);
                 updateFlag();
+            }
+        }
+
+        public String DeductionLeaveFmt
+        {
+            get
+            {
+                return (CUtil.FormatNumber(DeductionLeave));
+            }
+
+            set
+            {
             }
         }
     }

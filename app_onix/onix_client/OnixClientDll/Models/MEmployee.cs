@@ -1241,5 +1241,50 @@ namespace Onix.Client.Model
                 NotifyPropertyChanged();
             }
         }
+
+        public DateTime HiringDate
+        {
+            get
+            {
+                if (GetDbObject() == null)
+                {
+                    return (DateTime.Now);
+                }
+
+                String str = GetDbObject().GetFieldValue("HIRING_DATE");
+                DateTime dt = CUtil.InternalDateToDate(str);
+
+                return (dt);
+            }
+
+            set
+            {
+                String str = CUtil.DateTimeToDateStringInternal(value);
+
+                GetDbObject().SetFieldValue("HIRING_DATE", str);
+                NotifyPropertyChanged();
+            }
+        }
+
+        public String HiringDateFmt
+        {
+            get
+            {
+                if (GetDbObject() == null)
+                {
+                    return ("");
+                }
+
+                String str = GetDbObject().GetFieldValue("HIRING_DATE");
+                DateTime dt = CUtil.InternalDateToDate(str);
+                String str2 = CUtil.DateTimeToDateString(dt);
+
+                return (str2);
+            }
+
+            set
+            {
+            }
+        }
     }
 }

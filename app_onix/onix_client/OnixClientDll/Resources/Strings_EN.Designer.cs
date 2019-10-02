@@ -5596,6 +5596,15 @@ namespace Onix.Client.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Hiring Date.
+        /// </summary>
+        public static string hiring_date {
+            get {
+                return ResourceManager.GetString("hiring_date", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Home No..
         /// </summary>
         public static string home_no {

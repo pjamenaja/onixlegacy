@@ -41,6 +41,11 @@ namespace Onix.ClientCenter.UI.HumanResource.EmployeeInfo
             mv.IsMonthly = true;
             mv.IsMale = true;
             mv.HasResignedFlag = false;
+
+            if (loadParam.Mode.Equals("A"))
+            {
+                mv.HiringDate = DateTime.Now;
+            }
             
             return (mv);
         }

@@ -4542,4 +4542,7 @@
   <data name="grpHRLeave" xml:space="preserve">
     <value>ข้อมูลการลา</value>
   </data>
+  <data name="hiring_date" xml:space="preserve">
+    <value>วันที่เริ่มงาน</value>
+  </data>
 </root>

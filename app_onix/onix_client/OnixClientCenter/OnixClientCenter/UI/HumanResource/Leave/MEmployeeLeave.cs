@@ -125,82 +125,6 @@ namespace Onix.Client.Model
             ttItems.Add(ct);
         }
 
-        public String EmployeeID
-        {
-            get
-            {
-                if (GetDbObject() == null)
-                {
-                    return ("");
-                }
-
-                return (GetDbObject().GetFieldValue("EMPLOYEE_ID"));
-            }
-
-            set
-            {
-                GetDbObject().SetFieldValue("EMPLOYEE_ID", value);
-            }
-        }       
-
-        public String EmployeeCode
-        {
-            get
-            {
-                if (GetDbObject() == null)
-                {
-                    return ("");
-                }
-
-                return (GetDbObject().GetFieldValue("EMPLOYEE_CODE"));
-            }
-
-            set
-            {
-                GetDbObject().SetFieldValue("EMPLOYEE_CODE", value);
-                //updateFlag();
-                NotifyPropertyChanged();
-            }
-        }
-        
-        public String EmployeeLastName
-        {
-            get
-            {
-                if (GetDbObject() == null)
-                {
-                    return ("");
-                }
-
-                return (GetDbObject().GetFieldValue("EMPLOYEE_LASTNAME"));
-            }
-
-            set
-            {
-                GetDbObject().SetFieldValue("EMPLOYEE_LASTNAME", value);
-                NotifyPropertyChanged();
-            }
-        }
-
-        public String EmployeeName
-        {
-            get
-            {
-                if (GetDbObject() == null)
-                {
-                    return ("");
-                }
-
-                return (GetDbObject().GetFieldValue("EMPLOYEE_NAME"));
-            }
-
-            set
-            {
-                GetDbObject().SetFieldValue("EMPLOYEE_NAME", value);
-                NotifyPropertyChanged();
-            }
-        }
-
         public String Late
         {
             get
@@ -674,5 +598,200 @@ namespace Onix.Client.Model
                 NotifyPropertyChanged();
             }
         }
+
+        #region Employee
+
+        public String EmployeeID
+        {
+            get
+            {
+                if (GetDbObject() == null)
+                {
+                    return ("");
+                }
+
+                return (GetDbObject().GetFieldValue("EMPLOYEE_ID"));
+            }
+
+            set
+            {
+                GetDbObject().SetFieldValue("EMPLOYEE_ID", value);
+            }
+        }
+
+        public String EmployeeCode
+        {
+            get
+            {
+                if (GetDbObject() == null)
+                {
+                    return ("");
+                }
+
+                return (GetDbObject().GetFieldValue("EMPLOYEE_CODE"));
+            }
+
+            set
+            {
+                GetDbObject().SetFieldValue("EMPLOYEE_CODE", value);
+                //updateFlag();
+                NotifyPropertyChanged();
+            }
+        }
+
+        public String EmployeeLastName
+        {
+            get
+            {
+                if (GetDbObject() == null)
+                {
+                    return ("");
+                }
+
+                return (GetDbObject().GetFieldValue("EMPLOYEE_LASTNAME"));
+            }
+
+            set
+            {
+                GetDbObject().SetFieldValue("EMPLOYEE_LASTNAME", value);
+                NotifyPropertyChanged();
+            }
+        }
+
+        public String EmployeeName
+        {
+            get
+            {
+                if (GetDbObject() == null)
+                {
+                    return ("");
+                }
+
+                return (GetDbObject().GetFieldValue("EMPLOYEE_NAME"));
+            }
+
+            set
+            {
+                GetDbObject().SetFieldValue("EMPLOYEE_NAME", value);
+                NotifyPropertyChanged();
+            }
+        }
+
+        public String PositionName
+        {
+            get
+            {
+                if (GetDbObject() == null)
+                {
+                    return ("");
+                }
+
+                return (GetDbObject().GetFieldValue("POSITION_NAME"));
+            }
+
+            set
+            {
+                GetDbObject().SetFieldValue("POSITION_NAME", value);
+                //updateFlag();
+                NotifyPropertyChanged();
+            }
+        }
+
+        public String DepartmentName
+        {
+            get
+            {
+                if (GetDbObject() == null)
+                {
+                    return ("");
+                }
+
+                return (GetDbObject().GetFieldValue("DEPARTMENT_NAME"));
+            }
+
+            set
+            {
+                GetDbObject().SetFieldValue("DEPARTMENT_NAME", value);
+                //updateFlag();
+                NotifyPropertyChanged();
+            }
+        }
+
+        public String Salary
+        {
+            get
+            {
+                if (GetDbObject() == null)
+                {
+                    return ("");
+                }
+
+                return (GetDbObject().GetFieldValue("SALARY"));
+            }
+
+            set
+            {
+                GetDbObject().SetFieldValue("SALARY", value);
+                NotifyPropertyChanged();
+            }
+        }
+
+        public String SalaryFmt
+        {
+            get
+            {
+                return (CUtil.FormatNumber(Salary));
+            }
+
+            set
+            {
+            }
+        }
+
+        public DateTime HiringDate
+        {
+            get
+            {
+                if (GetDbObject() == null)
+                {
+                    return (DateTime.Now);
+                }
+
+                String str = GetDbObject().GetFieldValue("HIRING_DATE");
+                DateTime dt = CUtil.InternalDateToDate(str);
+
+                return (dt);
+            }
+
+            set
+            {
+                String str = CUtil.DateTimeToDateStringInternal(value);
+
+                GetDbObject().SetFieldValue("HIRING_DATE", str);
+                NotifyPropertyChanged();
+            }
+        }
+
+        public String HiringDateFmt
+        {
+            get
+            {
+                if (GetDbObject() == null)
+                {
+                    return ("");
+                }
+
+                String str = GetDbObject().GetFieldValue("HIRING_DATE");
+                DateTime dt = CUtil.InternalDateToDate(str);
+                String str2 = CUtil.DateTimeToDateString(dt);
+
+                return (str2);
+            }
+
+            set
+            {
+            }
+        }
+        #endregion
     }
 }

@@ -8,7 +8,6 @@ namespace Onix.ClientCenter.Forms.AcDesign.HREmployeeLeave
     public partial class UFormEmployeeLeave : UFormBase
     {
         private MEmployeeLeave leaveDoc = null;
-        private MLeaveRecord item = null;
 
         public UFormEmployeeLeave(MBaseModel model, int page, int totalPage, MReportConfig cfg, CReportPageParam param)
         {
@@ -36,33 +35,29 @@ namespace Onix.ClientCenter.Forms.AcDesign.HREmployeeLeave
             //}
 
             //item.InitializeAfterLoaded();
+            PopulateDummyRecords(leaveDoc);
 
-            DataContext = model;
+            DataContext = leaveDoc;
             InitializeComponent();
-        }   
-        
-        //public MEmployee EmployeeObj
-        //{
-        //    get
-        //    {
-        //        return (item.EmployeeObj);
-        //    }
+        }
 
-        //    set
-        //    {
-        //    }
-        //}
+        private void PopulateDummyRecords(MEmployeeLeave leaveDoc)
+        {
+            leaveDoc.EmployeeCode = "dt74696";
+            leaveDoc.EmployeeName = "สืบพงษ์";
+            leaveDoc.EmployeeLastName = "มนต์สา";
+            leaveDoc.DepartmentName = "แผนกไอที";
+            leaveDoc.PositionName = "โปรแกรมเมอร์";
+            leaveDoc.LeaveYear = "2019";
+            leaveDoc.Salary = "20000";
 
-        //public MVPayrollDocumentItem ItemObj
-        //{
-        //    get
-        //    {
-        //        return (item);
-        //    }
-
-        //    set
-        //    {
-        //    }
-        //}       
+            for (int i = 1; i <= 12; i++)
+            {
+                MLeaveRecord lr = new MLeaveRecord(new Wis.WsClientAPI.CTable(""));
+                lr.Late = "100";
+                lr.LeaveMonth = i.ToString();
+                leaveDoc.AddLeaveRecord(lr);
+            }
+        }
     }
 }

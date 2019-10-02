@@ -49,6 +49,7 @@ class MEmployee extends MBaseModel
                     'EMPLOYEE_LASTNAME_ENG:S:EMPLOYEE_LASTNAME_ENG:N',
                     'LINE_ID:S:LINE_ID:N',
                     'EMPLOYEE_PROFILE_IMAGE:S:EMPLOYEE_PROFILE_IMAGE:N',
+                    'HIRING_DATE:S:HIRING_DATE:N',
                     
                     'CREATE_DATE:CD:CREATE_DATE:N',
                     'MODIFY_DATE:MD:MODIFY_DATE:N'
@@ -91,6 +92,7 @@ class MEmployee extends MBaseModel
                     'EP.HOUR_RATE:NZ:HOUR_RATE:N',
                     'EP.SALARY:NZ:SALARY:N',
                     'EP.RESIGNED_FLAG:S:RESIGNED_FLAG:Y',
+                    'EP.HIRING_DATE:S:HIRING_DATE:N',
 
                     'MR1.DESCRIPTION:S:EMPLOYEE_TYPE_NAME:N', 
                     'MR2.DESCRIPTION:S:EMPLOYEE_GROUP_NAME:N',

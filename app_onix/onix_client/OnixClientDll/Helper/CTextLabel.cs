@@ -78,7 +78,15 @@ namespace Onix.Client.Helper
 		}
 
         #region Properties        
-        
+
+        public String hiring_date
+        {
+            get
+            {
+                return (CLanguage.getValueEx());
+            }
+        }
+
         public String abnormal_leave
         {
             get
