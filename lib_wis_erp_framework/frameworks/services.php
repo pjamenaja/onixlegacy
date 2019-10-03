@@ -367,6 +367,7 @@ $ONIX_SERVICES_LIST = [
     'CreateEmployeeLeaveDoc' => [$bp . 'controllers/HR/EmployeeLeave.php', 'CreateEmployeeLeaveDoc', $userLvl],
     'UpdateEmployeeLeaveDoc' => [$bp . 'controllers/HR/EmployeeLeave.php', 'UpdateEmployeeLeaveDoc', $userLvl],
     'SaveEmployeeLeaveDoc' => [$bp . 'controllers/HR/EmployeeLeave.php', 'SaveEmployeeLeaveDoc', $userLvl],
+    'GetEmployeeLeaveInfo' => [$bp . 'controllers/HR/EmployeeLeave.php', 'GetEmployeeLeaveInfo', $userLvl],
 
     //PayrollDocument
     'GetPayrollDocList' => [$bp . 'controllers/HR/PayrollDocument.php', 'GetPayrollDocList', $userLvl],

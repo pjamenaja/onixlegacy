@@ -88,7 +88,7 @@
         <Grid Name="grdRow3" DockPanel.Dock="Top" Height="30" Margin="10,20,10,0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="120"/>
-                <ColumnDefinition Width="120"/>
+                <ColumnDefinition Width="150"/>
                 <ColumnDefinition Width="100"/>
                 <ColumnDefinition Width="70*"/>
             </Grid.ColumnDefinitions>
@@ -116,7 +116,7 @@
         <Grid Name="grdRow4" DockPanel.Dock="Top" Height="30" Margin="10,20,10,0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="120"/>
-                <ColumnDefinition Width="120"/>
+                <ColumnDefinition Width="150"/>
                 <ColumnDefinition Width="100"/>
                 <ColumnDefinition Width="70*"/>
                 <ColumnDefinition Width="70*"/>
@@ -136,7 +136,7 @@
                        HorizontalAlignment="Left" 
                        VerticalAlignment="Center"/>
 
-            <TextBlock Grid.Column="3" Text="{Binding Dummy}" 
+            <TextBlock Grid.Column="3" Text="{Binding HiringDateFmt}" 
                        Style="{StaticResource ResourceKey=H2TextFont}" 
                        HorizontalAlignment="Left" 
                        VerticalAlignment="Center"/>

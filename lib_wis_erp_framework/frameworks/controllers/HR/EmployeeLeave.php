@@ -99,6 +99,68 @@ class EmployeeLeave extends CBaseController
         return(array($param, $data));  
     }
 
+    private static function LoadEmployeeLeaveByMonth($db, $data)
+    {
+        $u = new MEmployeeLeaveDoc($db);     
+        list($cnt, $rows) = $u->Query(1, $data);
+
+        $fields = ['EMPLOYEE_ID', 'LEAVE_YEAR', 'LEAVE_MONTH'];
+        $hash = CHelper::RowToHash($rows, $fields, ':');
+
+        return $hash;
+    }
+
+    private static function PopulateLeaveRecords($leaveByMonth, $data)
+    {
+        $fields = ['SICK_LEAVE', 'PERSONAL_LEAVE', 'EXTRA_LEAVE', 'ANNUAL_LEAVE'];
+
+        $empId = $data->getFieldValue('EMPLOYEE_ID');
+        $year = $data->getFieldValue('LEAVE_YEAR');
+
+        $arr = array();
+
+        for ($i=1; $i<=12; $i++)
+        {
+            $key = "$empId:$year:$i";
+
+            $o = new CTable('');
+            if (array_key_exists($key, $leaveByMonth))
+            {
+                $o = $leaveByMonth[$key];
+            }
+
+            $o->SetFieldValue('LEAVE_MONTH', $i);
+            foreach ($fields as $f)
+            {
+                $curr = $data->GetFieldValue($f);
+                $amt = $o->GetFieldValue($f);
+                $total = $curr + $amt;
+                
+                $data->SetFieldValue($f, $total);
+            }
+
+            array_push($arr, $o);
+        }
+
+        $data->AddChildArray('EMPLOYEE_LEAVE_RECORDS', $arr);
+    }
+
+    public static function GetEmployeeLeaveInfo($db, $param, $data)
+    {
+        $currDtm = CUtils::GetCurrentDateTimeInternal();
+
+        $month = substr($currDtm, 5, 2);
+        $year = substr($currDtm, 0, 4);
+
+        $data->setFieldValue('LEAVE_MONTH', $month);
+        $data->setFieldValue('LEAVE_YEAR', $year);
+
+        $leaveByMonth = self::LoadEmployeeLeaveByMonth($db, $data);
+        self::PopulateLeaveRecords($leaveByMonth, $data);
+        
+        return(array($param, $data));  
+    }    
+
     private static function PopulateLeaveFields($leave)
     {
         $fields = self::$leaveFields;

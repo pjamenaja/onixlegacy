@@ -1085,6 +1085,7 @@ namespace Onix.Client.Model
                 if (m != null)
                 {
                     DepartmentID = m.MasterID;
+                    DepartmentName = m.Description;
                 }
             }
 
@@ -1154,6 +1155,7 @@ namespace Onix.Client.Model
                 if (m != null)
                 {
                     PositionID = m.MasterID;
+                    PositionName = m.Description;
                 }
             }
 
@@ -1258,6 +1260,7 @@ namespace Onix.Client.Model
             }
 
             set
+
             {
                 String str = CUtil.DateTimeToDateStringInternal(value);
 

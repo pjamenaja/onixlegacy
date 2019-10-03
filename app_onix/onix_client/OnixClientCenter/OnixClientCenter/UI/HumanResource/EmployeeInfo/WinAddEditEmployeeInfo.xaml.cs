@@ -5,6 +5,8 @@ using Onix.Client.Model;
 using Onix.Client.Helper;
 using Onix.ClientCenter.Commons.Windows;
 using Onix.ClientCenter.Windows;
+using Onix.Client.Controller;
+using System.IO;
 
 namespace Onix.ClientCenter.UI.HumanResource.EmployeeInfo
 {
@@ -66,9 +68,23 @@ namespace Onix.ClientCenter.UI.HumanResource.EmployeeInfo
 
         }
 
+        private MEmployeeLeave GetEmployeeLeaveInfo()
+        {
+            MEmployee emp = (MEmployee) vw;            
+
+            CTable o = OnixWebServiceAPI.SubmitObjectAPI("GetEmployeeLeaveInfo", emp.GetDbObject());
+            MEmployeeLeave el = new MEmployeeLeave(o);
+            el.InitializeAfterLoaded();
+
+            el.DepartmentName = Path.GetFileName(emp.DepartmentObj.Description);
+            el.PositionName = Path.GetFileName(emp.PositionObj.Description);
+
+            return el;
+        }
+
         private void CmdLeave_Click(object sender, RoutedEventArgs e)
         {
-            MEmployeeLeave mv = new MEmployeeLeave(new CTable(""));
+            MEmployeeLeave mv = GetEmployeeLeaveInfo();
             WinFormPrinting w = new WinFormPrinting("grpHRLeave", mv);
             w.ShowDialog();
         }
