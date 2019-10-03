@@ -149,10 +149,10 @@ class EmployeeLeave extends CBaseController
     {
         $currDtm = CUtils::GetCurrentDateTimeInternal();
 
-        $month = substr($currDtm, 5, 2);
+        //$month = substr($currDtm, 5, 2);
         $year = substr($currDtm, 0, 4);
 
-        $data->setFieldValue('LEAVE_MONTH', $month);
+        //$data->setFieldValue('LEAVE_MONTH', $month);
         $data->setFieldValue('LEAVE_YEAR', $year);
 
         $leaveByMonth = self::LoadEmployeeLeaveByMonth($db, $data);
