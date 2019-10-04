@@ -55,7 +55,9 @@ namespace Onix.ClientCenter.UI.HumanResource.Leave
 
             MEmployeeLeave mv = (MEmployeeLeave)vw;            
 
-            DateTime parentLeaveDate = mv.DocumentDate;
+            int leaveMonth = CUtil.StringToInt(mv.LeaveMonth);
+            int leaveYear = CUtil.StringToInt(mv.LeaveYear);
+
             var items = mv.LeaveRecords;
 
             foreach (var item in items)
@@ -78,13 +80,14 @@ namespace Onix.ClientCenter.UI.HumanResource.Leave
                     hashDups.Add(key, key);
                 }
                 
-                if ((leaveDate.Month != parentLeaveDate.Month) || (leaveDate.Year != parentLeaveDate.Year))
+                if ((leaveDate.Month != leaveMonth) || (leaveDate.Year != leaveYear))
                 {
                     CHelper.ShowErorMessage(leaveDate.ToString(), "ERROR_NOT_IN_SAME_MONTH", null);
                     return false;
                 }
 
-                double sum = CUtil.StringToDouble(item.AnnualLeave) + CUtil.StringToDouble(item.PersonalLeave) +
+                double sum = CUtil.StringToDouble(item.AnnualLeave) + 
+                    CUtil.StringToDouble(item.PersonalLeave) +
                     CUtil.StringToDouble(item.ExtraLeave) + CUtil.StringToDouble(item.SickLeave);
                 if (sum > 1)
                 {
@@ -109,7 +112,9 @@ namespace Onix.ClientCenter.UI.HumanResource.Leave
             MEmployeeLeave mv = (MEmployeeLeave)vw;            
 
             MLeaveRecord item = new MLeaveRecord(new CTable(""));
-            item.LeaveDate = mv.DocumentDate;
+            int day = DateTime.Now.Day;
+
+            item.LeaveDate = new DateTime(CUtil.StringToInt(mv.LeaveYear), CUtil.StringToInt(mv.LeaveMonth), day);
 
             mv.CalculateLeaveTotal();
             mv.AddLeaveRecord(item);

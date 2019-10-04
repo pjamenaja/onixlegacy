@@ -170,8 +170,8 @@
                             <ColumnDefinition Width="10*"/>
                             <ColumnDefinition Width="10*"/>
                             <ColumnDefinition Width="10*"/>
-                            <ColumnDefinition Width="10*"/>
-                            <ColumnDefinition Width="10*"/>
+                            <ColumnDefinition Width="12*"/>
+                            <ColumnDefinition Width="15*"/>
                         </Grid.ColumnDefinitions>
 
                         <Border BorderThickness="0,0,1,1" BorderBrush="Black" Grid.Row="0" Grid.Column="0" Background="{Binding ElementName=rootElement, Path=ShadowBackground}" CornerRadius="0,0,0,0">
@@ -213,13 +213,13 @@
 
                         <Border BorderThickness="0,0,1,1" BorderBrush="Black" Grid.Column="6" Background="{Binding ElementName=rootElement, Path=ShadowBackground}">
                             <StackPanel Orientation="Vertical" VerticalAlignment="Center">
-                                <TextBlock Text="ขาดงาน" Style="{StaticResource ResourceKey=H2TextFont}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                <TextBlock Text="ขาดงาน (ช.ม.)" Style="{StaticResource ResourceKey=H2TextFont}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                             </StackPanel>
                         </Border>
 
                         <Border BorderThickness="0,0,0,1" BorderBrush="Black" Grid.Column="7" Background="{Binding ElementName=rootElement, Path=ShadowBackground}" CornerRadius="0,0,0,0">
                             <StackPanel Orientation="Vertical" VerticalAlignment="Center">
-                                <TextBlock Text="ทำงานไม่ครบ" Style="{StaticResource ResourceKey=H2TextFont}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                <TextBlock Text="ทำงานไม่ครบ (ช.ม.)" Style="{StaticResource ResourceKey=H2TextFont}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                             </StackPanel>
                         </Border>
                     </Grid>
@@ -239,8 +239,8 @@
                                         <ColumnDefinition Width="10*"/>
                                         <ColumnDefinition Width="10*"/>
                                         <ColumnDefinition Width="10*"/>
-                                        <ColumnDefinition Width="10*"/>
-                                        <ColumnDefinition Width="10*"/>
+                                        <ColumnDefinition Width="12*"/>
+                                        <ColumnDefinition Width="15*"/>
                                     </Grid.ColumnDefinitions>
 
                                     <Border BorderThickness="0,0,1,0" BorderBrush="Black" Grid.Column="0">
@@ -300,8 +300,8 @@
                             <ColumnDefinition Width="10*"/>
                             <ColumnDefinition Width="10*"/>
                             <ColumnDefinition Width="10*"/>
-                            <ColumnDefinition Width="10*"/>
-                            <ColumnDefinition Width="10*"/>
+                            <ColumnDefinition Width="12*"/>
+                            <ColumnDefinition Width="15*"/>
                         </Grid.ColumnDefinitions>
 
                         <Border BorderThickness="0,0,1,1" BorderBrush="Black" Grid.Row="0" Grid.Column="0" Background="{Binding ElementName=rootElement, Path=ShadowBackground}" CornerRadius="0,0,0,0">

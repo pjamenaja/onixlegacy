@@ -691,6 +691,11 @@ namespace Onix.Client.Model
 
             set
             {
+                if (GetDbObject() == null)
+                {
+                    return;
+                }
+
                 GetDbObject().SetFieldValue("POSITION_NAME", value);
                 //updateFlag();
                 NotifyPropertyChanged();
@@ -711,6 +716,11 @@ namespace Onix.Client.Model
 
             set
             {
+                if (GetDbObject() == null)
+                {
+                    return;
+                }
+
                 GetDbObject().SetFieldValue("DEPARTMENT_NAME", value);
                 //updateFlag();
                 NotifyPropertyChanged();

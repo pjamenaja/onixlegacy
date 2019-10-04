@@ -110,9 +110,21 @@ class EmployeeLeave extends CBaseController
         return $hash;
     }
 
-    private static function PopulateLeaveRecords($leaveByMonth, $data)
+    private static function LoadEmployeeDeductionByMonth($db, $data)
     {
-        $fields = ['SICK_LEAVE', 'PERSONAL_LEAVE', 'EXTRA_LEAVE', 'ANNUAL_LEAVE'];
+        $u = new MPayrollDeductionItem($db);     
+        list($cnt, $rows) = $u->Query(4, $data);
+
+        $fields = ['EMPLOYEE_ID', 'DEDUCTION_TYPE', 'YYYYMM'];
+        $hash = CHelper::RowToHash($rows, $fields, ':');
+
+        return $hash;
+    }
+
+    private static function PopulateLeaveRecords($leaveByMonth, $duductions, $data)
+    {
+        $fields = ['SICK_LEAVE', 'PERSONAL_LEAVE', 'EXTRA_LEAVE', 'ANNUAL_LEAVE', 'LATE', 'ABNORMAL_LEAVE', 'DEDUCTION_LEAVE'];
+        $deductionLeaves = ['ABNORMAL_LEAVE' => 1, 'DEDUCTION_LEAVE' => 2, 'LATE' => 3];
 
         $empId = $data->getFieldValue('EMPLOYEE_ID');
         $year = $data->getFieldValue('LEAVE_YEAR');
@@ -121,13 +133,28 @@ class EmployeeLeave extends CBaseController
 
         for ($i=1; $i<=12; $i++)
         {
-            $key = "$empId:$year:$i";
+            $key1 = "$empId:$year:$i";            
 
             $o = new CTable('');
-            if (array_key_exists($key, $leaveByMonth))
+            if (array_key_exists($key1, $leaveByMonth))
             {
-                $o = $leaveByMonth[$key];
+                $o = $leaveByMonth[$key1];
             }
+
+            foreach ($deductionLeaves as $f => $deductionType)
+            {
+                $mm = str_pad("$i", 2, "0", STR_PAD_LEFT);
+                $key2 = "$empId:$deductionType:$year/$mm";
+
+                $deduction = 0;
+                if (array_key_exists($key2, $duductions))
+                {
+                    $deductionObj = $duductions[$key2];
+                    $deduction = $deductionObj->GetFieldValue('DURATION');
+                }
+
+                $o->SetFieldValue($f, $deduction);
+            }  
 
             $o->SetFieldValue('LEAVE_MONTH', $i);
             foreach ($fields as $f)
@@ -138,7 +165,7 @@ class EmployeeLeave extends CBaseController
                 
                 $data->SetFieldValue($f, $total);
             }
-
+        
             array_push($arr, $o);
         }
 
@@ -149,14 +176,17 @@ class EmployeeLeave extends CBaseController
     {
         $currDtm = CUtils::GetCurrentDateTimeInternal();
 
-        //$month = substr($currDtm, 5, 2);
         $year = substr($currDtm, 0, 4);
+        $beginDtm = "$year/01/01 00:00:00";
+        $endDtm = "$year/12/31 23:59:59";
 
-        //$data->setFieldValue('LEAVE_MONTH', $month);
         $data->setFieldValue('LEAVE_YEAR', $year);
+        $data->setFieldValue('FROM_DEDUCTION_DATE', $beginDtm);
+        $data->setFieldValue('TO_DEDUCTION_DATE', $endDtm);
 
+        $deductions = self::LoadEmployeeDeductionByMonth($db, $data);
         $leaveByMonth = self::LoadEmployeeLeaveByMonth($db, $data);
-        self::PopulateLeaveRecords($leaveByMonth, $data);
+        self::PopulateLeaveRecords($leaveByMonth, $deductions, $data);
         
         return(array($param, $data));  
     }    
