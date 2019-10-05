@@ -7,6 +7,9 @@ using Onix.ClientCenter.Commons.Windows;
 using System.Windows.Controls;
 using Onix.ClientCenter.Commons.Utils;
 using System.Collections;
+using Onix.Client.Controller;
+using System.IO;
+using Onix.ClientCenter.Windows;
 
 namespace Onix.ClientCenter.UI.HumanResource.Leave
 {
@@ -166,6 +169,56 @@ namespace Onix.ClientCenter.UI.HumanResource.Leave
 
             mv.CalculateLeaveTotal();
             vw.IsModified = true;
+        }
+
+        private MEmployeeLeave GetEmployeeLeaveInfo()
+        {
+            MEmployeeLeave mv = (MEmployeeLeave)vw;
+
+            CTable t = new CTable("");
+            t.SetFieldValue("EMPLOYEE_ID", mv.EmployeeID);
+            CTable e = OnixWebServiceAPI.SubmitObjectAPI("GetEmployeeInfo", t);
+
+            MEmployee emp = new MEmployee(e);
+
+            CTable o = OnixWebServiceAPI.SubmitObjectAPI("GetEmployeeLeaveInfo", emp.GetDbObject());
+            MEmployeeLeave el = new MEmployeeLeave(o);
+            el.InitializeAfterLoaded();
+
+            el.DepartmentName = Path.GetFileName(emp.DepartmentObj.Description);
+            el.PositionName = Path.GetFileName(emp.PositionObj.Description);
+
+            return el;
+        }
+
+        private void CmdLeaveReport_Click(object sender, RoutedEventArgs e)
+        {
+            MEmployeeLeave mv = GetEmployeeLeaveInfo();
+            WinFormPrinting w = new WinFormPrinting("grpHRLeave", mv);
+            w.ShowDialog();
+        }
+
+        private void CmdMonthChange_Click(object sender, RoutedEventArgs e)
+        {
+            cmdMonthChange.ContextMenu.IsOpen = true;
+        }
+
+        private void MnuMonth_Click(object sender, RoutedEventArgs e)
+        {
+            MenuItem mnu = (MenuItem)sender;
+            string month = (string) mnu.Tag;
+
+            MEmployeeLeave mv = (MEmployeeLeave)vw;
+            mv.EmpLeaveDocId = "";
+            mv.ClearLeaveRecord();
+            mv.LeaveMonth = month;            
+            //Use the same LeaveYear
+
+            loadParam.ActualView = mv;
+            loadParam.Mode = "E";
+
+            loadData();
+            vw.IsModified = false;
         }
     }
 }
