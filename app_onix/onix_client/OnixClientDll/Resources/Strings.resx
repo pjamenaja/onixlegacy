@@ -4545,4 +4545,7 @@
   <data name="hiring_date" xml:space="preserve">
     <value>วันที่เริ่มงาน</value>
   </data>
+  <data name="hiring_duration" xml:space="preserve">
+    <value>อายุงาน</value>
+  </data>
 </root>

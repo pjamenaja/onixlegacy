@@ -235,7 +235,7 @@ namespace Onix.ClientCenter.Reports
                 //Hr
                 addReport(ReportGroupEnum.ReportGroupHr, "rpt_employee_payroll_list", "CReportPayroll001_01_EmployeeListPayroll", null);
                 addReport(ReportGroupEnum.ReportGroupHr, "rpt_employee_payroll_by_date", "CReportPayroll001_02_EmployeeListPayroll", null);
-                //addReport(ReportGroupEnum.ReportGroupHr, "rpt_employee_leave", "CReportEmployee00_01_EmployeeLeave", null);
+                addReport(ReportGroupEnum.ReportGroupHr, "rpt_employee_leave", "CReportEmployee00_01_EmployeeLeave", null);
             }
         }
 

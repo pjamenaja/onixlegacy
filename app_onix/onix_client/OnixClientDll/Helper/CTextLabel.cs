@@ -78,6 +78,14 @@ namespace Onix.Client.Helper
 		}
 
         #region Properties        
+        
+        public String hiring_duration
+        {
+            get
+            {
+                return (CLanguage.getValueEx());
+            }
+        }
 
         public String jan
         {
