@@ -173,17 +173,6 @@ namespace Onix.ClientCenter.Reports
                     prevKeyId = keyId;
                 }
 
-                if (!keyId.Equals(prevKeyId))
-                {
-                    prevKeyId = keyId;
-
-                    h = addNewFooterRow(rowdef, rpp, "FOOTER_LEVEL1", "L1", "total", entitySums);
-                    newh = newh - h;
-
-                    //Reset
-                    entitySums = new ArrayList();
-                }
-
                 h = addNewDataRow(rowdef, rpp, "DATA_LEVEL1", "L1", row, o);
                 //newh = newh - h;
 
@@ -195,9 +184,6 @@ namespace Onix.ClientCenter.Reports
 
                 if (row == rowcount - 1)
                 {
-                    h = addNewFooterRow(rowdef, rpp, "FOOTER_LEVEL1", "L1", "total", entitySums);
-                    newh = newh - h;
-
                     h = addNewFooterRow(rowdef, rpp, "FOOTER_LEVEL1", "L1", "total", sums);
                     newh = newh - h;
                 }
