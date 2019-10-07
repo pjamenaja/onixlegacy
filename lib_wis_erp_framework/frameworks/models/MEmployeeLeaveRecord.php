@@ -30,10 +30,22 @@ class MEmployeeLeaveRecord extends MBaseModel
                     'MODIFY_DATE:MD:MODIFY_DATE:N'
                   ], 
                   
-                  [ # 1 For sum group by employee
+                  [ # 1 For sum group by year and month
                     'ELD.EMPLOYEE_ID:REFID:EMPLOYEE_ID:Y',
                     'ELD.LEAVE_YEAR:N:LEAVE_YEAR:Y',
                     'ELD.LEAVE_MONTH:N:LEAVE_MONTH:Y',                    
+                    'SUM(ELR.LATE):NZ:LATE:N',
+                    'SUM(ELR.SICK_LEAVE):NZ:SICK_LEAVE:N',
+                    'SUM(ELR.PERSONAL_LEAVE):NZ:PERSONAL_LEAVE:N',
+                    'SUM(ELR.EXTRA_LEAVE):NZ:EXTRA_LEAVE:N',
+                    'SUM(ELR.ANNUAL_LEAVE):NZ:ANNUAL_LEAVE:N',
+                    'SUM(ELR.ABNORMAL_LEAVE):NZ:ABNORMAL_LEAVE:N',
+                    'SUM(ELR.DEDUCTION_LEAVE):NZ:DEDUCTION_LEAVE:N',
+                  ],
+                  
+                  [ # 2 For sum group by year
+                    'ELD.EMPLOYEE_ID:REFID:EMPLOYEE_ID:Y',
+                    'ELD.LEAVE_YEAR:N:LEAVE_YEAR:Y',
                     'SUM(ELR.LATE):NZ:LATE:N',
                     'SUM(ELR.SICK_LEAVE):NZ:SICK_LEAVE:N',
                     'SUM(ELR.PERSONAL_LEAVE):NZ:PERSONAL_LEAVE:N',
@@ -46,10 +58,14 @@ class MEmployeeLeaveRecord extends MBaseModel
 
     private $froms = array(
 
-                   'FROM EMPLOYEE_LEAVE_RECORD ',
+                  'FROM EMPLOYEE_LEAVE_RECORD ',
 
-                   'FROM ACCOUNT_DOC EMPLOYEE_LEAVE_RECORD ELR '.
+                  'FROM ACCOUNT_DOC EMPLOYEE_LEAVE_RECORD ELR '.
+                      'LEFT OUTER JOIN EMPLOYEE_LEAVE_DOC ELD ON (ELR.EMP_LEAVE_DOC_ID = ELD.EMP_LEAVE_DOC_ID) ', 
+
+                  'FROM ACCOUNT_DOC EMPLOYEE_LEAVE_RECORD ELR '.
                       'LEFT OUTER JOIN EMPLOYEE_LEAVE_DOC ELD ON (ELR.EMP_LEAVE_DOC_ID = ELD.EMP_LEAVE_DOC_ID) ',                 
+
     );
 
     private $orderby = array(
@@ -57,6 +73,8 @@ class MEmployeeLeaveRecord extends MBaseModel
                    'ORDER BY LEAVE_DATE ASC ',
 
                    'GROUP BY ELD.EMPLOYEE_ID, ELD.LEAVE_YEAR, ELD.LEAVE_MONTH ORDER BY ELD.EMPLOYEE_ID DESC ',
+
+                   'GROUP BY ELD.EMPLOYEE_ID, ELD.LEAVE_YEAR ORDER BY ELD.EMPLOYEE_ID DESC ',
     );
 
     function __construct($db) 

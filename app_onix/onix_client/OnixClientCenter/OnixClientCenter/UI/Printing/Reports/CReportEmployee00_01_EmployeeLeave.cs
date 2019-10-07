@@ -43,7 +43,7 @@ namespace Onix.ClientCenter.Reports
 
         protected override ArrayList getRecordSet()
         {
-            ArrayList arr = OnixWebServiceAPI.GetListAPI("GetEmployeePayrollByEmployeeList", "PAYROLL_EMPLOYEE_LIST", Parameter);
+            ArrayList arr = OnixWebServiceAPI.GetListAPI("GetEmployeeLeaveSummary", "EMPLOYEE_LEAVE_RECORDS", Parameter);
             return (arr);
         }
 
@@ -227,7 +227,7 @@ namespace Onix.ClientCenter.Reports
             CEntry entry = null;
             ArrayList entries = new ArrayList();
 
-            entry = new CEntry("year", EntryType.ENTRY_TEXT_BOX, 200, true, "LEAVE_YEAR");
+            entry = new CEntry("year", EntryType.ENTRY_TEXT_BOX, 200, false, "LEAVE_YEAR");
             entries.Add(entry);
 
             entry = new CEntry("employee_type", EntryType.ENTRY_COMBO_BOX, 200, true, "DOCUMENT_STATUS");

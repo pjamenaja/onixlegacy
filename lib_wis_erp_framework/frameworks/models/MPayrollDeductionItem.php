@@ -66,7 +66,18 @@ class MPayrollDeductionItem extends MBaseModel
 
                     'PEI.DEDUCTION_DATE:FD:FROM_DEDUCTION_DATE:Y',
                     'PEI.DEDUCTION_DATE:TD:TO_DEDUCTION_DATE:Y', 
-                  ],                   
+                  ],
+                  
+                  [ # 5
+                    'OD.EMPLOYEE_ID:REFID:EMPLOYEE_ID:Y',
+                    'PEI.DEDUCTION_TYPE:REFID:DEDUCTION_TYPE:Y',
+                    'SUBSTRING(PEI.DEDUCTION_DATE from 0 for 4):S:YYYY:N',
+
+                    'SUM(PEI.DURATION):NZ:DURATION:N',
+
+                    'PEI.DEDUCTION_DATE:FD:FROM_DEDUCTION_DATE:Y',
+                    'PEI.DEDUCTION_DATE:TD:TO_DEDUCTION_DATE:Y', 
+                  ],
     );
 
     private $froms = array(
@@ -82,7 +93,11 @@ class MPayrollDeductionItem extends MBaseModel
                   'LEFT OUTER JOIN OT_DOCUMENT OD ON (PEI.OT_DOC_ID = OD.OT_DOC_ID) ',   
                   
                 'FROM PAYROLL_DEDUCTION_ITEM PEI ' .
+                  'LEFT OUTER JOIN OT_DOCUMENT OD ON (PEI.OT_DOC_ID = OD.OT_DOC_ID) ', 
+                  
+                'FROM PAYROLL_DEDUCTION_ITEM PEI ' .
                   'LEFT OUTER JOIN OT_DOCUMENT OD ON (PEI.OT_DOC_ID = OD.OT_DOC_ID) ',                    
+                  
     );
 
     private $orderby = array(
@@ -96,6 +111,8 @@ class MPayrollDeductionItem extends MBaseModel
                 'GROUP BY OD.EMPLOYEE_ID ORDER BY OD.EMPLOYEE_ID ASC ',
 
                 'GROUP BY OD.EMPLOYEE_ID, PEI.DEDUCTION_TYPE, YYYYMM ORDER BY OD.EMPLOYEE_ID ASC ',
+
+                'GROUP BY OD.EMPLOYEE_ID, PEI.DEDUCTION_TYPE, YYYY ORDER BY OD.EMPLOYEE_ID ASC ',
     );
 
     function __construct($db) 

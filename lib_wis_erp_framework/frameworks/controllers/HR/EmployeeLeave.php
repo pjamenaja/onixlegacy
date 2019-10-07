@@ -14,6 +14,8 @@ class EmployeeLeave extends CBaseController
 {
     private static $cfg = NULL;
     private static $leaveFields = ['EMP_LEAVE_DOC_ID', 'LATE', 'SICK_LEAVE', 'PERSONAL_LEAVE', 'EXTRA_LEAVE', 'ANNUAL_LEAVE', 'ABNORMAL_LEAVE', 'DEDUCTION_LEAVE'];
+    private static $empLeaveFields = ['SICK_LEAVE', 'PERSONAL_LEAVE', 'EXTRA_LEAVE', 'ANNUAL_LEAVE', 'LATE', 'ABNORMAL_LEAVE', 'DEDUCTION_LEAVE'];
+    private static $empDeductionLeaves = ['ABNORMAL_LEAVE' => 1, 'DEDUCTION_LEAVE' => 2, 'LATE' => 3];
 
     private static function initSqlConfig($db)
     {
@@ -123,8 +125,8 @@ class EmployeeLeave extends CBaseController
 
     private static function PopulateLeaveRecords($leaveByMonth, $duductions, $data)
     {
-        $fields = ['SICK_LEAVE', 'PERSONAL_LEAVE', 'EXTRA_LEAVE', 'ANNUAL_LEAVE', 'LATE', 'ABNORMAL_LEAVE', 'DEDUCTION_LEAVE'];
-        $deductionLeaves = ['ABNORMAL_LEAVE' => 1, 'DEDUCTION_LEAVE' => 2, 'LATE' => 3];
+        $fields = self::$empLeaveFields;
+        $deductionLeaves = self::$empDeductionLeaves;
 
         $empId = $data->getFieldValue('EMPLOYEE_ID');
         $year = $data->getFieldValue('LEAVE_YEAR');
@@ -172,6 +174,100 @@ class EmployeeLeave extends CBaseController
         $data->AddChildArray('EMPLOYEE_LEAVE_RECORDS', $arr);
     }
 
+    private static function LoadEmployeeLeaveByYear($db, $data)
+    {
+        $u = new MEmployeeLeaveDoc($db);     
+        list($cnt, $rows) = $u->Query(2, $data);
+
+        $fields = ['EMPLOYEE_ID', 'LEAVE_YEAR'];
+        $hash = CHelper::RowToHash($rows, $fields, ':');
+
+        return $hash;
+    }
+
+    private static function LoadEmployeeDeductionByYear($db, $data)
+    {
+        $u = new MPayrollDeductionItem($db);     
+        list($cnt, $rows) = $u->Query(5, $data);
+
+        $fields = ['EMPLOYEE_ID', 'DEDUCTION_TYPE', 'YYYY'];
+        $hash = CHelper::RowToHash($rows, $fields, ':');
+
+        return $hash;
+    }
+
+    private static function PopulateEmployeeLeaveSummary($db, $param, $data, $leaveByYear, $deductions)
+    {
+        $year = $data->getFieldValue('LEAVE_YEAR');
+
+        $fields = self::$empLeaveFields;
+        $deductionLeaves = self::$empDeductionLeaves;
+
+        list($p, $d) = Employee::GetEmployeeList($db, $param, $data);
+        $emps = $d->GetChildArray("EMPLOYEE_LIST");
+
+        $arr = array();
+        foreach ($emps as $emp)
+        {
+            $empId = $emp->getFieldValue('EMP_ID');
+            $key1 = "$empId:$year";     
+
+            $o = new CTable('');
+            if (array_key_exists($key1, $leaveByYear))
+            {
+                $o = $leaveByYear[$key1];
+            }
+
+            foreach ($deductionLeaves as $f => $deductionType)
+            {
+                $key2 = "$empId:$deductionType:$year";
+
+                $deduction = 0;
+                if (array_key_exists($key2, $deductions))
+                {
+                    $deductionObj = $deductions[$key2];
+                    $deduction = $deductionObj->GetFieldValue('DURATION');
+                }
+
+                $o->SetFieldValue($f, $deduction);
+            }  
+
+            foreach ($fields as $f)
+            {
+                $amt = $o->GetFieldValue($f);                
+                $emp->SetFieldValue($f, $amt);
+            }
+
+            array_push($arr, $emp);
+        }
+
+        $data->AddChildArray('EMPLOYEE_LEAVE_RECORDS', $arr);
+    }
+
+    public static function GetEmployeeLeaveSummary($db, $param, $data)
+    {
+        $year = $data->getFieldValue('LEAVE_YEAR');
+        if ($year == '')
+        {
+            $currDtm = CUtils::GetCurrentDateTimeInternal();
+            $year = substr($currDtm, 0, 4);
+        }
+
+        $beginDtm = "$year/01/01 00:00:00";
+        $endDtm = "$year/12/31 23:59:59";
+
+        $data->setFieldValue('LEAVE_YEAR', $year);
+        $data->setFieldValue('FROM_DEDUCTION_DATE', $beginDtm);
+        $data->setFieldValue('TO_DEDUCTION_DATE', $endDtm);
+
+        $deductions = self::LoadEmployeeDeductionByYear($db, $data);
+        $leaveByYear = self::LoadEmployeeLeaveByYear($db, $data);
+
+        self::PopulateEmployeeLeaveSummary($db, $param, $data, $leaveByYear, $deductions);
+        
+        return(array($param, $data));  
+    }    
+    
     public static function GetEmployeeLeaveInfo($db, $param, $data)
     {
         $currDtm = CUtils::GetCurrentDateTimeInternal();
