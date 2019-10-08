@@ -71,7 +71,7 @@ class MPayrollDeductionItem extends MBaseModel
                   [ # 5
                     'OD.EMPLOYEE_ID:REFID:EMPLOYEE_ID:Y',
                     'PEI.DEDUCTION_TYPE:REFID:DEDUCTION_TYPE:Y',
-                    'SUBSTRING(PEI.DEDUCTION_DATE from 0 for 4):S:YYYY:N',
+                    'SUBSTRING(PEI.DEDUCTION_DATE from 0 for 5):S:YYYY:N',
 
                     'SUM(PEI.DURATION):NZ:DURATION:N',
 

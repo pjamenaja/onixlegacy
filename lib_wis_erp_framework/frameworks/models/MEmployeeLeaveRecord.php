@@ -60,10 +60,10 @@ class MEmployeeLeaveRecord extends MBaseModel
 
                   'FROM EMPLOYEE_LEAVE_RECORD ',
 
-                  'FROM ACCOUNT_DOC EMPLOYEE_LEAVE_RECORD ELR '.
+                  'FROM EMPLOYEE_LEAVE_RECORD ELR '.
                       'LEFT OUTER JOIN EMPLOYEE_LEAVE_DOC ELD ON (ELR.EMP_LEAVE_DOC_ID = ELD.EMP_LEAVE_DOC_ID) ', 
 
-                  'FROM ACCOUNT_DOC EMPLOYEE_LEAVE_RECORD ELR '.
+                  'FROM EMPLOYEE_LEAVE_RECORD ELR '.
                       'LEFT OUTER JOIN EMPLOYEE_LEAVE_DOC ELD ON (ELR.EMP_LEAVE_DOC_ID = ELD.EMP_LEAVE_DOC_ID) ',                 
 
     );

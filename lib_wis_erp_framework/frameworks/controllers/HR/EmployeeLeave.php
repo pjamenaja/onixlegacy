@@ -176,7 +176,7 @@ class EmployeeLeave extends CBaseController
 
     private static function LoadEmployeeLeaveByYear($db, $data)
     {
-        $u = new MEmployeeLeaveDoc($db);     
+        $u = new MEmployeeLeaveRecord($db);     
         list($cnt, $rows) = $u->Query(2, $data);
 
         $fields = ['EMPLOYEE_ID', 'LEAVE_YEAR'];
@@ -209,7 +209,7 @@ class EmployeeLeave extends CBaseController
         $arr = array();
         foreach ($emps as $emp)
         {
-            $empId = $emp->getFieldValue('EMP_ID');
+            $empId = $emp->getFieldValue('EMPLOYEE_ID');
             $key1 = "$empId:$year";     
 
             $o = new CTable('');

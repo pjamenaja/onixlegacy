@@ -88,6 +88,15 @@ namespace Onix.Client.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ขาดงาน (ช.ม.).
+        /// </summary>
+        public static string abnormal_leave_hr {
+            get {
+                return ResourceManager.GetString("abnormal_leave_hr", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ขาด/สาย.
         /// </summary>
         public static string absent_late {
@@ -3144,6 +3153,15 @@ namespace Onix.Client.Resources {
         public static string deduction_leave {
             get {
                 return ResourceManager.GetString("deduction_leave", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ทำงานไม่ครบ (ช.ม.).
+        /// </summary>
+        public static string deduction_leave_hr {
+            get {
+                return ResourceManager.GetString("deduction_leave_hr", resourceCulture);
             }
         }
         
@@ -6924,6 +6942,15 @@ namespace Onix.Client.Resources {
         public static string late {
             get {
                 return ResourceManager.GetString("late", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to สาย (นาที).
+        /// </summary>
+        public static string late_min {
+            get {
+                return ResourceManager.GetString("late_min", resourceCulture);
             }
         }
         

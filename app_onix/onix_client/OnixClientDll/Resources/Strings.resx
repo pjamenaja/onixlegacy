@@ -4548,4 +4548,13 @@
   <data name="hiring_duration" xml:space="preserve">
     <value>อายุงาน</value>
   </data>
+  <data name="abnormal_leave_hr" xml:space="preserve">
+    <value>ขาดงาน (ช.ม.)</value>
+  </data>
+  <data name="deduction_leave_hr" xml:space="preserve">
+    <value>ทำงานไม่ครบ (ช.ม.)</value>
+  </data>
+  <data name="late_min" xml:space="preserve">
+    <value>สาย (นาที)</value>
+  </data>
 </root>

@@ -583,13 +583,17 @@ namespace Onix.Client.Report
 
         private String createReportParamHeader()
         {
-            Boolean matched = false;
+            Boolean matched1 = false;
+            Boolean matched2 = false;
+
             String[] keywords = new[] 
             {
                 "FROM_DOCUMENT_DATE", "FROM_BALANCE_DATE", "FROM_CHEQUE_DATE",
-                "TO_DOCUMENT_DATE", "TO_BALANCE_DATE", "TO_CHEQUE_DATE"
+                "TO_DOCUMENT_DATE", "TO_BALANCE_DATE", "TO_CHEQUE_DATE",
+                "LEAVE_YEAR"
             };
 
+            String year = "";
             String fromDateFmt = "N/A";
             String toDateFmt = "N/A";
             for (int i = 0; i < keywords.Length; i++)
@@ -607,23 +611,34 @@ namespace Onix.Client.Report
                 if (keyword.Contains("FROM_"))
                 {
                     fromDateFmt = CUtil.DateTimeToBEDateString(dateStamp);
-                    matched = true;
+                    matched1 = true;
                 }
 
                 if (keyword.Contains("TO_"))
                 {
                     toDateFmt = CUtil.DateTimeToBEDateString(dateStamp);
-                    matched = true;
+                    matched1 = true;
+                }
+
+                if (keyword.Contains("LEAVE_YEAR"))
+                {
+                    year = Parameter.GetFieldValue(keyword);
+                    matched2 = true;
                 }
             }
 
             String header = "";
 
-            if (matched)
+            if (matched1)
             {
                 header = String.Format("{0} {1} : {2} {3}",
                     CLanguage.getValue("from_date"), fromDateFmt,
                     CLanguage.getValue("to_date"), toDateFmt);
+            }
+
+            if (matched2)
+            {
+                header = "ปี " + year;
             }
 
             return (header);
