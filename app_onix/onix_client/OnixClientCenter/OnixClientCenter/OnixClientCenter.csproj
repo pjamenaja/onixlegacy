@@ -223,6 +223,7 @@
     <Compile Include="Commons\CriteriaConfig\CCriteriaColumnText.cs" />
     <Compile Include="Commons\CriteriaConfig\CCriteriaContextMenu.cs" />
     <Compile Include="Commons\CriteriaConfig\CCriteriaEntry.cs" />
+    <Compile Include="UI\Printing\Reports\CReportInv002_01_InventoryMovementSumBK.cs" />
     <Compile Include="UI\Printing\Reports\CReportInventory000_01_ItemList.cs" />
     <Compile Include="UI\Printing\Reports\CReportEmployee00_01_EmployeeLeave.cs" />
     <Compile Include="UI\Printing\Reports\CReportPayroll001_02_EmployeeListPayroll.cs" />
