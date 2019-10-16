@@ -14,14 +14,12 @@ namespace Onix.ClientCenter.Reports
 {
 	public class CReportInv002_01_InventoryMovementSum : CBaseReport
 	{
-		private Hashtable rowdef = new Hashtable();
-		private MemoryStream stream = new MemoryStream();
-        private double[] widths3Col = new double[3] { 18, 55, 27 };
-        private double[] widths10Col = new double[10] {7, 11, 19, 9, 9, 9, 9, 9, 9, 9};
-		private double[] totals = new double[7] { 0, 0, 0, 0, 0, 0, 0 };
-        private int rowNo = 0;
-        String Item, Location, H = "", D = "";
-	
+        private Hashtable rowdef = new Hashtable();
+
+        private ArrayList sums = new ArrayList();
+        private ArrayList groupSums = new ArrayList();
+        private String prevKey = "";
+
         public CReportInv002_01_InventoryMovementSum() : base()
         {
         }
@@ -35,13 +33,13 @@ namespace Onix.ClientCenter.Reports
             addConfig("L1", 7, "number", HorizontalAlignment.Center, HorizontalAlignment.Center, HorizontalAlignment.Center, "", "RN", false);
             addConfig("L1", 11, "DocuDate", HorizontalAlignment.Center, HorizontalAlignment.Center, HorizontalAlignment.Center, "DOCUMENT_DATE", "DT", false);
             addConfig("L1", 19, "inventory_doc_no", HorizontalAlignment.Center, HorizontalAlignment.Left, HorizontalAlignment.Left, "DOCUMENT_NO", "S", false);
-            addConfig("L1", 9, "in_quantity", HorizontalAlignment.Center, HorizontalAlignment.Right, HorizontalAlignment.Right, "DEPOSIT_AMOUNT", "N", true);
-            addConfig("L1", 9, "in_amount", HorizontalAlignment.Center, HorizontalAlignment.Right, HorizontalAlignment.Right, "WITHDRAW_AMOUNT", "DE", true);
-            addConfig("L1", 9, "out_quantity", HorizontalAlignment.Center, HorizontalAlignment.Right, HorizontalAlignment.Right, "TOTAL_AMOUNT", "D", true);
-            addConfig("L1", 9, "out_amount", HorizontalAlignment.Center, HorizontalAlignment.Right, HorizontalAlignment.Right, "DOCUMENT_STATUS_DESC", "S", true);
-            addConfig("L1", 9, "balance_quantity", HorizontalAlignment.Center, HorizontalAlignment.Right, HorizontalAlignment.Right, "DESCRIPTION", "S", false);
-            addConfig("L1", 9, "balance_amount", HorizontalAlignment.Center, HorizontalAlignment.Right, HorizontalAlignment.Right, "DESCRIPTION", "S", false);
-            addConfig("L1", 9, "lot_avg", HorizontalAlignment.Center, HorizontalAlignment.Right, HorizontalAlignment.Right, "DESCRIPTION", "S", false);
+            addConfig("L1", 9, "in_quantity", HorizontalAlignment.Center, HorizontalAlignment.Right, HorizontalAlignment.Right, "TX_QTY_AVG", "D", true);
+            addConfig("L1", 9, "in_amount", HorizontalAlignment.Center, HorizontalAlignment.Right, HorizontalAlignment.Right, "TX_AMT_AVG", "D", true);
+            addConfig("L1", 9, "out_quantity", HorizontalAlignment.Center, HorizontalAlignment.Right, HorizontalAlignment.Right, "TX_QTY_AVG", "D", true);
+            addConfig("L1", 9, "out_amount", HorizontalAlignment.Center, HorizontalAlignment.Right, HorizontalAlignment.Right, "TX_AMT_AVG", "D", true);
+            addConfig("L1", 9, "balance_quantity", HorizontalAlignment.Center, HorizontalAlignment.Right, HorizontalAlignment.Right, "END_QTY_AVG", "D", true);
+            addConfig("L1", 9, "balance_amount", HorizontalAlignment.Center, HorizontalAlignment.Right, HorizontalAlignment.Right, "END_AMOUNT_AVG", "D", true);
+            addConfig("L1", 9, "lot_avg", HorizontalAlignment.Center, HorizontalAlignment.Right, HorizontalAlignment.Right, "END_UNIT_PRICE", "D", true);
         }
 
         private void createDataHeaderRow1(UReportPage page)
@@ -105,8 +103,8 @@ namespace Onix.ClientCenter.Reports
 
 
             nm = "DATA_LEVEL0";
-            CRow r0 = new CRow(nm, 30, getColumnCount("L1"), defMargin);
-            r0.SetFont(null, FontStyles.Normal, 0, FontWeights.Normal);
+            CRow r0 = new CRow(nm, 30, getColumnCount("L0"), defMargin);
+            r0.SetFont(null, FontStyles.Normal, 0, FontWeights.Bold);
             rowdef[nm] = r0;
 
             configRow("L0", r0, "B");
@@ -140,53 +138,109 @@ namespace Onix.ClientCenter.Reports
             return (arr);
         }
 
-        //public override CReportDataProcessingProperty DataToProcessingProperty(CTable o, ArrayList rows, int row)
-        //{
-            //String tmpPrevKey = prevGroupId;
-            //int rowcount = rows.Count;
-            //CReportDataProcessingProperty rpp = new CReportDataProcessingProperty();
+        private String getGroupKey(CTable o)
+        {
+            return o.GetFieldValue("ITEM_ID") + "-" + o.GetFieldValue("ITEM_ID"); ;
+        }
 
-            //ArrayList keepTotal1 = copyTotalArray(groupSums);
-            //ArrayList keepTotal2 = copyTotalArray(sums);
+        private void OverrideSumFields(ArrayList groupSums, CTable o)
+        {
+            double qty = CUtil.StringToDouble(o.GetFieldValue("END_QTY_AVG"));
+            double amt = CUtil.StringToDouble(o.GetFieldValue("END_AMOUNT_AVG"));
+
+            double price = 0.00;
+            if (qty != 0.00)
+            { 
+                price = amt / qty;
+            }
+
+            groupSums[7] = qty;
+            groupSums[8] = amt;
+            groupSums[9] = price;
+        }
+
+        public override CReportDataProcessingProperty DataToProcessingProperty(CTable o, ArrayList rows, int row)
+        {
+            String tmpPrevKey = prevKey;
+            int rowcount = rows.Count;
+            CReportDataProcessingProperty rpp = new CReportDataProcessingProperty();
+
+            ArrayList keepTotal1 = copyTotalArray(groupSums);
+            ArrayList keepTotal2 = copyTotalArray(sums);
 
 
-            //CRow r = (CRow)rowdef["DATA_LEVEL1"];
-            //CRow nr = r.Clone();
+            CRow r = (CRow)rowdef["DATA_LEVEL1"];
+            CRow nr = r.Clone();
 
-            //double newh = AvailableSpace - nr.GetHeight();
+            double newh = AvailableSpace - nr.GetHeight();
             //manipulateRow(o);
 
-            //if (newh > 0)
-            //{
-            //    ArrayList temps = getColumnDataTexts("L1", row + 1, o);
-            //    nr.FillColumnsText(temps);
-            //    rpp.AddReportRow(nr);
+            if (newh > 0)
+            {
+                String groupKey = getGroupKey(o);
+                if (row == 0)
+                {
+                    prevKey = groupKey;
+                }
 
-            //    sums = sumDataTexts("L1", sums, temps);
+                if (!groupKey.Equals(prevKey) || (row == 0))
+                {
+                    if (row != 0)
+                    {
+                        CRow ft = (CRow)rowdef["FOOTER_LEVEL1"];
+                        CRow ftr = ft.Clone();
 
-            //    if (row == rowcount - 1)
-            //    {
-            //        double h = addNewFooterRow(rowdef, rpp, "FOOTER_LEVEL1", "L1", "total", sums);
-            //        newh = newh - h;
-            //    }
-            //}
+                        ArrayList projTotals = displayTotalTexts("L1", groupSums, 1, "total");
+                        ftr.FillColumnsText(projTotals);
 
-            //if (newh < 1)
-            //{
-            //    rpp.IsNewPageRequired = true;
+                        rpp.AddReportRow(ftr);
+                        newh = newh - ftr.GetHeight();
 
-            //    //พวก sum ทั้งหลายจะถูกคืนค่ากลับไปด้วย เพราะถูกบวกไปแล้ว
-            //    groupSums = keepTotal1;
-            //    sums = keepTotal2;
-            //    prevGroupId = tmpPrevKey;
-            //}
-            //else
-            //{
-            //    AvailableSpace = newh;
-            //}
+                        groupSums = new ArrayList();
+                    }
 
-            //return (rpp);
-        //}        
+                    prevKey = groupKey;
+
+                    CRow dt0 = (CRow)rowdef["DATA_LEVEL0"];
+                    CRow dtr0 = dt0.Clone();
+                    ArrayList tempRows0 = getColumnDataTexts("L0", 0, o);
+                    dtr0.FillColumnsText(tempRows0);                    
+
+                    rpp.AddReportRow(dtr0);
+                    newh = newh - dtr0.GetHeight();
+                }
+
+                ArrayList temps = getColumnDataTexts("L1", row + 1, o);
+                nr.FillColumnsText(temps);
+                rpp.AddReportRow(nr);
+
+                sums = sumDataTexts("L1", sums, temps);
+                groupSums = sumDataTexts("L1", groupSums, temps);
+                OverrideSumFields(groupSums, o);
+
+                //if (row == rowcount - 1)
+                //{
+                //    double h = addNewFooterRow(rowdef, rpp, "FOOTER_LEVEL1", "L1", "total", sums);
+                //    newh = newh - h;
+                //}
+            }
+
+            if (newh < 1)
+            {
+                rpp.IsNewPageRequired = true;
+
+                //พวก sum ทั้งหลายจะถูกคืนค่ากลับไปด้วย เพราะถูกบวกไปแล้ว
+                groupSums = keepTotal1;
+                sums = keepTotal2;
+                prevKey = tmpPrevKey;
+            }
+            else
+            {
+                AvailableSpace = newh;
+            }
+
+            return (rpp);
+        }
 
         public override ArrayList GetReportInputEntries()
         {
