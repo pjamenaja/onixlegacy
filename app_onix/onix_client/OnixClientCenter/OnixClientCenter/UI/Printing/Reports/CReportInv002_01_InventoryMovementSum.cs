@@ -33,10 +33,10 @@ namespace Onix.ClientCenter.Reports
             addConfig("L1", 7, "number", HorizontalAlignment.Center, HorizontalAlignment.Center, HorizontalAlignment.Center, "", "RN", false);
             addConfig("L1", 11, "DocuDate", HorizontalAlignment.Center, HorizontalAlignment.Center, HorizontalAlignment.Center, "DOCUMENT_DATE", "DT", false);
             addConfig("L1", 19, "inventory_doc_no", HorizontalAlignment.Center, HorizontalAlignment.Left, HorizontalAlignment.Left, "DOCUMENT_NO", "S", false);
-            addConfig("L1", 9, "in_quantity", HorizontalAlignment.Center, HorizontalAlignment.Right, HorizontalAlignment.Right, "TX_QTY_AVG_IN", "D", true);
-            addConfig("L1", 9, "in_amount", HorizontalAlignment.Center, HorizontalAlignment.Right, HorizontalAlignment.Right, "TX_AMT_AVG_IN", "D", true);
-            addConfig("L1", 9, "out_quantity", HorizontalAlignment.Center, HorizontalAlignment.Right, HorizontalAlignment.Right, "TX_QTY_AVG_OUT", "D", true);
-            addConfig("L1", 9, "out_amount", HorizontalAlignment.Center, HorizontalAlignment.Right, HorizontalAlignment.Right, "TX_AMT_AVG_OUT", "D", true);
+            addConfig("L1", 9, "in_quantity", HorizontalAlignment.Center, HorizontalAlignment.Right, HorizontalAlignment.Right, "TX_QTY_AVG_IN", "DE", true);
+            addConfig("L1", 9, "in_amount", HorizontalAlignment.Center, HorizontalAlignment.Right, HorizontalAlignment.Right, "TX_AMT_AVG_IN", "DE", true);
+            addConfig("L1", 9, "out_quantity", HorizontalAlignment.Center, HorizontalAlignment.Right, HorizontalAlignment.Right, "TX_QTY_AVG_OUT", "DE", true);
+            addConfig("L1", 9, "out_amount", HorizontalAlignment.Center, HorizontalAlignment.Right, HorizontalAlignment.Right, "TX_AMT_AVG_OUT", "DE", true);
             addConfig("L1", 9, "balance_quantity", HorizontalAlignment.Center, HorizontalAlignment.Right, HorizontalAlignment.Right, "END_QTY_AVG", "D", true);
             addConfig("L1", 9, "balance_amount", HorizontalAlignment.Center, HorizontalAlignment.Right, HorizontalAlignment.Right, "END_AMOUNT_AVG", "D", true);
             addConfig("L1", 9, "lot_avg", HorizontalAlignment.Center, HorizontalAlignment.Right, HorizontalAlignment.Right, "END_UNIT_PRICE", "D", true);
@@ -159,6 +159,15 @@ namespace Onix.ClientCenter.Reports
             groupSums[9] = price;
         }
 
+        private void manipulateRow(CTable o)
+        {
+            string tx = o.GetFieldValue("DIRECTION");
+            if (tx.Equals("B"))
+            {
+                o.SetFieldValue("DOCUMENT_NO", "ยกมา");
+            }
+        }
+
         public override CReportDataProcessingProperty DataToProcessingProperty(CTable o, ArrayList rows, int row)
         {
             String tmpPrevKey = prevKey;
@@ -173,7 +182,7 @@ namespace Onix.ClientCenter.Reports
             CRow nr = r.Clone();
 
             double newh = AvailableSpace - nr.GetHeight();
-            //manipulateRow(o);
+            manipulateRow(o);
 
             if (newh > 0)
             {
@@ -218,11 +227,11 @@ namespace Onix.ClientCenter.Reports
                 groupSums = sumDataTexts("L1", groupSums, temps);
                 OverrideSumFields(groupSums, o);
 
-                //if (row == rowcount - 1)
-                //{
-                //    double h = addNewFooterRow(rowdef, rpp, "FOOTER_LEVEL1", "L1", "total", sums);
-                //    newh = newh - h;
-                //}
+                if (row == rowcount - 1)
+                {
+                    double h = addNewFooterRow(rowdef, rpp, "FOOTER_LEVEL1", "L1", "total", groupSums);
+                    newh = newh - h;
+                }
             }
 
             if (newh < 1)
