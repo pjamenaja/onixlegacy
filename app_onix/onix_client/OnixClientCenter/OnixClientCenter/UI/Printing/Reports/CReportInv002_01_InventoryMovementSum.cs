@@ -33,10 +33,10 @@ namespace Onix.ClientCenter.Reports
             addConfig("L1", 7, "number", HorizontalAlignment.Center, HorizontalAlignment.Center, HorizontalAlignment.Center, "", "RN", false);
             addConfig("L1", 11, "DocuDate", HorizontalAlignment.Center, HorizontalAlignment.Center, HorizontalAlignment.Center, "DOCUMENT_DATE", "DT", false);
             addConfig("L1", 19, "inventory_doc_no", HorizontalAlignment.Center, HorizontalAlignment.Left, HorizontalAlignment.Left, "DOCUMENT_NO", "S", false);
-            addConfig("L1", 9, "in_quantity", HorizontalAlignment.Center, HorizontalAlignment.Right, HorizontalAlignment.Right, "TX_QTY_AVG", "D", true);
-            addConfig("L1", 9, "in_amount", HorizontalAlignment.Center, HorizontalAlignment.Right, HorizontalAlignment.Right, "TX_AMT_AVG", "D", true);
-            addConfig("L1", 9, "out_quantity", HorizontalAlignment.Center, HorizontalAlignment.Right, HorizontalAlignment.Right, "TX_QTY_AVG", "D", true);
-            addConfig("L1", 9, "out_amount", HorizontalAlignment.Center, HorizontalAlignment.Right, HorizontalAlignment.Right, "TX_AMT_AVG", "D", true);
+            addConfig("L1", 9, "in_quantity", HorizontalAlignment.Center, HorizontalAlignment.Right, HorizontalAlignment.Right, "TX_QTY_AVG_IN", "D", true);
+            addConfig("L1", 9, "in_amount", HorizontalAlignment.Center, HorizontalAlignment.Right, HorizontalAlignment.Right, "TX_AMT_AVG_IN", "D", true);
+            addConfig("L1", 9, "out_quantity", HorizontalAlignment.Center, HorizontalAlignment.Right, HorizontalAlignment.Right, "TX_QTY_AVG_OUT", "D", true);
+            addConfig("L1", 9, "out_amount", HorizontalAlignment.Center, HorizontalAlignment.Right, HorizontalAlignment.Right, "TX_AMT_AVG_OUT", "D", true);
             addConfig("L1", 9, "balance_quantity", HorizontalAlignment.Center, HorizontalAlignment.Right, HorizontalAlignment.Right, "END_QTY_AVG", "D", true);
             addConfig("L1", 9, "balance_amount", HorizontalAlignment.Center, HorizontalAlignment.Right, HorizontalAlignment.Right, "END_AMOUNT_AVG", "D", true);
             addConfig("L1", 9, "lot_avg", HorizontalAlignment.Center, HorizontalAlignment.Right, HorizontalAlignment.Right, "END_UNIT_PRICE", "D", true);
