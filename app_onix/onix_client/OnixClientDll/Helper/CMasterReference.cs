@@ -2468,7 +2468,12 @@ namespace Onix.Client.Helper
                 MMasterRef mr = new MMasterRef(t);
 
                 mr.MasterID = o.GetFieldValue("DIRECTORY_ID");
-                mr.Description = o.GetFieldValue("PATH");
+                string s = o.GetFieldValue("PATH");
+                mr.Description = s;
+                if (s.Length >= 1)
+                {
+                    mr.Description = s.Substring(1);
+                }
 
                 colls.Add(mr);
             }

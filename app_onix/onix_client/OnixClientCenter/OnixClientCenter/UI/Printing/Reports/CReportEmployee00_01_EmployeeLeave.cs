@@ -33,13 +33,13 @@ namespace Onix.ClientCenter.Reports
             addConfig("L1", 20, "hiring_date", HorizontalAlignment.Center, HorizontalAlignment.Center, HorizontalAlignment.Center, "HIRING_DATE", "DT", false);
             addConfig("L1", 0, "hiring_duration", HorizontalAlignment.Center, HorizontalAlignment.Right, HorizontalAlignment.Right, "HIRING_DURATION", "S", false);
             
-            addConfig("L1", 15, "sick_leave", HorizontalAlignment.Center, HorizontalAlignment.Right, HorizontalAlignment.Right, "SICK_LEAVE", "D", true);
-            addConfig("L1", 15, "personal_leave", HorizontalAlignment.Center, HorizontalAlignment.Right, HorizontalAlignment.Right, "PERSONAL_LEAVE", "D", true);
-            addConfig("L1", 20, "extra_personal_leave", HorizontalAlignment.Center, HorizontalAlignment.Right, HorizontalAlignment.Right, "EXTRA_LEAVE", "D", true);
-            addConfig("L1", 20, "annual_leave", HorizontalAlignment.Center, HorizontalAlignment.Right, HorizontalAlignment.Right, "ANNUAL_LEAVE", "D", true);
-            addConfig("L1", 20, "late_min", HorizontalAlignment.Center, HorizontalAlignment.Right, HorizontalAlignment.Right, "LATE", "D", true);
-            addConfig("L1", 25, "deduction_leave_hr", HorizontalAlignment.Center, HorizontalAlignment.Right, HorizontalAlignment.Right, "DEDUCTION_LEAVE", "D", true);
-            addConfig("L1", 25, "abnormal_leave_hr", HorizontalAlignment.Center, HorizontalAlignment.Right, HorizontalAlignment.Right, "ABNORMAL_LEAVE", "D", true);
+            addConfig("L1", 15, "sick_leave", HorizontalAlignment.Center, HorizontalAlignment.Right, HorizontalAlignment.Right, "SICK_LEAVE", "DE", true);
+            addConfig("L1", 15, "personal_leave", HorizontalAlignment.Center, HorizontalAlignment.Right, HorizontalAlignment.Right, "PERSONAL_LEAVE", "DE", true);
+            addConfig("L1", 20, "extra_personal_leave", HorizontalAlignment.Center, HorizontalAlignment.Right, HorizontalAlignment.Right, "EXTRA_LEAVE", "DE", true);
+            addConfig("L1", 20, "annual_leave", HorizontalAlignment.Center, HorizontalAlignment.Right, HorizontalAlignment.Right, "ANNUAL_LEAVE", "DE", true);
+            addConfig("L1", 20, "late_min", HorizontalAlignment.Center, HorizontalAlignment.Right, HorizontalAlignment.Right, "LATE", "DE", true);
+            addConfig("L1", 25, "deduction_leave_hr", HorizontalAlignment.Center, HorizontalAlignment.Right, HorizontalAlignment.Right, "DEDUCTION_LEAVE", "DE", true);
+            addConfig("L1", 25, "abnormal_leave_hr", HorizontalAlignment.Center, HorizontalAlignment.Right, HorizontalAlignment.Right, "ABNORMAL_LEAVE", "DE", true);
         }
 
         protected override ArrayList getRecordSet()

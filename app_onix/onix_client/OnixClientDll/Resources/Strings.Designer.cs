@@ -10240,7 +10240,7 @@ namespace Onix.Client.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to HR001_03 - รายงานการลาพนักงานรายบุคคล.
+        ///   Looks up a localized string similar to HR001_03 - รายงานการขาดลามาสายพนักงาน.
         /// </summary>
         public static string rpt_employee_leave {
             get {

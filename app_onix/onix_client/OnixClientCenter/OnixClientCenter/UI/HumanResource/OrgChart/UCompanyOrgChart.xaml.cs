@@ -146,6 +146,9 @@ namespace Onix.ClientCenter.UI.HumanResource.OrgChart
             param.ParentItemSources = vw.CurrentItemSource;
             param.CurrentPaths = vw.CurrentPath;
             FactoryWindow.ShowWindow("WinAddEditOrgChart", param);
+
+            CMasterReference.LoadEmployeeDepartments();
+            CMasterReference.LoadEmployeePositions();
         }
 
         private void CmdDelete_Click(object sender, RoutedEventArgs e)
@@ -160,6 +163,9 @@ namespace Onix.ClientCenter.UI.HumanResource.OrgChart
             CHelper.DeleteSelectedItems((ObservableCollection<MBaseModel>)lsvMain.ItemsSource, OnixWebServiceAPI.DeleteAPI, rowCount.ToString(), "DeleteVirtualDirectory");
 
             CmdSearch_Click(sender, e);
+
+            CMasterReference.LoadEmployeeDepartments();
+            CMasterReference.LoadEmployeePositions();
         }
 
         private void CboType_SelectionChanged(object sender, SelectionChangedEventArgs e)

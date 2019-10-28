@@ -202,6 +202,14 @@ class EmployeeLeave extends CBaseController
 
         $fields = self::$empLeaveFields;
         $deductionLeaves = self::$empDeductionLeaves;
+        
+        $orders = array();
+        $od = new CTable('');
+        $od->setFieldValue('COLUMN_KEY', 'employee_code');
+        $od->setFieldValue('ORDER_BY', 'ASC');
+        array_push($orders, $od);
+
+        $data->AddChildArray('@ORDER_BY_COLUMNS', $orders);
 
         list($p, $d) = Employee::GetEmployeeList($db, $param, $data);
         $emps = $d->GetChildArray("EMPLOYEE_LIST");
