@@ -212,7 +212,7 @@ namespace Onix.Client.Model
         {
             get
             {
-                return (CUtil.FormatNumber(SickLeave));
+                return (CUtil.FormatNumberDash(SickLeave));
             }
 
             set
@@ -274,7 +274,7 @@ namespace Onix.Client.Model
         {
             get
             {
-                return (CUtil.FormatNumber(PersonalLeave));
+                return (CUtil.FormatNumberDash(PersonalLeave));
             }
 
             set
@@ -336,7 +336,7 @@ namespace Onix.Client.Model
         {
             get
             {
-                return (CUtil.FormatNumber(ExtraLeave));
+                return (CUtil.FormatNumberDash(ExtraLeave));
             }
 
             set
@@ -398,7 +398,7 @@ namespace Onix.Client.Model
         {
             get
             {
-                return (CUtil.FormatNumber(AnnualLeave));
+                return (CUtil.FormatNumberDash(AnnualLeave));
             }
 
             set
@@ -430,7 +430,7 @@ namespace Onix.Client.Model
         {
             get
             {
-                return (CUtil.FormatNumber(AbnormalLeave));
+                return (CUtil.FormatNumberDash(AbnormalLeave));
             }
 
             set
@@ -461,7 +461,7 @@ namespace Onix.Client.Model
         {
             get
             {
-                return (CUtil.FormatNumber(DeductionLeave));
+                return (CUtil.FormatNumberDash(DeductionLeave));
             }
 
             set

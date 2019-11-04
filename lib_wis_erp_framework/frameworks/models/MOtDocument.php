@@ -25,9 +25,10 @@ class MOtDocument extends MBaseModel
                     'OT_RATE:NZ:OT_RATE:N',
                     'EMPLOYEE_TYPE:REFID:EMPLOYEE_TYPE:Y',
                     'DEDUCTION_MINUTE_TOTAL:NZ:DEDUCTION_MINUTE_TOTAL:N',                    
-                    'DEDUCTION_AMOUNT:NZ:DEDUCTION_AMOUNT:N',
+                    'DEDUCTION_AMOUNT:NZ:DEDUCTION_AMOUNT:N',                   
                     'DEDUCTION_HOUR_ROUNDED_TOTAL:NZ:DEDUCTION_HOUR_ROUNDED_TOTAL:N',
                     'WORKED_AMOUNT_TOTAL:NZ:WORKED_AMOUNT_TOTAL:N',
+                    'ADJUST_AMOUNT:NZ:ADJUST_AMOUNT:N', 
 
                     'CREATE_DATE:CD:CREATE_DATE:N',
                     'MODIFY_DATE:MD:MODIFY_DATE:N',
@@ -47,6 +48,7 @@ class MOtDocument extends MBaseModel
                     'OD.DEDUCTION_AMOUNT:NZ:DEDUCTION_AMOUNT:N',
                     'OD.DEDUCTION_HOUR_ROUNDED_TOTAL:NZ:DEDUCTION_HOUR_ROUNDED_TOTAL:N',
                     'OD.WORKED_AMOUNT_TOTAL:NZ:WORKED_AMOUNT_TOTAL:N',
+                    'OD.ADJUST_AMOUNT:NZ:ADJUST_AMOUNT:N', 
 
                     'EM.EMPLOYEE_CODE:S:EMPLOYEE_CODE:Y',
                     'EM.EMPLOYEE_NAME:S:EMPLOYEE_NAME:Y',
@@ -88,7 +90,7 @@ class MOtDocument extends MBaseModel
 
                 'ORDER BY OT_DOC_ID DESC ',
                 
-                'ORDER BY OD.DOCUMENT_DATE DESC, EM.EMPLOYEE_NAME ASC ',   
+                'ORDER BY OD.DOCUMENT_DATE DESC, EM.EMPLOYEE_CODE ASC ',   
                 
                 'ORDER BY OT_DOC_ID DESC ', 
                 

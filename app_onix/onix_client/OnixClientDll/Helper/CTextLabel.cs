@@ -79,6 +79,14 @@ namespace Onix.Client.Helper
 
         #region Properties        
         
+        public String adjust_amount
+        {
+            get
+            {
+                return (CLanguage.getValueEx());
+            }
+        }
+
         public String hiring_duration
         {
             get

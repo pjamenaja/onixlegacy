@@ -634,6 +634,8 @@
                                         <ColumnDefinition Width="Auto"/>
                                         <ColumnDefinition Width="Auto"/>
                                         <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="Auto"/>
                                     </Grid.ColumnDefinitions>
 
                                     <Grid.RowDefinitions>
@@ -656,9 +658,14 @@
                                     <TextBox Grid.Column="6" Grid.Row="1" Width="150" Text="{Binding DeductionHourRoundedTotalFmt}" IsEnabled="False" 
                                              VerticalContentAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0" HorizontalContentAlignment="Right" TextChanged="DefaultTextBox_TextChanged"/>
 
-                                    <Label Grid.Column="7" Grid.Row="1" Name="lblDeductAmount"  Content="{Binding Source={x:Static lang:CTextLabel.Instance}, Path=ot_amount}" VerticalAlignment="Center" 
+                                    <Label Grid.Column="7" Grid.Row="1" Name="lblAdjustAmount"  Content="{Binding Source={x:Static lang:CTextLabel.Instance}, Path=adjust_amount}" VerticalAlignment="Center" 
                                            VerticalContentAlignment="Center" HorizontalContentAlignment="Right" Margin="5,0,0,0"/>
-                                    <TextBox Grid.Column="8" Grid.Row="1" Width="150" Text="{Binding DeductionAmountFmt}" IsEnabled="False" 
+                                    <TextBox Grid.Column="8" Grid.Row="1" Width="100" Text="{Binding AdjustAmount, UpdateSourceTrigger=PropertyChanged}"
+                                             VerticalContentAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0" HorizontalContentAlignment="Right" TextChanged="DefaultTextBox_TextChanged"/>
+
+                                    <Label Grid.Column="9" Grid.Row="1" Name="lblDeductAmount"  Content="{Binding Source={x:Static lang:CTextLabel.Instance}, Path=ot_amount}" VerticalAlignment="Center" 
+                                           VerticalContentAlignment="Center" HorizontalContentAlignment="Right" Margin="5,0,0,0"/>
+                                    <TextBox Grid.Column="10" Grid.Row="1" Width="150" Text="{Binding DeductionAmountFmt}" IsEnabled="False" 
                                              VerticalContentAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0" HorizontalContentAlignment="Right" TextChanged="DefaultTextBox_TextChanged"/>
 
                                 </Grid>

@@ -465,6 +465,25 @@ namespace Onix.Client.Helper
             return (s);
         }
 
+        public static String FormatNumberDash(String str)
+        {
+            if (str.Equals(""))
+            {
+                return ("-");
+            }
+
+            double d = StringToDouble(str);
+
+            if (d == 0.00)
+            {
+                return ("-");
+            }
+
+            String s = String.Format("{0:n}", d);
+
+            return (s);
+        }
+
         public static String FormatNumber(String str, String ifZero)
         {
             double d = StringToDouble(str);

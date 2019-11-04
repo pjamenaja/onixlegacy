@@ -759,6 +759,26 @@ namespace Onix.ClientCenter.UI.HumanResource.OTDocument
             {
             }
         }
+        
+        public String AdjustAmount
+        {
+            get
+            {
+                if (GetDbObject() == null)
+                {
+                    return ("");
+                }
+
+                return (GetDbObject().GetFieldValue("ADJUST_AMOUNT"));
+            }
+
+            set
+            {
+                GetDbObject().SetFieldValue("ADJUST_AMOUNT", value);
+                NotifyPropertyChanged();
+                CalculateTotalFields();
+            }
+        }
 
         public String DeductionHourRoundedTotal
         {
@@ -1071,6 +1091,7 @@ namespace Onix.ClientCenter.UI.HumanResource.OTDocument
                 deductMinuteTotal = deductMinuteTotal + CUtil.StringToDouble(exp.DurationMin);
             }
 
+            double adjust = CUtil.StringToDouble(AdjustAmount);
             double rate = CUtil.StringToDouble(OtRate);
             double roundedHour = roundHour(deductMinuteTotal / 60.00);
             if (roundedHour < 1.00)
@@ -1079,6 +1100,8 @@ namespace Onix.ClientCenter.UI.HumanResource.OTDocument
                 roundedHour = 0.00;
             }
             deduction = roundedHour * rate * 1.50; //คิดหักที่ 1.5 เท่า
+            deduction = deduction - adjust;
+
             DeductionHourRoundedTotal = roundedHour.ToString();
 
             ItemCount = i.ToString();
@@ -1090,7 +1113,7 @@ namespace Onix.ClientCenter.UI.HumanResource.OTDocument
             DeductionMinuteTotal = deductMinuteTotal.ToString();
 
             ExpenseItemCount = expenseCount.ToString();
-            ExpenseAmount = expense.ToString();
+            ExpenseAmount = expense.ToString();            
         }
 
         private double roundHour(double num)

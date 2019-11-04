@@ -718,6 +718,15 @@ namespace Onix.Client.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Adjust Amt..
+        /// </summary>
+        public static string adjust_amount {
+            get {
+                return ResourceManager.GetString("adjust_amount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Adjustment By Delta.
         /// </summary>
         public static string adjust_by_delta {
@@ -4755,6 +4764,15 @@ namespace Onix.Client.Resources {
         public static string expense_fuel {
             get {
                 return ResourceManager.GetString("expense_fuel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Others.
+        /// </summary>
+        public static string expense_other {
+            get {
+                return ResourceManager.GetString("expense_other", resourceCulture);
             }
         }
         

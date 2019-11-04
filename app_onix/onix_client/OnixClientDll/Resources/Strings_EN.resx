@@ -4519,4 +4519,10 @@
   <data name="late_min" xml:space="preserve">
     <value>สาย (นาที)</value>
   </data>
+  <data name="expense_other" xml:space="preserve">
+    <value>Others</value>
+  </data>
+  <data name="adjust_amount" xml:space="preserve">
+    <value>Adjust Amt.</value>
+  </data>
 </root>

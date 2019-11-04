@@ -427,6 +427,17 @@ namespace Onix.Client.Report
                     }
                     temps.Add(amt);
                 }
+                else if (rc.DataType.Equals("DD"))
+                {
+                    //Display dash if zero
+
+                    String amt = CUtil.FormatNumber(data.GetFieldValue(rc.FieldName));
+                    if (amt.Equals("0.00"))
+                    {
+                        amt = "-";
+                    }
+                    temps.Add(amt);
+                }
                 else
                 {
                     temps.Add(data.GetFieldValue(rc.FieldName));
