@@ -225,6 +225,7 @@
     <Compile Include="Commons\CriteriaConfig\CCriteriaEntry.cs" />
     <Compile Include="UI\Printing\Reports\CReportInventory000_01_ItemList.cs" />
     <Compile Include="UI\Printing\Reports\CReportEmployee00_01_EmployeeLeave.cs" />
+    <Compile Include="UI\Printing\Reports\CReportInvoice004_01_InvoiceTransaction.cs" />
     <Compile Include="UI\Printing\Reports\CReportPayroll001_02_EmployeeListPayroll.cs" />
     <Compile Include="UI\Printing\Reports\CReportPayroll001_01_EmployeeListPayroll.cs" />
     <Compile Include="UI\ZCriteria\CCriteriaAuxilaryDocSale.cs" />

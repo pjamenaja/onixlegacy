@@ -4525,4 +4525,7 @@
   <data name="adjust_amount" xml:space="preserve">
     <value>Adjust Amt.</value>
   </data>
+  <data name="rpt_invoice_detail" xml:space="preserve">
+    <value>PS004_01 - Purchase transaction by invoice.</value>
+  </data>
 </root>

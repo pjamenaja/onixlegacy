@@ -4563,4 +4563,7 @@
   <data name="adjust_amount" xml:space="preserve">
     <value>หักเงิน</value>
   </data>
+  <data name="rpt_invoice_detail" xml:space="preserve">
+    <value>PS004_01 - รายงานซื้อแสดงรายการตามอินวอยซ์</value>
+  </data>
 </root>

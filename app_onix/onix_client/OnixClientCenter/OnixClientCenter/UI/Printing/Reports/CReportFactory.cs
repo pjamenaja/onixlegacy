@@ -220,6 +220,10 @@ namespace Onix.ClientCenter.Reports
                 CTable p3_a = new CTable("");
                 addReport(ReportGroupEnum.ReportGroupPurchase, "rpt_account_owner_payment", "CReportPayment001_02_OwnerAccountPurchase", p3_a);
 
+                CTable p3_b = new CTable("");
+                addReport(ReportGroupEnum.ReportGroupPurchase, "rpt_invoice_detail", "CReportInvoice004_01_InvoiceTransaction", p3_b);
+
+
                 CTable p3_0 = new CTable("");
                 p3_0.SetFieldValue("CATEGORY", "2");
                 addReport(ReportGroupEnum.ReportGroupPurchase, "rpt_ap_movement", "CReportArAp001_01_Movement", p3_0);
