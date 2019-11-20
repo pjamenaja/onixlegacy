@@ -14,32 +14,37 @@ namespace Onix.ClientCenter.Reports
     public class CReportInvoice004_01_InvoiceTransaction : CBaseReport
     {
         private Hashtable rowdef = new Hashtable();
-        private ArrayList sums = new ArrayList();
+
 
         private double[] totals = new double[8] { 0, 0, 0, 0, 0, 0, 0, 0 };
         private CTable extParam = null;
-        private Hashtable refundHash = null;
-        private Hashtable paymentTypeHash = null;
+
+        private ArrayList sums = new ArrayList();
+        private ArrayList groupSums = new ArrayList();
+        private String prevKey = "";
 
         public CReportInvoice004_01_InvoiceTransaction() : base()
         {
-            refundHash = CUtil.ObserableCollectionToHash(CMasterReference.Instance.RefundStatus, "MasterID");
-            paymentTypeHash = CUtil.ObserableCollectionToHash(CMasterReference.Instance.AccountSalePayTypes, "MasterID");            
+            //refundHash = CUtil.ObserableCollectionToHash(CMasterReference.Instance.RefundStatus, "MasterID");
+            //paymentTypeHash = CUtil.ObserableCollectionToHash(CMasterReference.Instance.AccountSalePayTypes, "MasterID");            
         }
 
         private void configReport()
         {
+
+            addConfig("L0", 16, "docno", HorizontalAlignment.Center, HorizontalAlignment.Left, HorizontalAlignment.Center, "SUPPLIER_CODE", "S", false);
+            addConfig("L0", 27, "DocuDate", HorizontalAlignment.Center, HorizontalAlignment.Left, HorizontalAlignment.Center, "DOCUMENT_DATE", "S", false);
+            addConfig("L0", 54, "supplier_name", HorizontalAlignment.Center, HorizontalAlignment.Left, HorizontalAlignment.Center, "SUPPLIER_NAME_THAI", "S", false);
+
             addConfig("L1", 5, "number", HorizontalAlignment.Center, HorizontalAlignment.Center, HorizontalAlignment.Center, "", "RN", false);
-            addConfig("L1", 10, "date", HorizontalAlignment.Center, HorizontalAlignment.Center, HorizontalAlignment.Center, "DOCUMENT_DATE", "DT", false);
-            addConfig("L1", 12, "inventory_doc_no", HorizontalAlignment.Center, HorizontalAlignment.Left, HorizontalAlignment.Center, "DOCUMENT_NO", "S", false);
-            addConfig("L1", 10, "invoice_no", HorizontalAlignment.Center, HorizontalAlignment.Left, HorizontalAlignment.Left, "REF_DOCUMENT_NO", "S", false);
-            addConfig("L1", 24, "supplier_name", HorizontalAlignment.Center, HorizontalAlignment.Left, HorizontalAlignment.Left, "ENTITY_NAME", "S", false);
-            addConfig("L1", 12, "payment_type", HorizontalAlignment.Center, HorizontalAlignment.Left, HorizontalAlignment.Center, "PAYMENT_TYPE_DESC", "S", false);
-            addConfig("L1", 15, "bank_name", HorizontalAlignment.Center, HorizontalAlignment.Left, HorizontalAlignment.Left, "BANK_NAME", "S", false);
-            addConfig("L1", 15, "AccNo", HorizontalAlignment.Center, HorizontalAlignment.Left, HorizontalAlignment.Center, "ACCOUNT_NO", "S", false);
-            addConfig("L1", 12, "refund_status", HorizontalAlignment.Center, HorizontalAlignment.Left, HorizontalAlignment.Center, "REFUND_STATUS_DESC", "S", false);
-            addConfig("L1", 12, "payment_doc_no", HorizontalAlignment.Center, HorizontalAlignment.Left, HorizontalAlignment.Center, "PAYMENT_DOCUMENT_NO", "S", false);
-            addConfig("L1", 10, "amount", HorizontalAlignment.Center, HorizontalAlignment.Right, HorizontalAlignment.Right, "PAID_AMOUNT", "D", true);
+            addConfig("L1", 11, "item_code", HorizontalAlignment.Center, HorizontalAlignment.Center, HorizontalAlignment.Center, "DOCUMENT_DATE", "DT", false);
+            addConfig("L1", 27, "item_name_thai", HorizontalAlignment.Center, HorizontalAlignment.Left, HorizontalAlignment.Left, "DOCUMENT_NO", "S", false);
+            addConfig("L1", 9, "quantity", HorizontalAlignment.Center, HorizontalAlignment.Right, HorizontalAlignment.Right, "TX_QTY_AVG_IN", "DE", true);
+            addConfig("L1", 9, "unit_price", HorizontalAlignment.Center, HorizontalAlignment.Right, HorizontalAlignment.Right, "TX_AMT_AVG_IN", "DE", true);
+            addConfig("L1", 9, "total_amount", HorizontalAlignment.Center, HorizontalAlignment.Right, HorizontalAlignment.Right, "TX_QTY_AVG_OUT", "DE", true);
+            addConfig("L1", 9, "discount", HorizontalAlignment.Center, HorizontalAlignment.Right, HorizontalAlignment.Right, "TX_AMT_AVG_OUT", "DE", true);
+            addConfig("L1", 9, "total_amount_afterDiscount", HorizontalAlignment.Center, HorizontalAlignment.Right, HorizontalAlignment.Right, "END_QTY_AVG", "D", true);
+            addConfig("L1", 9, "package_item_type", HorizontalAlignment.Center, HorizontalAlignment.Right, HorizontalAlignment.Right, "END_AMOUNT_AVG", "D", true);
         }
 
         protected override void createRowTemplates()
@@ -49,6 +54,13 @@ namespace Onix.ClientCenter.Reports
 
             configReport();
 
+            nm = "HEADER_LEVEL0";
+            CRow h0 = new CRow(nm, 30, getColumnCount("L0"), defMargin);
+            h0.SetFont(null, FontStyles.Normal, 0, FontWeights.Bold);
+            rowdef[nm] = h0;
+
+            configRow("L0", h0, "H");
+
             nm = "HEADER_LEVEL1";
             CRow h2 = new CRow(nm, 30, getColumnCount("L1"), defMargin);
             h2.SetFont(null, FontStyles.Normal, 0, FontWeights.Bold);
@@ -57,12 +69,20 @@ namespace Onix.ClientCenter.Reports
             configRow("L1", h2, "H");
 
 
-            nm = "DATA_LEVEL1";
-            CRow r0 = new CRow(nm, 30, getColumnCount("L1"), defMargin);
-            r0.SetFont(null, FontStyles.Normal, 0, FontWeights.Normal);
+
+            nm = "DATA_LEVEL0";
+            CRow r0 = new CRow(nm, 30, getColumnCount("L0"), defMargin);
+            r0.SetFont(null, FontStyles.Normal, 0, FontWeights.Bold);
             rowdef[nm] = r0;
 
-            configRow("L1", r0, "B");
+            configRow("L0", r0, "B");
+
+            nm = "DATA_LEVEL1";
+            CRow r1 = new CRow(nm, 30, getColumnCount("L1"), defMargin);
+            r1.SetFont(null, FontStyles.Normal, 0, FontWeights.Normal);
+            rowdef[nm] = r1;
+
+            configRow("L1", r1, "B");
 
 
             nm = "FOOTER_LEVEL1";
@@ -75,7 +95,17 @@ namespace Onix.ClientCenter.Reports
             baseTemplateName = "DATA_LEVEL1";
         }
 
-        private void createDataHeaderRow(UReportPage page)
+        private void createDataHeaderRow1(UReportPage page)
+        {
+            CRow r = (CRow)rowdef["HEADER_LEVEL0"];
+
+            r.FillColumnsText(getColumnHederTexts("L0", "H"));
+
+            ConstructUIRow(page, r);
+            AvailableSpace = AvailableSpace - r.GetHeight();
+        }
+
+        private void createDataHeaderRow2(UReportPage page)
         {
             CRow r = (CRow)rowdef["HEADER_LEVEL1"];
 
@@ -90,7 +120,8 @@ namespace Onix.ClientCenter.Reports
             UReportPage page = new UReportPage();
 
             CreateGlobalHeaderRow(page);
-            createDataHeaderRow(page);
+            createDataHeaderRow1(page);
+            createDataHeaderRow2(page);
 
             page.Width = areaSize.Width;
             page.Height = areaSize.Height;
@@ -107,68 +138,104 @@ namespace Onix.ClientCenter.Reports
 
         protected override ArrayList getRecordSet()
         {
-            String refundStatus = Parameter.GetFieldValue("REFUND_STATUS");
-            Parameter.SetFieldValue("IS_NULL_REFUND_STATUS", "");
-            if (refundStatus.Equals("999"))
-            {
-                Parameter.SetFieldValue("IS_NULL_REFUND_STATUS", "Y");
-                Parameter.SetFieldValue("REFUND_STATUS", "");
-            }
-
-            Parameter.SetFieldValue("OWNER_FLAG", "Y");
-            ArrayList arr = OnixWebServiceAPI.GetListAPI("GetPaymentTransactionList", "PAYMENT_TRANSACTION_LIST", Parameter);
+            ArrayList arr = OnixWebServiceAPI.GetListAPI("GetInventoryItemMovementList", "INVENTORY_MOVEMENT_LIST", Parameter);
             return (arr);
         }
 
         private void populateData(CTable data)
         {
-            String refundStatus = data.GetFieldValue("REFUND_STATUS");
+            //String refundStatus = data.GetFieldValue("REFUND_STATUS");
 
-            MMasterRef mr = (MMasterRef)refundHash[refundStatus];
-            String refundDesc = CLanguage.getValue("NotSelected");
-            if (mr != null)
+            //MMasterRef mr = (MMasterRef)refundHash[refundStatus];
+            //String refundDesc = CLanguage.getValue("NotSelected");
+            //if (mr != null)
+            //{
+            //    refundDesc = mr.Description;
+            //}
+            //data.SetFieldValue("REFUND_STATUS_DESC", refundDesc);
+
+            //String paymentType = data.GetFieldValue("PAYMENT_TYPE");
+            //String paymentDesc = ((MMasterRef)paymentTypeHash[paymentType]).Description;
+            //data.SetFieldValue("PAYMENT_TYPE_DESC", paymentDesc);
+        }
+
+        private void manipulateRow(CTable o)
+        {
+            string tx = o.GetFieldValue("DIRECTION");
+            if (tx.Equals("B"))
             {
-                refundDesc = mr.Description;
+                o.SetFieldValue("DOCUMENT_NO", "ยกมา");
             }
-            data.SetFieldValue("REFUND_STATUS_DESC", refundDesc);
+        }
 
-            String paymentType = data.GetFieldValue("PAYMENT_TYPE");
-            String paymentDesc = ((MMasterRef)paymentTypeHash[paymentType]).Description;
-            data.SetFieldValue("PAYMENT_TYPE_DESC", paymentDesc);
+        private String getGroupKey(CTable o)
+        {
+            return o.GetFieldValue("ITEM_ID") + "-" + o.GetFieldValue("ITEM_ID"); ;
         }
 
         public override CReportDataProcessingProperty DataToProcessingProperty(CTable o, ArrayList rows, int row)
         {
+            String tmpPrevKey = prevKey;
             int rowcount = rows.Count;
             CReportDataProcessingProperty rpp = new CReportDataProcessingProperty();
 
+            ArrayList keepTotal1 = copyTotalArray(groupSums);
             ArrayList keepTotal2 = copyTotalArray(sums);
+
 
             CRow r = (CRow)rowdef["DATA_LEVEL1"];
             CRow nr = r.Clone();
 
-            populateData(o);
-
             double newh = AvailableSpace - nr.GetHeight();
+            manipulateRow(o);
+
             if (newh > 0)
             {
+                String groupKey = getGroupKey(o);
+                if (row == 0)
+                {
+                    prevKey = groupKey;
+                }
+
+                if (!groupKey.Equals(prevKey) || (row == 0))
+                {
+                    if (row != 0)
+                    {
+                        CRow ft = (CRow)rowdef["FOOTER_LEVEL1"];
+                        CRow ftr = ft.Clone();
+
+                        ArrayList projTotals = displayTotalTexts("L1", groupSums, 1, "total");
+                        ftr.FillColumnsText(projTotals);
+
+                        rpp.AddReportRow(ftr);
+                        newh = newh - ftr.GetHeight();
+
+                        groupSums = new ArrayList();
+                    }
+
+                    prevKey = groupKey;
+
+                    CRow dt0 = (CRow)rowdef["DATA_LEVEL0"];
+                    CRow dtr0 = dt0.Clone();
+                    ArrayList tempRows0 = getColumnDataTexts("L0", 0, o);
+                    dtr0.FillColumnsText(tempRows0);
+
+                    rpp.AddReportRow(dtr0);
+                    newh = newh - dtr0.GetHeight();
+                }
+
                 ArrayList temps = getColumnDataTexts("L1", row + 1, o);
                 nr.FillColumnsText(temps);
                 rpp.AddReportRow(nr);
 
                 sums = sumDataTexts("L1", sums, temps);
+                groupSums = sumDataTexts("L1", groupSums, temps);
+                //OverrideSumFields(groupSums, o);
 
                 if (row == rowcount - 1)
                 {
-                    //=== End row
-                    CRow ft1 = (CRow)rowdef["FOOTER_LEVEL1"];
-                    CRow ftr1 = ft1.Clone();
-
-                    ArrayList totals = displayTotalTexts("L1", sums, 1, "total");
-                    ftr1.FillColumnsText(totals);
-
-                    rpp.AddReportRow(ftr1);
-                    newh = newh - ftr1.GetHeight();
+                    double h = addNewFooterRow(rowdef, rpp, "FOOTER_LEVEL1", "L1", "total", groupSums);
+                    newh = newh - h;
                 }
             }
 
@@ -177,7 +244,9 @@ namespace Onix.ClientCenter.Reports
                 rpp.IsNewPageRequired = true;
 
                 //พวก sum ทั้งหลายจะถูกคืนค่ากลับไปด้วย เพราะถูกบวกไปแล้ว
+                groupSums = keepTotal1;
                 sums = keepTotal2;
+                prevKey = tmpPrevKey;
             }
             else
             {
