@@ -417,6 +417,24 @@ class SalePurchaseReport extends CBaseController
         return([$param, $p]);
     }
 
+    public static function GetPurchaseInvoiceTxList($db, $param, $data)
+    {
+//CSql::SetDumpSQL(true);           
+        self::populateDocTypeDrCrSet($data);
+        self::populateDefaultDocStatusSet($data);
+
+        $u = new MAccountDocItem($db);
+        $u->OverideOrderBy(6, 'ORDER BY AD.DOCUMENT_DATE ASC, AD.DOCUMENT_NO ASC, AI.ACCOUNT_DOC_ITEM_ID ASC ');
+
+        $data->setFieldValue('BY_VOID_FLAG', 'N');
+        list($cnt, $rows) = $u->Query(6, $data);
+
+        $p = new CTable($u->GetTableName());
+        self::PopulateRow($p, $cnt, 1, 'SALE_PURCHASE_DOC_TX_LIST', $rows);
+
+        return([$param, $p]);
+    }    
+
     public static function GetSalePurchaseTxByPoProjectGroup($db, $param, $data)
     {        
 //CSql::SetDumpSQL(true); 

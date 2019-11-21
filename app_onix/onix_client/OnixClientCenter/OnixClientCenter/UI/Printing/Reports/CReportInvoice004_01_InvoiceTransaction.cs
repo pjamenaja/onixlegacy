@@ -32,19 +32,19 @@ namespace Onix.ClientCenter.Reports
         private void configReport()
         {
 
-            addConfig("L0", 16, "docno", HorizontalAlignment.Center, HorizontalAlignment.Left, HorizontalAlignment.Center, "SUPPLIER_CODE", "S", false);
-            addConfig("L0", 27, "DocuDate", HorizontalAlignment.Center, HorizontalAlignment.Left, HorizontalAlignment.Center, "DOCUMENT_DATE", "S", false);
-            addConfig("L0", 54, "supplier_name", HorizontalAlignment.Center, HorizontalAlignment.Left, HorizontalAlignment.Center, "SUPPLIER_NAME_THAI", "S", false);
+            addConfig("L0", 16, "docno", HorizontalAlignment.Center, HorizontalAlignment.Left, HorizontalAlignment.Center, "DOCUMENT_NO", "S", false);
+            addConfig("L0", 27, "DocuDate", HorizontalAlignment.Center, HorizontalAlignment.Left, HorizontalAlignment.Center, "DOCUMENT_DATE", "DT", false);
+            addConfig("L0", 54, "supplier_name", HorizontalAlignment.Center, HorizontalAlignment.Left, HorizontalAlignment.Center, "ENTITY_NAME", "S", false);
 
             addConfig("L1", 5, "number", HorizontalAlignment.Center, HorizontalAlignment.Center, HorizontalAlignment.Center, "", "RN", false);
-            addConfig("L1", 11, "item_code", HorizontalAlignment.Center, HorizontalAlignment.Center, HorizontalAlignment.Center, "DOCUMENT_DATE", "DT", false);
-            addConfig("L1", 27, "item_name_thai", HorizontalAlignment.Center, HorizontalAlignment.Left, HorizontalAlignment.Left, "DOCUMENT_NO", "S", false);
-            addConfig("L1", 9, "quantity", HorizontalAlignment.Center, HorizontalAlignment.Right, HorizontalAlignment.Right, "TX_QTY_AVG_IN", "DE", true);
-            addConfig("L1", 9, "unit_price", HorizontalAlignment.Center, HorizontalAlignment.Right, HorizontalAlignment.Right, "TX_AMT_AVG_IN", "DE", true);
-            addConfig("L1", 9, "total_amount", HorizontalAlignment.Center, HorizontalAlignment.Right, HorizontalAlignment.Right, "TX_QTY_AVG_OUT", "DE", true);
-            addConfig("L1", 9, "discount", HorizontalAlignment.Center, HorizontalAlignment.Right, HorizontalAlignment.Right, "TX_AMT_AVG_OUT", "DE", true);
-            addConfig("L1", 9, "total_amount_afterDiscount", HorizontalAlignment.Center, HorizontalAlignment.Right, HorizontalAlignment.Right, "END_QTY_AVG", "D", true);
-            addConfig("L1", 9, "package_item_type", HorizontalAlignment.Center, HorizontalAlignment.Right, HorizontalAlignment.Right, "END_AMOUNT_AVG", "D", true);
+            addConfig("L1", 11, "item_code", HorizontalAlignment.Center, HorizontalAlignment.Center, HorizontalAlignment.Center, "ITEM_CODE", "S", false);
+            addConfig("L1", 27, "item_name_thai", HorizontalAlignment.Center, HorizontalAlignment.Left, HorizontalAlignment.Left, "ITEM_NAME_THAI", "S", false);
+            addConfig("L1", 9, "quantity", HorizontalAlignment.Center, HorizontalAlignment.Right, HorizontalAlignment.Right, "QUANTITY", "D", false);
+            addConfig("L1", 9, "unit_price", HorizontalAlignment.Center, HorizontalAlignment.Right, HorizontalAlignment.Right, "UNIT_PRICE", "D", false);
+            addConfig("L1", 9, "total_amount", HorizontalAlignment.Center, HorizontalAlignment.Right, HorizontalAlignment.Right, "TOTAL_AMT", "D", true);
+            addConfig("L1", 9, "discount", HorizontalAlignment.Center, HorizontalAlignment.Right, HorizontalAlignment.Right, "DISCOUNT_AMT", "D", true);
+            addConfig("L1", 9, "total_amount_afterDiscount", HorizontalAlignment.Center, HorizontalAlignment.Right, HorizontalAlignment.Right, "TOTAL_AFTER_DISCOUNT", "D", true);
+            addConfig("L1", 9, "package_item_type", HorizontalAlignment.Center, HorizontalAlignment.Center, HorizontalAlignment.Right, "SELECTION_TYPE", "S", false);
         }
 
         protected override void createRowTemplates()
@@ -138,39 +138,17 @@ namespace Onix.ClientCenter.Reports
 
         protected override ArrayList getRecordSet()
         {
-            ArrayList arr = OnixWebServiceAPI.GetListAPI("GetInventoryItemMovementList", "INVENTORY_MOVEMENT_LIST", Parameter);
+            ArrayList arr = OnixWebServiceAPI.GetListAPI("GetPurchaseInvoiceTxList", "SALE_PURCHASE_DOC_TX_LIST", Parameter);
             return (arr);
-        }
-
-        private void populateData(CTable data)
-        {
-            //String refundStatus = data.GetFieldValue("REFUND_STATUS");
-
-            //MMasterRef mr = (MMasterRef)refundHash[refundStatus];
-            //String refundDesc = CLanguage.getValue("NotSelected");
-            //if (mr != null)
-            //{
-            //    refundDesc = mr.Description;
-            //}
-            //data.SetFieldValue("REFUND_STATUS_DESC", refundDesc);
-
-            //String paymentType = data.GetFieldValue("PAYMENT_TYPE");
-            //String paymentDesc = ((MMasterRef)paymentTypeHash[paymentType]).Description;
-            //data.SetFieldValue("PAYMENT_TYPE_DESC", paymentDesc);
         }
 
         private void manipulateRow(CTable o)
         {
-            string tx = o.GetFieldValue("DIRECTION");
-            if (tx.Equals("B"))
-            {
-                o.SetFieldValue("DOCUMENT_NO", "ยกมา");
-            }
         }
 
         private String getGroupKey(CTable o)
         {
-            return o.GetFieldValue("ITEM_ID") + "-" + o.GetFieldValue("ITEM_ID"); ;
+            return o.GetFieldValue("DOCUMENT_NO");
         }
 
         public override CReportDataProcessingProperty DataToProcessingProperty(CTable o, ArrayList rows, int row)
@@ -263,7 +241,7 @@ namespace Onix.ClientCenter.Reports
 
         private void LoadDocTypeCombo(ComboBox cbo, String id)
         {
-            CUtil.LoadComboFromCollection(cbo, true, id, CMasterReference.Instance.PurchasePaymentDocTypes);
+            CUtil.LoadComboFromCollection(cbo, true, id, CMasterReference.Instance.PurchaseExpenseDocTypes);
         }
 
         private void LoadPaymentTypeCombo(ComboBox cbo, String id)

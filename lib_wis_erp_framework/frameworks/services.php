@@ -296,6 +296,7 @@ $ONIX_SERVICES_LIST = [
     'GetProfitByDocTypeProject' => [$bp . 'controllers/SalePurchase/SalePurchaseReport.php', 'GetProfitByDocTypeProject', $userLvl],
     'GetProfitByDocTypeProjectGroup' => [$bp . 'controllers/SalePurchase/SalePurchaseReport.php', 'GetProfitByDocTypeProjectGroup', $userLvl],
     'GetVatAmountByDocTypeInMonth' => [$bp . 'controllers/SalePurchase/SalePurchaseReport.php', 'GetVatAmountByDocTypeInMonth', $userLvl],
+    'GetPurchaseInvoiceTxList' => [$bp . 'controllers/SalePurchase/SalePurchaseReport.php', 'GetPurchaseInvoiceTxList', $userLvl],
     
     //Global Variable
     'GetGlobalVariableList' => [$bp . 'controllers/General/GlobalVariable.php', 'GetGlobalVariableList', $userLvl],
