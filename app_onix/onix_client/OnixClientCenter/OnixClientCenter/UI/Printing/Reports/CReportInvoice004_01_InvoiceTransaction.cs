@@ -25,8 +25,6 @@ namespace Onix.ClientCenter.Reports
 
         public CReportInvoice004_01_InvoiceTransaction() : base()
         {
-            //refundHash = CUtil.ObserableCollectionToHash(CMasterReference.Instance.RefundStatus, "MasterID");
-            //paymentTypeHash = CUtil.ObserableCollectionToHash(CMasterReference.Instance.AccountSalePayTypes, "MasterID");            
         }
 
         private void configReport()
@@ -37,14 +35,14 @@ namespace Onix.ClientCenter.Reports
             addConfig("L0", 54, "supplier_name", HorizontalAlignment.Center, HorizontalAlignment.Left, HorizontalAlignment.Center, "ENTITY_NAME", "S", false);
 
             addConfig("L1", 5, "number", HorizontalAlignment.Center, HorizontalAlignment.Center, HorizontalAlignment.Center, "", "RN", false);
-            addConfig("L1", 11, "item_code", HorizontalAlignment.Center, HorizontalAlignment.Center, HorizontalAlignment.Center, "ITEM_CODE", "S", false);
-            addConfig("L1", 27, "item_name_thai", HorizontalAlignment.Center, HorizontalAlignment.Left, HorizontalAlignment.Left, "ITEM_NAME_THAI", "S", false);
+            addConfig("L1", 11, "item_code", HorizontalAlignment.Center, HorizontalAlignment.Center, HorizontalAlignment.Center, "DISPLAY_CODE", "S", false);
+            addConfig("L1", 27, "item_name_thai", HorizontalAlignment.Center, HorizontalAlignment.Left, HorizontalAlignment.Left, "DISPLAY_NAME", "S", false);
             addConfig("L1", 9, "quantity", HorizontalAlignment.Center, HorizontalAlignment.Right, HorizontalAlignment.Right, "QUANTITY", "D", false);
             addConfig("L1", 9, "unit_price", HorizontalAlignment.Center, HorizontalAlignment.Right, HorizontalAlignment.Right, "UNIT_PRICE", "D", false);
             addConfig("L1", 9, "total_amount", HorizontalAlignment.Center, HorizontalAlignment.Right, HorizontalAlignment.Right, "TOTAL_AMT", "D", true);
             addConfig("L1", 9, "discount", HorizontalAlignment.Center, HorizontalAlignment.Right, HorizontalAlignment.Right, "DISCOUNT_AMT", "D", true);
             addConfig("L1", 9, "total_amount_afterDiscount", HorizontalAlignment.Center, HorizontalAlignment.Right, HorizontalAlignment.Right, "TOTAL_AFTER_DISCOUNT", "D", true);
-            addConfig("L1", 9, "package_item_type", HorizontalAlignment.Center, HorizontalAlignment.Center, HorizontalAlignment.Right, "SELECTION_TYPE", "S", false);
+            addConfig("L1", 9, "package_item_type", HorizontalAlignment.Center, HorizontalAlignment.Left, HorizontalAlignment.Right, "SELECTION_TYPE_NAME", "S", false);
         }
 
         protected override void createRowTemplates()
@@ -144,6 +142,33 @@ namespace Onix.ClientCenter.Reports
 
         private void manipulateRow(CTable o)
         {
+            string code = "";
+            string name = "";
+            string typeName = "";
+            string selectType = o.GetFieldValue("SELECTION_TYPE");
+
+            if (selectType.Equals("2"))
+            {
+                code = o.GetFieldValue("ITEM_CODE");
+                name = o.GetFieldValue("ITEM_NAME");
+                typeName = CLanguage.getValue("item");
+            }
+            else if (selectType.Equals("1"))
+            {
+                code = o.GetFieldValue("SERVICE_CODE");
+                name = o.GetFieldValue("SERVICE_NAME");
+                typeName = CLanguage.getValue("service");
+            }
+            else
+            {
+                code = CLanguage.getValue("free_text");
+                name = o.GetFieldValue("FREE_TEXT");
+                typeName = code;
+            }
+
+            o.SetFieldValue("SELECTION_TYPE_NAME", typeName);
+            o.SetFieldValue("DISPLAY_CODE", code);
+            o.SetFieldValue("DISPLAY_NAME", name);
         }
 
         private String getGroupKey(CTable o)
