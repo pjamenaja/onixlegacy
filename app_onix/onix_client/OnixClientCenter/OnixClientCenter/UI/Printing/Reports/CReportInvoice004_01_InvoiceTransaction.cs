@@ -150,7 +150,7 @@ namespace Onix.ClientCenter.Reports
             if (selectType.Equals("2"))
             {
                 code = o.GetFieldValue("ITEM_CODE");
-                name = o.GetFieldValue("ITEM_NAME");
+                name = o.GetFieldValue("ITEM_NAME_THAI");
                 typeName = CLanguage.getValue("item");
             }
             else if (selectType.Equals("1"))
