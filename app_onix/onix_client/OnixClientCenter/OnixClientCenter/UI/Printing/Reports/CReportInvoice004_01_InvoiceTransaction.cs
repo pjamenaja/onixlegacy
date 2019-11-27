@@ -31,9 +31,11 @@ namespace Onix.ClientCenter.Reports
         {
 
             addConfig("L0", 16, "docno", HorizontalAlignment.Center, HorizontalAlignment.Left, HorizontalAlignment.Center, "DOCUMENT_NO", "S", false);
-            addConfig("L0", 27, "DocuDate", HorizontalAlignment.Center, HorizontalAlignment.Left, HorizontalAlignment.Center, "DOCUMENT_DATE", "DT", false);
-            addConfig("L0", 54, "supplier_name", HorizontalAlignment.Center, HorizontalAlignment.Left, HorizontalAlignment.Center, "ENTITY_NAME", "S", false);
-
+            addConfig("L0", 13, "DocuDate", HorizontalAlignment.Center, HorizontalAlignment.Left, HorizontalAlignment.Center, "DOCUMENT_DATE", "DT", false);
+            addConfig("L0", 14, "invoice_no", HorizontalAlignment.Center, HorizontalAlignment.Left, HorizontalAlignment.Center, "REF_DOCUMENT_NO", "S", false);
+            addConfig("L0", 18, "invoice_date", HorizontalAlignment.Center, HorizontalAlignment.Left, HorizontalAlignment.Center, "REF_DOCUMENT_DATE", "DT", false);
+            addConfig("L0", 36, "supplier_name", HorizontalAlignment.Center, HorizontalAlignment.Left, HorizontalAlignment.Center, "ENTITY_NAME", "S", false);
+            
             addConfig("L1", 5, "number", HorizontalAlignment.Center, HorizontalAlignment.Center, HorizontalAlignment.Center, "", "RN", false);
             addConfig("L1", 11, "item_code", HorizontalAlignment.Center, HorizontalAlignment.Center, HorizontalAlignment.Center, "DISPLAY_CODE", "S", false);
             addConfig("L1", 27, "item_name_thai", HorizontalAlignment.Center, HorizontalAlignment.Left, HorizontalAlignment.Left, "DISPLAY_NAME", "S", false);
@@ -233,11 +235,13 @@ namespace Onix.ClientCenter.Reports
 
                 sums = sumDataTexts("L1", sums, temps);
                 groupSums = sumDataTexts("L1", groupSums, temps);
-                //OverrideSumFields(groupSums, o);
 
                 if (row == rowcount - 1)
                 {
                     double h = addNewFooterRow(rowdef, rpp, "FOOTER_LEVEL1", "L1", "total", groupSums);
+                    newh = newh - h;
+
+                    h = addNewFooterRow(rowdef, rpp, "FOOTER_LEVEL1", "L1", "total", sums);
                     newh = newh - h;
                 }
             }
