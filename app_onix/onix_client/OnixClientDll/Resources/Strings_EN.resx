@@ -4528,4 +4528,7 @@
   <data name="rpt_invoice_detail" xml:space="preserve">
     <value>PS004_01 - Purchase transaction by invoice.</value>
   </data>
+  <data name="rpt_employee_tax" xml:space="preserve">
+    <value>HR001_04 - Employee Tax Records</value>
+  </data>
 </root>

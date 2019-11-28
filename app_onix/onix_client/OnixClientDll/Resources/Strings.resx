@@ -4566,4 +4566,7 @@
   <data name="rpt_invoice_detail" xml:space="preserve">
     <value>PS004_01 - รายงานซื้อแสดงรายการตามอินวอยซ์</value>
   </data>
+  <data name="rpt_employee_tax" xml:space="preserve">
+    <value>HR001_04 - รายงานการหักภาษีพนักงาน</value>
+  </data>
 </root>
