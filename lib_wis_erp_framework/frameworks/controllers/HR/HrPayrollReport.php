@@ -83,7 +83,91 @@ class HrPayrollReport extends CBaseController
         self::PopulateRow($p, count($accums), 1, 'PAYROLL_EMPLOYEE_ACCUM_LIST', $accums);
         
         return([$param, $p]);
-    }     
+    }   
+    
+
+    private static function PopulateEmployeeTaxMonth($db, $param, $data, $taxByMonth)
+    {
+        $months = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'];
+        $year = $data->getFieldValue('TAX_YEAR');
+        
+        $orders = array();
+        $od = new CTable('');
+        $od->setFieldValue('COLUMN_KEY', 'employee_name');
+        $od->setFieldValue('ORDER_BY', 'ASC');
+        array_push($orders, $od);
+        $data->AddChildArray('@ORDER_BY_COLUMNS', $orders);
+
+        list($p, $d) = Employee::GetEmployeeList($db, $param, $data);
+        $emps = $d->GetChildArray("EMPLOYEE_LIST");
+
+        $arr = array();
+        foreach ($emps as $emp)
+        {
+            $empId = $emp->getFieldValue('EMPLOYEE_ID');
+            $found = false;
+            $sum = 0.00;
+
+            foreach ($months as $mm)
+            {
+                $yyyymm = "$year/$mm";
+                $key = "$empId:$yyyymm";
+
+                $o = new CTable('');
+                if (array_key_exists($key, $taxByMonth))
+                {
+                    $o = $taxByMonth[$key];
+                    $found = true;
+                }
+
+                $amt = $o->GetFieldValue('DEDUCT_TAX');                
+                $emp->SetFieldValue($mm, $amt);  
+                
+                $sum = $sum + $amt;
+            }
+
+            if ($found)
+            {
+                $emp->SetFieldValue('TOTAL', $sum);  
+                array_push($arr, $emp);
+            }
+        }
+
+        $data->AddChildArray('EMPLOYEE_TAX_RECORDS', $arr);
+    }
+
+    private static function LoadEmployeeDeductionByMonth($db, $data)
+    {
+        $u = new MPayrollDocumentItem($db);     
+        list($cnt, $rows) = $u->Query(5, $data);
+
+        $fields = ['EMPLOYEE_ID', 'YYYYMM'];
+        $hash = CHelper::RowToHash($rows, $fields, ':');
+
+        return $hash;
+    }
+
+    public static function GetEmployeeTaxMonthSummary($db, $param, $data)
+    {
+        $year = $data->getFieldValue('TAX_YEAR');
+        if ($year == '')
+        {
+            $currDtm = CUtils::GetCurrentDateTimeInternal();
+            $year = substr($currDtm, 0, 4);
+        }
+
+        $beginDtm = "$year/01/01 00:00:00";
+        $endDtm = "$year/12/31 23:59:59";
+
+        $data->setFieldValue('TAX_YEAR', $year);
+        $data->setFieldValue('FROM_SALARY_DATE', $beginDtm);
+        $data->setFieldValue('TO_SALARY_DATE', $endDtm);
+
+        $deductByMonth = self::LoadEmployeeDeductionByMonth($db, $data);
+        self::PopulateEmployeeTaxMonth($db, $param, $data, $deductByMonth);
+        
+        return(array($param, $data));  
+    }        
 }
 
 ?>

@@ -31,25 +31,25 @@ namespace Onix.ClientCenter.Reports
             addConfig("L1", 20, "name_prefix", HorizontalAlignment.Center, HorizontalAlignment.Left, HorizontalAlignment.Center, "NAME_PREFIX_DESC", "S", false);
             addConfig("L1", 30, "employee_name", HorizontalAlignment.Center, HorizontalAlignment.Left, HorizontalAlignment.Center, "EMPLOYEE_NAME_LASTNAME", "S", false);
 
-            addConfig("L1", 15, "total", HorizontalAlignment.Center, HorizontalAlignment.Right, HorizontalAlignment.Right, "", "DD", true);
-            addConfig("L1", 15, "jan", HorizontalAlignment.Center, HorizontalAlignment.Center, HorizontalAlignment.Center, "", "DD", true);            
-            addConfig("L1", 15, "feb", HorizontalAlignment.Center, HorizontalAlignment.Right, HorizontalAlignment.Right, "", "DD", true);
-            addConfig("L1", 15, "mar", HorizontalAlignment.Center, HorizontalAlignment.Right, HorizontalAlignment.Right, "", "DD", true);
-            addConfig("L1", 15, "apr", HorizontalAlignment.Center, HorizontalAlignment.Right, HorizontalAlignment.Right, "", "DD", true);
-            addConfig("L1", 15, "may", HorizontalAlignment.Center, HorizontalAlignment.Right, HorizontalAlignment.Right, "", "DD", true);
-            addConfig("L1", 15, "jun", HorizontalAlignment.Center, HorizontalAlignment.Right, HorizontalAlignment.Right, "", "DD", true);
-            addConfig("L1", 15, "jul", HorizontalAlignment.Center, HorizontalAlignment.Right, HorizontalAlignment.Right, "", "DD", true);
-            addConfig("L1", 15, "aug", HorizontalAlignment.Center, HorizontalAlignment.Right, HorizontalAlignment.Right, "", "DD", true);
-            addConfig("L1", 15, "sep", HorizontalAlignment.Center, HorizontalAlignment.Right, HorizontalAlignment.Right, "", "DD", true);
-            addConfig("L1", 15, "oct", HorizontalAlignment.Center, HorizontalAlignment.Right, HorizontalAlignment.Right, "", "DD", true);
-            addConfig("L1", 15, "nov", HorizontalAlignment.Center, HorizontalAlignment.Right, HorizontalAlignment.Right, "", "DD", true);
-            addConfig("L1", 15, "dec", HorizontalAlignment.Center, HorizontalAlignment.Right, HorizontalAlignment.Right, "", "DD", true);
+            addConfig("L1", 15, "total", HorizontalAlignment.Center, HorizontalAlignment.Right, HorizontalAlignment.Right, "TOTAL", "DD", true);
+            addConfig("L1", 15, "jan", HorizontalAlignment.Center, HorizontalAlignment.Center, HorizontalAlignment.Center, "01", "DD", true);            
+            addConfig("L1", 15, "feb", HorizontalAlignment.Center, HorizontalAlignment.Right, HorizontalAlignment.Right, "02", "DD", true);
+            addConfig("L1", 15, "mar", HorizontalAlignment.Center, HorizontalAlignment.Right, HorizontalAlignment.Right, "03", "DD", true);
+            addConfig("L1", 15, "apr", HorizontalAlignment.Center, HorizontalAlignment.Right, HorizontalAlignment.Right, "04", "DD", true);
+            addConfig("L1", 15, "may", HorizontalAlignment.Center, HorizontalAlignment.Right, HorizontalAlignment.Right, "05", "DD", true);
+            addConfig("L1", 15, "jun", HorizontalAlignment.Center, HorizontalAlignment.Right, HorizontalAlignment.Right, "06", "DD", true);
+            addConfig("L1", 15, "jul", HorizontalAlignment.Center, HorizontalAlignment.Right, HorizontalAlignment.Right, "07", "DD", true);
+            addConfig("L1", 15, "aug", HorizontalAlignment.Center, HorizontalAlignment.Right, HorizontalAlignment.Right, "08", "DD", true);
+            addConfig("L1", 15, "sep", HorizontalAlignment.Center, HorizontalAlignment.Right, HorizontalAlignment.Right, "09", "DD", true);
+            addConfig("L1", 15, "oct", HorizontalAlignment.Center, HorizontalAlignment.Right, HorizontalAlignment.Right, "10", "DD", true);
+            addConfig("L1", 15, "nov", HorizontalAlignment.Center, HorizontalAlignment.Right, HorizontalAlignment.Right, "11", "DD", true);
+            addConfig("L1", 15, "dec", HorizontalAlignment.Center, HorizontalAlignment.Right, HorizontalAlignment.Right, "12", "DD", true);
 
         }
 
         protected override ArrayList getRecordSet()
         {
-            ArrayList arr = OnixWebServiceAPI.GetListAPI("GetEmployeeLeaveSummary", "EMPLOYEE_LEAVE_RECORDS", Parameter);
+            ArrayList arr = OnixWebServiceAPI.GetListAPI("GetEmployeeTaxMonthSummary", "EMPLOYEE_TAX_RECORDS", Parameter);
             return (arr);
         }
 
@@ -136,23 +136,6 @@ namespace Onix.ClientCenter.Reports
             return (sum);
         }
 
-        private void populateTempFields(CTable o)
-        {
-            String name = o.GetFieldValue("EMPLOYEE_NAME");
-            String lastName = o.GetFieldValue("EMPLOYEE_LASTNAME");
-            double refund = CUtil.StringToDouble(o.GetFieldValue("RECEIVE_REFUND"));
-            double coverage = CUtil.StringToDouble(o.GetFieldValue("DEDUCT_COVERAGE"));
-
-            o.SetFieldValue("EMPLOYEE_NAME_LASTNAME", name + " " + lastName);
-            double received = getSumArray(o, empReceives);
-            double deduct = getSumArray(o, empDeducts);
-            double total = received + refund - deduct - coverage;
-
-            o.SetFieldValue("EMP_DEDUCT_TOTAL", deduct.ToString());
-            o.SetFieldValue("EMP_RECEIVED_TOTAL", received.ToString());
-            o.SetFieldValue("EMP_AMOUNT_TOTAL", total.ToString());
-        }
-
         public override CReportDataProcessingProperty DataToProcessingProperty(CTable o, ArrayList rows, int row)
         {
             String tmpPrevKey = prevKeyId;
@@ -166,7 +149,6 @@ namespace Onix.ClientCenter.Reports
             CRow nr = r.Clone();
            
             double newh = AvailableSpace - nr.GetHeight();
-            populateTempFields(o);
 
             double h = 0.00;
 
@@ -233,10 +215,10 @@ namespace Onix.ClientCenter.Reports
             CEntry entry = null;
             ArrayList entries = new ArrayList();
 
-            entry = new CEntry("year", EntryType.ENTRY_TEXT_BOX, 200, false, "LEAVE_YEAR");
+            entry = new CEntry("year", EntryType.ENTRY_TEXT_BOX, 200, false, "TAX_YEAR");
             entries.Add(entry);
 
-            entry = new CEntry("employee_type", EntryType.ENTRY_COMBO_BOX, 200, true, "DOCUMENT_STATUS");
+            entry = new CEntry("employee_type", EntryType.ENTRY_COMBO_BOX, 200, true, "EMPLOYEE_TYPE");
             entry.SetComboLoadAndInit(LoadEmployeeTypeCombo, InitCombo, ObjectToIndex);
             entries.Add(entry);
 

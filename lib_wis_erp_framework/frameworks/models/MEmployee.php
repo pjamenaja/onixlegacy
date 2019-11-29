@@ -97,6 +97,7 @@ class MEmployee extends MBaseModel
                     'MR1.DESCRIPTION:S:EMPLOYEE_TYPE_NAME:N', 
                     'MR2.DESCRIPTION:S:EMPLOYEE_GROUP_NAME:N',
                     'MR3.DESCRIPTION:S:BRANCH_NAME:N',
+                    'MR4.DESCRIPTION:S:NAME_PREFIX_DESC:N',
 
                     'EP.CREATE_DATE:CD:CREATE_DATE:N',
                     'EP.MODIFY_DATE:MD:MODIFY_DATE:N'
@@ -112,7 +113,8 @@ class MEmployee extends MBaseModel
                    'FROM EMPLOYEE EP ' .
                        'LEFT OUTER JOIN MASTER_REF MR1 ON (EP.EMPLOYEE_TYPE = MR1.MASTER_ID) ' .                       
                        'LEFT OUTER JOIN MASTER_REF MR2 ON (EP.EMPLOYEE_GROUP = MR2.MASTER_ID) '.
-                       'LEFT OUTER JOIN MASTER_REF MR3 ON (EP.BRANCH_ID = MR3.MASTER_ID) ',
+                       'LEFT OUTER JOIN MASTER_REF MR3 ON (EP.BRANCH_ID = MR3.MASTER_ID) '.
+                       'LEFT OUTER JOIN MASTER_REF MR4 ON (EP.NAME_PREFIX = MR4.MASTER_ID) ',
             
     );
 

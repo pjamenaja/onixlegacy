@@ -186,6 +186,16 @@ class MPayrollDocumentItem extends MBaseModel
 
                     'PD.FROM_SALARY_DATE:FD:FROM_DOCUMENT_DATE:Y',
                     'PD.FROM_SALARY_DATE:TD:TO_DOCUMENT_DATE:Y',                     
+                  ],       
+                  
+
+                  [ # 5
+                    'PDI.EMPLOYEE_ID:REFID:EMPLOYEE_ID:Y',
+                    'SUBSTRING(PRD.FROM_SALARY_DATE from 1 for 7):S:YYYYMM:N',
+                    'SUM(PDI.DEDUCT_TAX):NZ:DEDUCT_TAX:N',
+
+                    'PRD.FROM_SALARY_DATE:FD:FROM_DOCUMENT_DATE:Y',
+                    'PRD.FROM_SALARY_DATE:TD:TO_DOCUMENT_DATE:Y', 
                   ],                  
     );
 
@@ -209,7 +219,10 @@ class MPayrollDocumentItem extends MBaseModel
                   'LEFT OUTER JOIN PAYROLL_DOCUMENT PD ON (PDI.PAYROLL_DOC_ID = PD.PAYROLL_DOC_ID) ' .
                   'LEFT OUTER JOIN EMPLOYEE EM ON (PDI.EMPLOYEE_ID = EM.EMPLOYEE_ID) ' .
                   'LEFT OUTER JOIN MASTER_REF MR1 ON (EM.NAME_PREFIX = MR1.MASTER_ID) '.
-                  'LEFT OUTER JOIN MASTER_REF MR2 ON (EM.BANK_ID = MR2.MASTER_ID) ',                    
+                  'LEFT OUTER JOIN MASTER_REF MR2 ON (EM.BANK_ID = MR2.MASTER_ID) ', 
+                  
+                'FROM PAYROLL_DOC_ITEM PDI ' .
+                  'LEFT OUTER JOIN PAYROLL_DOCUMENT PRD ON (PDI.PAYROLL_DOC_ID = PRD.PAYROLL_DOC_ID) ',                   
 
     );
 
@@ -224,6 +237,8 @@ class MPayrollDocumentItem extends MBaseModel
                 'GROUP BY PDI.EMPLOYEE_ID ORDER BY PDI.EMPLOYEE_ID ASC ',
 
                 'ORDER BY PD.FROM_SALARY_DATE ASC ,EM.EMPLOYEE_CODE ASC ',
+
+                'GROUP BY PDI.EMPLOYEE_ID, YYYYMM ORDER BY PDI.EMPLOYEE_ID ASC ',
     );
 
     function __construct($db) 
