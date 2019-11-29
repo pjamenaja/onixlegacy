@@ -631,7 +631,7 @@ namespace Onix.Client.Report
                     matched1 = true;
                 }
 
-                if (keyword.Contains("LEAVE_YEAR"))
+                if (keyword.Contains("LEAVE_YEAR") || keyword.Contains("TAX_YEAR"))
                 {
                     year = Parameter.GetFieldValue(keyword);
                     matched2 = true;
