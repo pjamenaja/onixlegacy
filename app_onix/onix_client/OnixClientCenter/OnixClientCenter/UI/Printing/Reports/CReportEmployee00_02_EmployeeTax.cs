@@ -17,9 +17,6 @@ namespace Onix.ClientCenter.Reports
         private ArrayList entitySums = new ArrayList();
         private ArrayList sums = new ArrayList();
 
-        private string[] empReceives = { "RECEIVE_INCOME", "RECEIVE_OT", "RECEIVE_POSITION", "RECEIVE_BONUS", "RECEIVE_TRANSPORTATION", "RECEIVE_TELEPHONE", "RECEIVE_ALLOWANCE", "RECEIVE_COMMISSION" };
-        private string[] empDeducts = { "DEDUCT_TAX", "DEDUCT_SOCIAL_SECURITY", "DEDUCT_PENALTY" };
-
         public CReportEmployee00_02_EmployeeTax() : base()
         {
         }
@@ -121,21 +118,6 @@ namespace Onix.ClientCenter.Reports
             return (true);
         }
 
-        private double getSumArray(CTable o, string[] arr)
-        {
-            double sum = 0.00;
-
-            foreach (String field in arr)
-            {
-                String tmp = o.GetFieldValue(field);
-                double amt = CUtil.StringToDouble(tmp);
-
-                sum = sum + amt;
-            }
-
-            return (sum);
-        }
-
         public override CReportDataProcessingProperty DataToProcessingProperty(CTable o, ArrayList rows, int row)
         {
             String tmpPrevKey = prevKeyId;
@@ -198,11 +180,6 @@ namespace Onix.ClientCenter.Reports
         {
             cbo.SelectedItem = "ObjSelf";
             cbo.DisplayMemberPath = "Description";
-        }
-
-        private void LoadMonthCombo(ComboBox cbo, String id)
-        {
-            CUtil.LoadComboFromCollection(cbo, false, id, CMasterReference.Instance.Months);
         }
 
         private void LoadEmployeeTypeCombo(ComboBox cbo, String id)

@@ -601,7 +601,7 @@ namespace Onix.Client.Report
             {
                 "FROM_DOCUMENT_DATE", "FROM_BALANCE_DATE", "FROM_CHEQUE_DATE",
                 "TO_DOCUMENT_DATE", "TO_BALANCE_DATE", "TO_CHEQUE_DATE",
-                "LEAVE_YEAR"
+                "LEAVE_YEAR", "TAX_YEAR"
             };
 
             String year = "";
