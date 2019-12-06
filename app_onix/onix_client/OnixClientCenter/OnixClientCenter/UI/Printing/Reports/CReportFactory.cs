@@ -80,19 +80,6 @@ namespace Onix.ClientCenter.Reports
                 addReport(ReportGroupEnum.ReportGroupInventory, "rpt_inv_movement_avg", "CReportInv002_01_InventoryMovementSum", o1);
                 addReport(ReportGroupEnum.ReportGroupInventory, "rpt_inv_movement_summary_avg", "CReportInv003_01_InventoryMoveSumDay", o1);
                 addReport(ReportGroupEnum.ReportGroupInventory, "rpt_inv_movement_summary_all", "CReportInventory003_03_MovementSummary", null);
-                //addReport(ReportGroupEnum.ReportGroupInventory, "rpt_inv_in", "CReportInv004_01_InventoryImportExport", o3);
-                //addReport(ReportGroupEnum.ReportGroupInventory, "rpt_inv_out", "CReportInv004_01_InventoryImportExport", o4);
-                //addReport(ReportGroupEnum.ReportGroupInventory, "rpt_inv_adjust", "CReportInv004_01_InventoryImportExport", o5);
-                //addReport(ReportGroupEnum.ReportGroupInventory, "rpt_inv_move", "CReportInv004_02_InventoryMove", o6);
-
-                //Cash
-
-                //addReport(ReportGroupEnum.ReportGroupCash, "rpt_cash_balance", "CReportCash001_01_CashBalance", null);
-                //addReport(ReportGroupEnum.ReportGroupCash, "rpt_cash_movement", "CReportCash002_01_CashMovement", null);
-                //addReport(ReportGroupEnum.ReportGroupCash, "rpt_cash_movement_summary", "CReportCash003_01_CashMovementSummary", null);
-                //addReport(ReportGroupEnum.ReportGroupCash, "rpt_cash_in", "CReportCash004_01_CashIn", null);
-                //addReport(ReportGroupEnum.ReportGroupCash, "rpt_cash_out", "CReportCash005_01_CashOut", null);
-                //addReport(ReportGroupEnum.ReportGroupCash, "rpt_cash_xfer", "CReportCash006_01_CashXfer", null);
 
                 addReport(ReportGroupEnum.ReportGroupCash, "rpt_cash_movement", "CReportCash001_01_CashMovementByAccount", null);
 
@@ -242,6 +229,7 @@ namespace Onix.ClientCenter.Reports
                 addReport(ReportGroupEnum.ReportGroupHr, "rpt_employee_payroll_by_date", "CReportPayroll001_02_EmployeeListPayroll", null);
                 addReport(ReportGroupEnum.ReportGroupHr, "rpt_employee_leave", "CReportEmployee00_01_EmployeeLeave", null);
                 addReport(ReportGroupEnum.ReportGroupHr, "rpt_employee_tax", "CReportEmployee00_02_EmployeeTax", null);
+                addReport(ReportGroupEnum.ReportGroupHr, "rpt_employee_social_insurance", "CReportEmployee00_03_EmployeeSocialInsure", null);
             }
         }
 

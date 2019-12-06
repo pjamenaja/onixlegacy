@@ -29,7 +29,6 @@ namespace Onix.ClientCenter.Reports
 
         private void configReport()
         {
-
             addConfig("L0", 16, "docno", HorizontalAlignment.Center, HorizontalAlignment.Left, HorizontalAlignment.Center, "DOCUMENT_NO", "S", false);
             addConfig("L0", 13, "DocuDate", HorizontalAlignment.Center, HorizontalAlignment.Left, HorizontalAlignment.Center, "DOCUMENT_DATE", "DT", false);
             addConfig("L0", 14, "invoice_no", HorizontalAlignment.Center, HorizontalAlignment.Left, HorizontalAlignment.Center, "REF_DOCUMENT_NO", "S", false);
@@ -44,7 +43,7 @@ namespace Onix.ClientCenter.Reports
             addConfig("L1", 9, "total_amount", HorizontalAlignment.Center, HorizontalAlignment.Right, HorizontalAlignment.Right, "TOTAL_AMT", "D", true);
             addConfig("L1", 9, "discount", HorizontalAlignment.Center, HorizontalAlignment.Right, HorizontalAlignment.Right, "DISCOUNT_AMT", "D", true);
             addConfig("L1", 9, "total_amount_afterDiscount", HorizontalAlignment.Center, HorizontalAlignment.Right, HorizontalAlignment.Right, "TOTAL_AFTER_DISCOUNT", "D", true);
-            addConfig("L1", 9, "package_item_type", HorizontalAlignment.Center, HorizontalAlignment.Left, HorizontalAlignment.Right, "SELECTION_TYPE_NAME", "S", false);
+            addConfig("L1", 9, "vat_amount", HorizontalAlignment.Center, HorizontalAlignment.Right, HorizontalAlignment.Right, "VAT_TAX_AMT", "D", true);
         }
 
         protected override void createRowTemplates()

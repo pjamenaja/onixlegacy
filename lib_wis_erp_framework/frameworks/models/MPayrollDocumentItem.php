@@ -193,6 +193,7 @@ class MPayrollDocumentItem extends MBaseModel
                     'PDI.EMPLOYEE_ID:REFID:EMPLOYEE_ID:Y',
                     'SUBSTRING(PRD.FROM_SALARY_DATE from 1 for 7):S:YYYYMM:N',
                     'SUM(PDI.DEDUCT_TAX):NZ:DEDUCT_TAX:N',
+                    'SUM(PDI.DEDUCT_SOCIAL_SECURITY):NZ:DEDUCT_SOCIAL_SECURITY:N',
 
                     'PRD.FROM_SALARY_DATE:FD:FROM_DOCUMENT_DATE:Y',
                     'PRD.FROM_SALARY_DATE:TD:TO_DOCUMENT_DATE:Y', 

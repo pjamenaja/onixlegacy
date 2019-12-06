@@ -4531,4 +4531,7 @@
   <data name="rpt_employee_tax" xml:space="preserve">
     <value>HR001_04 - Employee Tax Records</value>
   </data>
+  <data name="rpt_employee_social_insurance" xml:space="preserve">
+    <value>HR001_05 - Employee Social Insurance Records</value>
+  </data>
 </root>

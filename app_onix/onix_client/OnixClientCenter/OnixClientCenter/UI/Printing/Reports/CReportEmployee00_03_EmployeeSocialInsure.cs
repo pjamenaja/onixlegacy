@@ -10,14 +10,14 @@ using Onix.ClientCenter.Commons.Utils;
 
 namespace Onix.ClientCenter.Reports
 {
-    public class CReportEmployee00_02_EmployeeTax : CBaseReport
+    public class CReportEmployee00_03_EmployeeSocialInsure : CBaseReport
     {
         private Hashtable rowdef = new Hashtable();
         private String prevKeyId = "";
         private ArrayList entitySums = new ArrayList();
         private ArrayList sums = new ArrayList();
 
-        public CReportEmployee00_02_EmployeeTax() : base()
+        public CReportEmployee00_03_EmployeeSocialInsure() : base()
         {
         }
 
@@ -46,7 +46,7 @@ namespace Onix.ClientCenter.Reports
 
         protected override ArrayList getRecordSet()
         {
-            ArrayList arr = OnixWebServiceAPI.GetListAPI("GetEmployeeTaxMonthSummary", "EMPLOYEE_TAX_RECORDS", Parameter);
+            ArrayList arr = OnixWebServiceAPI.GetListAPI("GetEmployeeSocialInsuranceMonthSummary", "EMPLOYEE_TAX_RECORDS", Parameter);
             return (arr);
         }
 

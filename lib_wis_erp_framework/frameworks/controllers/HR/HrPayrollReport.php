@@ -86,7 +86,7 @@ class HrPayrollReport extends CBaseController
     }   
     
 
-    private static function PopulateEmployeeTaxMonth($db, $param, $data, $taxByMonth)
+    private static function PopulateEmployeeDeductionMonth($db, $param, $data, $taxByMonth, $field)
     {
         $months = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'];
         $year = $data->getFieldValue('TAX_YEAR');
@@ -120,7 +120,7 @@ class HrPayrollReport extends CBaseController
                     $found = true;
                 }
 
-                $amt = $o->GetFieldValue('DEDUCT_TAX');                
+                $amt = $o->GetFieldValue($field);                
                 $emp->SetFieldValue($mm, $amt);  
                 
                 $sum = $sum + $amt;
@@ -164,10 +164,32 @@ class HrPayrollReport extends CBaseController
         $data->setFieldValue('TO_SALARY_DATE', $endDtm);
 
         $deductByMonth = self::LoadEmployeeDeductionByMonth($db, $data);
-        self::PopulateEmployeeTaxMonth($db, $param, $data, $deductByMonth);
+        self::PopulateEmployeeDeductionMonth($db, $param, $data, $deductByMonth, 'DEDUCT_TAX');
         
         return(array($param, $data));  
-    }        
+    }  
+    
+    public static function GetEmployeeSocialInsuranceMonthSummary($db, $param, $data)
+    {
+        $year = $data->getFieldValue('TAX_YEAR');
+        if ($year == '')
+        {
+            $currDtm = CUtils::GetCurrentDateTimeInternal();
+            $year = substr($currDtm, 0, 4);
+        }
+
+        $beginDtm = "$year/01/01 00:00:00";
+        $endDtm = "$year/12/31 23:59:59";
+
+        $data->setFieldValue('TAX_YEAR', $year);
+        $data->setFieldValue('FROM_SALARY_DATE', $beginDtm);
+        $data->setFieldValue('TO_SALARY_DATE', $endDtm);
+
+        $deductByMonth = self::LoadEmployeeDeductionByMonth($db, $data);
+        self::PopulateEmployeeDeductionMonth($db, $param, $data, $deductByMonth, 'DEDUCT_SOCIAL_SECURITY');
+        
+        return(array($param, $data));  
+    }      
 }
 
 ?>
