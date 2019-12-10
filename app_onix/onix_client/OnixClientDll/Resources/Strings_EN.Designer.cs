@@ -10204,6 +10204,15 @@ namespace Onix.Client.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to HR001_06 - Employee Revenue Report.
+        /// </summary>
+        public static string rpt_employee_revenue {
+            get {
+                return ResourceManager.GetString("rpt_employee_revenue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to HR001_05 - Employee Social Insurance Records.
         /// </summary>
         public static string rpt_employee_social_insurance {

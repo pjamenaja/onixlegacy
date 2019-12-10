@@ -86,7 +86,7 @@ class HrPayrollReport extends CBaseController
     }   
     
 
-    private static function PopulateEmployeeDeductionMonth($db, $param, $data, $taxByMonth, $field)
+    private static function PopulateEmployeePayrollItemMonth($db, $param, $data, $taxByMonth, $field)
     {
         $months = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'];
         $year = $data->getFieldValue('TAX_YEAR');
@@ -136,7 +136,7 @@ class HrPayrollReport extends CBaseController
         $data->AddChildArray('EMPLOYEE_TAX_RECORDS', $arr);
     }
 
-    private static function LoadEmployeeDeductionByMonth($db, $data)
+    private static function LoadEmployeePayrollItemByMonth($db, $data)
     {
         $u = new MPayrollDocumentItem($db);     
         list($cnt, $rows) = $u->Query(5, $data);
@@ -163,8 +163,8 @@ class HrPayrollReport extends CBaseController
         $data->setFieldValue('FROM_SALARY_DATE', $beginDtm);
         $data->setFieldValue('TO_SALARY_DATE', $endDtm);
 
-        $deductByMonth = self::LoadEmployeeDeductionByMonth($db, $data);
-        self::PopulateEmployeeDeductionMonth($db, $param, $data, $deductByMonth, 'DEDUCT_TAX');
+        $deductByMonth = self::LoadEmployeePayrollItemByMonth($db, $data);
+        self::PopulateEmployeePayrollItemMonth($db, $param, $data, $deductByMonth, 'DEDUCT_TAX');
         
         return(array($param, $data));  
     }  
@@ -185,11 +185,33 @@ class HrPayrollReport extends CBaseController
         $data->setFieldValue('FROM_SALARY_DATE', $beginDtm);
         $data->setFieldValue('TO_SALARY_DATE', $endDtm);
 
-        $deductByMonth = self::LoadEmployeeDeductionByMonth($db, $data);
-        self::PopulateEmployeeDeductionMonth($db, $param, $data, $deductByMonth, 'DEDUCT_SOCIAL_SECURITY');
+        $deductByMonth = self::LoadEmployeePayrollItemByMonth($db, $data);
+        self::PopulateEmployeePayrollItemMonth($db, $param, $data, $deductByMonth, 'DEDUCT_SOCIAL_SECURITY');
         
         return(array($param, $data));  
-    }      
+    }
+    
+    public static function GetEmployeeRevenueMonthSummary($db, $param, $data)
+    {
+        $year = $data->getFieldValue('TAX_YEAR');
+        if ($year == '')
+        {
+            $currDtm = CUtils::GetCurrentDateTimeInternal();
+            $year = substr($currDtm, 0, 4);
+        }
+
+        $beginDtm = "$year/01/01 00:00:00";
+        $endDtm = "$year/12/31 23:59:59";
+
+        $data->setFieldValue('TAX_YEAR', $year);
+        $data->setFieldValue('FROM_SALARY_DATE', $beginDtm);
+        $data->setFieldValue('TO_SALARY_DATE', $endDtm);
+
+        $deductByMonth = self::LoadEmployeePayrollItemByMonth($db, $data);
+        self::PopulateEmployeePayrollItemMonth($db, $param, $data, $deductByMonth, 'RECEIVE_AMOUNT');
+        
+        return(array($param, $data));  
+    }       
 }
 
 ?>
