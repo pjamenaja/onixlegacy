@@ -10447,6 +10447,15 @@ namespace Onix.Client.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to PS005_01 - รายงานซื้อแสดงรายการตาม PO.
+        /// </summary>
+        public static string rpt_po_detail {
+            get {
+                return ResourceManager.GetString("rpt_po_detail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to POS_004 - รายงานรายรับตามกลุ่มสินค้า.
         /// </summary>
         public static string rpt_pos_revenue_by_group {

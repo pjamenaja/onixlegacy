@@ -4575,4 +4575,7 @@
   <data name="rpt_employee_revenue" xml:space="preserve">
     <value>HR001_06 - รายงานรายรับพนักงาน</value>
   </data>
+  <data name="rpt_po_detail" xml:space="preserve">
+    <value>PS005_01 - รายงานซื้อแสดงรายการตาม PO</value>
+  </data>
 </root>
