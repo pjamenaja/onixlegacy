@@ -31,8 +31,8 @@ namespace Onix.ClientCenter.Reports
         {
             addConfig("L0", 16, "docno", HorizontalAlignment.Center, HorizontalAlignment.Left, HorizontalAlignment.Center, "DOCUMENT_NO", "S", false);
             addConfig("L0", 13, "DocuDate", HorizontalAlignment.Center, HorizontalAlignment.Left, HorizontalAlignment.Center, "DOCUMENT_DATE", "DT", false);
-            addConfig("L0", 14, "invoice_no", HorizontalAlignment.Center, HorizontalAlignment.Left, HorizontalAlignment.Center, "REF_DOCUMENT_NO", "S", false);
-            addConfig("L0", 18, "invoice_date", HorizontalAlignment.Center, HorizontalAlignment.Left, HorizontalAlignment.Center, "REF_DOCUMENT_DATE", "DT", false);
+            addConfig("L0", 14, "invoice_no", HorizontalAlignment.Center, HorizontalAlignment.Left, HorizontalAlignment.Center, "REF_BY_DOC_NO", "S", false);
+            addConfig("L0", 18, "invoice_date", HorizontalAlignment.Center, HorizontalAlignment.Left, HorizontalAlignment.Center, "REF_BY_DOC_DATE", "DT", false);
             addConfig("L0", 36, "supplier_name", HorizontalAlignment.Center, HorizontalAlignment.Left, HorizontalAlignment.Center, "ENTITY_NAME", "S", false);
             
             addConfig("L1", 5, "number", HorizontalAlignment.Center, HorizontalAlignment.Center, HorizontalAlignment.Center, "", "RN", false);
@@ -137,7 +137,7 @@ namespace Onix.ClientCenter.Reports
 
         protected override ArrayList getRecordSet()
         {
-            ArrayList arr = OnixWebServiceAPI.GetListAPI("GetPurchaseInvoiceTxList", "SALE_PURCHASE_DOC_TX_LIST", Parameter);
+            ArrayList arr = OnixWebServiceAPI.GetListAPI("GetPurchasePoTxList", "SALE_PO_TX_LIST", Parameter);
             return (arr);
         }
 
