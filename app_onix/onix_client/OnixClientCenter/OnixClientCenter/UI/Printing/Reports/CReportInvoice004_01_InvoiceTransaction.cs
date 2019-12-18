@@ -33,8 +33,9 @@ namespace Onix.ClientCenter.Reports
             addConfig("L0", 13, "DocuDate", HorizontalAlignment.Center, HorizontalAlignment.Left, HorizontalAlignment.Center, "DOCUMENT_DATE", "DT", false);
             addConfig("L0", 14, "invoice_no", HorizontalAlignment.Center, HorizontalAlignment.Left, HorizontalAlignment.Center, "REF_DOCUMENT_NO", "S", false);
             addConfig("L0", 18, "invoice_date", HorizontalAlignment.Center, HorizontalAlignment.Left, HorizontalAlignment.Center, "REF_DOCUMENT_DATE", "DT", false);
-            addConfig("L0", 36, "supplier_name", HorizontalAlignment.Center, HorizontalAlignment.Left, HorizontalAlignment.Center, "ENTITY_NAME", "S", false);
-            
+            addConfig("L0", 18, "supplier_name", HorizontalAlignment.Center, HorizontalAlignment.Left, HorizontalAlignment.Center, "ENTITY_NAME", "S", false);
+            addConfig("L0", 18, "project_name", HorizontalAlignment.Center, HorizontalAlignment.Left, HorizontalAlignment.Center, "PROJECT_NAME", "S", false);
+
             addConfig("L1", 5, "number", HorizontalAlignment.Center, HorizontalAlignment.Center, HorizontalAlignment.Center, "", "RN", false);
             addConfig("L1", 11, "item_code", HorizontalAlignment.Center, HorizontalAlignment.Center, HorizontalAlignment.Center, "DISPLAY_CODE", "S", false);
             addConfig("L1", 27, "item_name_thai", HorizontalAlignment.Center, HorizontalAlignment.Left, HorizontalAlignment.Left, "DISPLAY_NAME", "S", false);
@@ -299,6 +300,9 @@ namespace Onix.ClientCenter.Reports
             entries.Add(entry);
 
             entry = new CEntry("to_date", EntryType.ENTRY_DATE_MAX, 200, true, "TO_DOCUMENT_DATE");
+            entries.Add(entry);
+
+            entry = new CEntry("project_code", EntryType.ENTRY_TEXT_BOX, 200, true, "PROJECT_CODE");
             entries.Add(entry);
 
             entry = new CEntry("supplier_code", EntryType.ENTRY_TEXT_BOX, 200, true, "ENTITY_CODE");

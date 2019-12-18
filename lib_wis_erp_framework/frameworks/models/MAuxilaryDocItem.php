@@ -102,6 +102,11 @@ class MAuxilaryDocItem extends MBaseModel
                     'EN.ENTITY_CODE:S:ENTITY_CODE:Y',
                     'EN.ENTITY_NAME:S:ENTITY_NAME:Y',
 
+                    'PJ.PROJECT_ID:REFID:PROJECT_ID:Y',
+                    'PJ.PROJECT_CODE:S:PROJECT_CODE:Y',
+                    'PJ.PROJECT_NAME:S:PROJECT_NAME:Y',
+                    'PJ.PROJECT_DESC:S:PROJECT_DESC:Y',
+
                     'UN1.DESCRIPTION:S:SERVICE_UNIT_NAME:N',
                     'UN1.DESCRIPTION_ENG:S:SERVICE_UNIT_NAME_ENG:N',
                     'UN2.DESCRIPTION:S:ITEM_UNIT_NAME:N',
@@ -191,6 +196,7 @@ class MAuxilaryDocItem extends MBaseModel
 
                 'FROM AUXILARY_DOC_ITEM AI '.
                     'LEFT OUTER JOIN AUXILARY_DOC AD ON (AD.AUXILARY_DOC_ID = AI.AUXILARY_DOC_ID) '.
+                    'LEFT OUTER JOIN PROJECT PJ ON (AD.PROJECT_ID = PJ.PROJECT_ID) '.                      
                     'LEFT OUTER JOIN ACCOUNT_DOC ADR ON (AI.REF_BY_ID = ADR.ACCOUNT_DOC_ID) '.
                     'LEFT OUTER JOIN ITEM IT ON (IT.ITEM_ID = AI.ITEM_ID) '.
                     'LEFT OUTER JOIN ENTITY EN ON (EN.ENTITY_ID = AD.ENTITY_ID) '.                    

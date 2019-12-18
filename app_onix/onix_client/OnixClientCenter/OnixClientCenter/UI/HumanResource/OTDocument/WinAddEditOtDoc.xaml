@@ -316,8 +316,12 @@
                                     <TextBox Grid.Column="1" Grid.Row="1" Width="150" Text="{Binding ItemCountFmt}" IsEnabled="False" VerticalContentAlignment="Center" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="5,0,0,0" TextChanged="DefaultTextBox_TextChanged"
                                              Foreground="Black" FontWeight="Medium"/>
 
-                                    <Label Grid.Column="2" Grid.Row="1" Name="lblDiscount"  Content="{Binding Source={x:Static lang:CTextLabel.Instance}, Path=ot_amount}" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" Margin="5,0,0,0"/>
-                                    <TextBox Grid.Column="3" Grid.Row="1" Width="150" Text="{Binding ReceiveAmountFmt}" IsEnabled="False" VerticalContentAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0" HorizontalContentAlignment="Right" TextChanged="DefaultTextBox_TextChanged"/>
+                                    <Label Grid.Column="2" Grid.Row="1" Name="lblAdjust"  Content="{Binding Source={x:Static lang:CTextLabel.Instance}, Path=adjust_amount}" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" Margin="5,0,0,0"/>
+                                    <TextBox Grid.Column="3" Grid.Row="1" Width="150" Text="{Binding OtAdjustAmount, UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0" HorizontalContentAlignment="Right" TextChanged="DefaultTextBox_TextChanged"
+                                             BorderThickness="1" BorderBrush="Blue"/>
+
+                                    <Label Grid.Column="4" Grid.Row="1" Name="lblDiscount"  Content="{Binding Source={x:Static lang:CTextLabel.Instance}, Path=ot_amount}" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" Margin="5,0,0,0"/>
+                                    <TextBox Grid.Column="5" Grid.Row="1" Width="150" Text="{Binding ReceiveAmountFmt}" IsEnabled="False" VerticalContentAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0" HorizontalContentAlignment="Right" TextChanged="DefaultTextBox_TextChanged"/>
 
                                 </Grid>
                             </StackPanel>
@@ -660,7 +664,7 @@
 
                                     <Label Grid.Column="7" Grid.Row="1" Name="lblAdjustAmount"  Content="{Binding Source={x:Static lang:CTextLabel.Instance}, Path=adjust_amount}" VerticalAlignment="Center" 
                                            VerticalContentAlignment="Center" HorizontalContentAlignment="Right" Margin="5,0,0,0"/>
-                                    <TextBox Grid.Column="8" Grid.Row="1" Width="100" Text="{Binding AdjustAmount, UpdateSourceTrigger=PropertyChanged}"
+                                    <TextBox Grid.Column="8" Grid.Row="1" Width="100" Text="{Binding AdjustAmount, UpdateSourceTrigger=PropertyChanged}" BorderThickness="1" BorderBrush="Blue"
                                              VerticalContentAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0" HorizontalContentAlignment="Right" TextChanged="DefaultTextBox_TextChanged"/>
 
                                     <Label Grid.Column="9" Grid.Row="1" Name="lblDeductAmount"  Content="{Binding Source={x:Static lang:CTextLabel.Instance}, Path=ot_amount}" VerticalAlignment="Center" 
