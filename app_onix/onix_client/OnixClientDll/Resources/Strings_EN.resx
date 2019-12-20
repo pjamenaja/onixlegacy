@@ -4540,4 +4540,10 @@
   <data name="rpt_po_detail" xml:space="preserve">
     <value>PS005_01 - Purchase Transaction By PO</value>
   </data>
+  <data name="rpt_employee_yearly_tax" xml:space="preserve">
+    <value>HR001_07 - Yearly Revenue &amp; Tax Report</value>
+  </data>
+  <data name="social_insurance" xml:space="preserve">
+    <value>Social Insurance</value>
+  </data>
 </root>

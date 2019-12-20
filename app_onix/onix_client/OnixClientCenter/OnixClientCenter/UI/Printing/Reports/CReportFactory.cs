@@ -234,6 +234,7 @@ namespace Onix.ClientCenter.Reports
                 addReport(ReportGroupEnum.ReportGroupHr, "rpt_employee_tax", "CReportEmployee00_02_EmployeeTax", null);
                 addReport(ReportGroupEnum.ReportGroupHr, "rpt_employee_social_insurance", "CReportEmployee00_03_EmployeeSocialInsure", null);
                 addReport(ReportGroupEnum.ReportGroupHr, "rpt_employee_revenue", "CReportEmployee00_04_EmployeeRevenue", null);
+                addReport(ReportGroupEnum.ReportGroupHr, "rpt_employee_yearly_tax", "CReportEmployee00_05_EmployeeYearlyTax", null);
             }
         }
 

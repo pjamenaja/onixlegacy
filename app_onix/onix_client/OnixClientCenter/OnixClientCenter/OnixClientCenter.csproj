@@ -209,6 +209,7 @@
     <Compile Include="UI\Printing\Forms\AcDesign\HRPayrollSlip\UFormPayrollSlip.xaml.cs">
       <DependentUpon>UFormPayrollSlip.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\Printing\Reports\CReportEmployee00_05_EmployeeYearlyTax.cs" />
     <Compile Include="UI\Printing\Reports\CReportEmployee00_04_EmployeeRevenue.cs" />
     <Compile Include="UI\Printing\Reports\CReportEmployee00_03_EmployeeSocialInsure.cs" />
     <Compile Include="UI\Printing\Reports\CReportEmployee00_02_EmployeeTax.cs" />

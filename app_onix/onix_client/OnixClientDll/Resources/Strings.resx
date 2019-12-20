@@ -4578,4 +4578,10 @@
   <data name="rpt_po_detail" xml:space="preserve">
     <value>PS005_01 - รายงานซื้อแสดงรายการตาม PO</value>
   </data>
+  <data name="rpt_employee_yearly_tax" xml:space="preserve">
+    <value>HR001_07 - รายงานสรุปรายรับและภาษีรายปี</value>
+  </data>
+  <data name="social_insurance" xml:space="preserve">
+    <value>ประกันสังคม</value>
+  </data>
 </root>

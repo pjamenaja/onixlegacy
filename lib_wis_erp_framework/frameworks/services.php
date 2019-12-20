@@ -396,7 +396,8 @@ $ONIX_SERVICES_LIST = [
     'GetEmployeeTaxMonthSummary' => [$bp . 'controllers/HR/HrPayrollReport.php', 'GetEmployeeTaxMonthSummary', $userLvl],
     'GetEmployeeSocialInsuranceMonthSummary' => [$bp . 'controllers/HR/HrPayrollReport.php', 'GetEmployeeSocialInsuranceMonthSummary', $userLvl],
     'GetEmployeeRevenueMonthSummary' => [$bp . 'controllers/HR/HrPayrollReport.php', 'GetEmployeeRevenueMonthSummary', $userLvl],
-    
+    'GetEmployeeYearlySummary' => [$bp . 'controllers/HR/HrPayrollReport.php', 'GetEmployeeYearlySummary', $userLvl],
+
     //Custom for ACDesign
     'AcdGetProfitByDocTypeMonth' => [$bp . 'controllers/SalePurchase/ACDesign/AcdSalePurchaseReport.php', 'AcdGetProfitByDocTypeMonth', $userLvl],
 

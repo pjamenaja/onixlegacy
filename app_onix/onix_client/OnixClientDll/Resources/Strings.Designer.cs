@@ -10312,6 +10312,15 @@ namespace Onix.Client.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to HR001_07 - รายงานสรุปรายรับและภาษีรายปี.
+        /// </summary>
+        public static string rpt_employee_yearly_tax {
+            get {
+                return ResourceManager.GetString("rpt_employee_yearly_tax", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to I004-03 - รายงานสรุปปรับยอดคลัง.
         /// </summary>
         public static string rpt_inv_adjust {
@@ -11595,6 +11604,15 @@ namespace Onix.Client.Resources {
         public static string so_no {
             get {
                 return ResourceManager.GetString("so_no", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ประกันสังคม.
+        /// </summary>
+        public static string social_insurance {
+            get {
+                return ResourceManager.GetString("social_insurance", resourceCulture);
             }
         }
         
