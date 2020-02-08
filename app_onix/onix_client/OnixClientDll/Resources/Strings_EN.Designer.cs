@@ -5470,6 +5470,15 @@ namespace Onix.Client.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Employee Tax.
+        /// </summary>
+        public static string grpHRTax {
+            get {
+                return ResourceManager.GetString("grpHRTax", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Inventory Borrow.
         /// </summary>
         public static string grpInventoryBorrow {
@@ -5709,6 +5718,15 @@ namespace Onix.Client.Resources {
         public static string hr_employee_leave {
             get {
                 return ResourceManager.GetString("hr_employee_leave", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Employee Widtholding Tax.
+        /// </summary>
+        public static string hr_employee_witholding_tax {
+            get {
+                return ResourceManager.GetString("hr_employee_witholding_tax", resourceCulture);
             }
         }
         

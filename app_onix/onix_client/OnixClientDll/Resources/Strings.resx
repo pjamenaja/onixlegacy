@@ -4584,4 +4584,10 @@
   <data name="social_insurance" xml:space="preserve">
     <value>ประกันสังคม</value>
   </data>
+  <data name="grpHRTax" xml:space="preserve">
+    <value>ข้อมูลภาษีพนักงาน</value>
+  </data>
+  <data name="hr_employee_witholding_tax" xml:space="preserve">
+    <value>ข้อมูลภาษีหัก ณ ที่จ่ายพนักงาน</value>
+  </data>
 </root>

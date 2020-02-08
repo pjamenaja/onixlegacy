@@ -190,7 +190,6 @@
             </Button>
 
             <Button Name="cmdCancel" IsCancel="True" Content="{Binding Source={x:Static lang:CTextLabel.Instance}, Path=cancel}" MinWidth="80"  Margin="5,0,0,5"/>
-            <Button Name="cmdLeave" Content="ข้อมูลการลา" MinWidth="100"  Margin="5,0,0,5" Click="CmdLeave_Click"/>
         </StackPanel>
         
         <TabControl Margin="5, 0, 5, 5" DockPanel.Dock="Bottom">
@@ -303,6 +302,58 @@
                                       IsChecked="{Binding Path=HasResignedFlag}" VerticalAlignment="Center"
                                       HorizontalAlignment="Left" Margin="5,0,0,0" 
                                       Checked="DefaultRadioButton_Checked" Unchecked="DefaultRadioButton_Checked"/>
+                        </Grid>
+                    </Grid>
+                </Border>
+            </TabItem>
+
+            <TabItem Name="tbiReport">
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="{StaticResource bmpGreenBullet}" 
+                                   Visibility="{Binding ElementName=tbiReport, Path=IsSelected, Converter={StaticResource boolToVisibilityConverter}}"/>
+                        <TextBlock Text="รายงานพนักงาน"/>
+                    </StackPanel>
+                </TabItem.Header>
+
+
+                <Border Margin="5,5,5,5" CornerRadius="10" Background="{DynamicResource WindowBackgroundBrush}" >
+                    <Grid>
+                        <Grid Grid.Column="0" Margin="0,20,0,10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="200"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="40"/>
+                                <RowDefinition Height="40"/>
+                                <RowDefinition Height="40"/>
+                                <RowDefinition Height="40"/>
+                                <RowDefinition Height="40"/>
+                                <RowDefinition Height="40"/>
+                            </Grid.RowDefinitions>
+
+                            <Label Name="lblLeaveReport" Content="ข้อมูลการลา - ปี (ค.ศ.)" 
+                                   Grid.Row="0" Grid.Column="0"
+                                   VerticalAlignment="Center" VerticalContentAlignment="Center"  
+                                   HorizontalContentAlignment="Right" Margin="0,0,0,0"  />
+
+                            <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="1">
+                                <TextBox x:Name="txtLeaveYear" Text="{Binding LeaveYear}" Width="100" Margin="5,0,0,0" VerticalContentAlignment="Center"/>
+                                <Button Name="cmdLeave" Content="ดูรายงาน" MinWidth="100"  Margin="5,0,0,0" Click="CmdLeave_Click"/>
+                            </StackPanel>
+
+
+                            <Label Name="lblEmployeeTax" Content="ภาษีหัก ณ ที่จ่าย - ปี (ค.ศ.)" 
+                                   Grid.Row="1" Grid.Column="0"
+                                   VerticalAlignment="Center" VerticalContentAlignment="Center"  
+                                   HorizontalContentAlignment="Right" Margin="0,0,0,0"  />
+
+                            <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="1">
+                                <TextBox x:Name="txtTaxYear" Text="{Binding YearYear}" Width="100" Margin="5,0,0,0" VerticalContentAlignment="Center"/>
+                                <Button Name="cmdTaxReport" Content="ดูรายงาน" MinWidth="100"  Margin="5,0,0,0" Click="cmdTaxReport_Click"/>
+                            </StackPanel>
                         </Grid>
                     </Grid>
                 </Border>

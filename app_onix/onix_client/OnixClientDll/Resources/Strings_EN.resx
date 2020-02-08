@@ -4546,4 +4546,10 @@
   <data name="social_insurance" xml:space="preserve">
     <value>Social Insurance</value>
   </data>
+  <data name="grpHRTax" xml:space="preserve">
+    <value>Employee Tax</value>
+  </data>
+  <data name="hr_employee_witholding_tax" xml:space="preserve">
+    <value>Employee Widtholding Tax</value>
+  </data>
 </root>

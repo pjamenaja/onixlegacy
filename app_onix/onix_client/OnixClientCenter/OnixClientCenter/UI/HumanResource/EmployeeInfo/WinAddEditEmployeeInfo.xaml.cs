@@ -7,6 +7,7 @@ using Onix.ClientCenter.Commons.Windows;
 using Onix.ClientCenter.Windows;
 using Onix.Client.Controller;
 using System.IO;
+using Onix.ClientCenter.Commons.Utils;
 
 namespace Onix.ClientCenter.UI.HumanResource.EmployeeInfo
 {
@@ -86,6 +87,25 @@ namespace Onix.ClientCenter.UI.HumanResource.EmployeeInfo
         {
             MEmployeeLeave mv = GetEmployeeLeaveInfo();
             WinFormPrinting w = new WinFormPrinting("grpHRLeave", mv);
+            w.ShowDialog();
+        }
+
+        private void cmdTaxReport_Click(object sender, RoutedEventArgs e)
+        {
+            bool result = CHelper.ValidateTextBox(lblEmployeeTax, txtTaxYear, false);
+            if (!result)
+            {
+                return;
+            }
+
+            MEmployee emp = vw as MEmployee;
+
+            emp.EmployeeTax.TaxAmount = "145.67";
+            emp.EmployeeTax.TaxYear = "2020";
+            emp.EmployeeTax.RevenueAmount = "6789.12";
+            emp.EmployeeTax.SocialInsuranceAmount = "69.69";
+
+            WinFormPrinting w = new WinFormPrinting("grpHRTax", emp);
             w.ShowDialog();
         }
     }

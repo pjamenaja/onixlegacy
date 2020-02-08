@@ -193,6 +193,10 @@
     </Compile>
     <Compile Include="UI\HumanResource\TaxForm\CCriteriaHrTaxDocument.cs" />
     <Compile Include="UI\HumanResource\Utils\HRUtils.cs" />
+    <Compile Include="UI\Printing\Forms\AcDesign\HREmployeeTax\CFormEmployeeWithholdingTax.cs" />
+    <Compile Include="UI\Printing\Forms\AcDesign\HREmployeeTax\UFormEmployeeWithholdingTax.xaml.cs">
+      <DependentUpon>UFormEmployeeWithholdingTax.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\Printing\Forms\AcDesign\HRPayrollDeposit\CFormPayrollDeposit.cs" />
     <Compile Include="UI\Printing\Forms\AcDesign\HRPayrollDeposit\UFormPayrollDeposit.xaml.cs">
       <DependentUpon>UFormPayrollDeposit.xaml</DependentUpon>
@@ -663,6 +667,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="UI\HumanResource\PayrollDocument\WinAddEditPayrollDoc.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Printing\Forms\AcDesign\HREmployeeTax\UFormEmployeeWithholdingTax.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

@@ -94,6 +94,8 @@ namespace Onix.ClientCenter.Windows
             reports.Add("hr_payroll_deposit", prefix + "AcDesign.HRPayrollDeposit.CFormPayrollDeposit");
 
             reports.Add("hr_employee_leave", prefix + "AcDesign.HREmployeeLeave.CFormEmployeeLeave");
+
+            reports.Add("hr_employee_witholding_tax", prefix + "AcDesign.HREmployeeTax.CFormEmployeeWithholdingTax");
         }
 
         private void initReportGroup()
@@ -147,6 +149,8 @@ namespace Onix.ClientCenter.Windows
             addReportGroup("grpHRSlip", "hr_payroll_deposit");
 
             addReportGroup("grpHRLeave", "hr_employee_leave");
+
+            addReportGroup("grpHRTax", "hr_employee_witholding_tax");
         }
 
         private void addReportGroup(String grpName, String rptName)

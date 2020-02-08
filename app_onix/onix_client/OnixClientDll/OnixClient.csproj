@@ -80,6 +80,7 @@
     <Compile Include="Models\MCashDocXferDetail.cs" />
     <Compile Include="Models\MAccessRight.cs" />
     <Compile Include="Models\MCompanyImage.cs" />
+    <Compile Include="Models\MEmployeeTax.cs" />
     <Compile Include="Models\MSalePurchaseHistory.cs" />
     <Compile Include="Models\MAuxilaryDocRemark.cs" />
     <Compile Include="Models\MAuxilaryDocItem.cs" />

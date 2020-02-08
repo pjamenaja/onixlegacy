@@ -8,6 +8,7 @@ namespace Onix.Client.Model
     public class MEmployee : MBaseModel
     {
         private MCommissionProfile csp = new MCommissionProfile(new CTable(""));
+        private MEmployeeTax empTax = new MEmployeeTax(new CTable(""));
 
         public MEmployee(CTable obj) : base(obj)
         {
@@ -15,6 +16,18 @@ namespace Onix.Client.Model
 
         public void CreateDefaultValue()
         {
+        }
+
+        public MEmployeeTax EmployeeTax
+        {
+            get
+            {
+                return empTax;
+            }
+
+            set
+            {
+            }
         }
 
         public override void createToolTipItems()
