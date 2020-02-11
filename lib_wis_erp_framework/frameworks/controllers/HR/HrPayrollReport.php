@@ -180,6 +180,31 @@ class HrPayrollReport extends CBaseController
         return(array($param, $data));  
     }  
     
+    public static function GetEmployeeTaxYearSummary($db, $param, $data)
+    {
+        $year = $data->getFieldValue('TAX_YEAR');
+        if ($year == '')
+        {
+            $currDtm = CUtils::GetCurrentDateTimeInternal();
+            $year = substr($currDtm, 0, 4);
+        }
+
+        $beginDtm = "$year/01/01 00:00:00";
+        $endDtm = "$year/12/31 23:59:59";
+
+        $data->setFieldValue('TAX_YEAR', $year);
+        $data->setFieldValue('FROM_DOCUMENT_DATE', $beginDtm);
+        $data->setFieldValue('TO_DOCUMENT_DATE', $endDtm);
+
+        $u = new MPayrollDocumentItem($db);     
+        list($cnt, $rows) = $u->Query(6, $data);
+
+        $data->AddChildArray('EMPLOYEE_YEARLY_SUMMARY', $rows);
+        
+        return(array($param, $data));  
+    }  
+    
+    
     public static function GetEmployeeSocialInsuranceMonthSummary($db, $param, $data)
     {
         $year = $data->getFieldValue('TAX_YEAR');
