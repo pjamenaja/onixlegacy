@@ -8,6 +8,7 @@ using Onix.ClientCenter.Windows;
 using Onix.Client.Controller;
 using System.IO;
 using Onix.ClientCenter.Commons.Utils;
+using System.Collections;
 
 namespace Onix.ClientCenter.UI.HumanResource.EmployeeInfo
 {
@@ -100,10 +101,21 @@ namespace Onix.ClientCenter.UI.HumanResource.EmployeeInfo
 
             MEmployee emp = vw as MEmployee;
 
-            emp.EmployeeTax.TaxAmount = "145.67";
-            emp.EmployeeTax.TaxYear = "2020";
-            emp.EmployeeTax.RevenueAmount = "6789.12";
-            emp.EmployeeTax.SocialInsuranceAmount = "69.69";
+            CTable dat = emp.GetDbObject().CloneAll();
+            dat.SetFieldValue("TAX_YEAR", txtTaxYear.Text);
+            dat.SetFieldValue("EMPLOYEE_ID", emp.EmployeeID);
+            CTable obj = OnixWebServiceAPI.SubmitObjectAPI("GetEmployeeTaxYearSummary", dat);
+            ArrayList arr = obj.GetChildArray("EMPLOYEE_YEARLY_SUMMARY");
+
+            emp.EmployeeTax.TaxYear = txtTaxYear.Text;
+            if (arr.Count > 0)
+            {
+                CTable o = (CTable) arr[0];
+
+                emp.EmployeeTax.TaxAmount = o.GetFieldValue("DEDUCT_TAX");
+                emp.EmployeeTax.RevenueAmount = o.GetFieldValue("RECEIVE_AMOUNT");
+                emp.EmployeeTax.SocialInsuranceAmount = o.GetFieldValue("DEDUCT_SOCIAL_SECURITY");
+            }
 
             WinFormPrinting w = new WinFormPrinting("grpHRTax", emp);
             w.ShowDialog();
