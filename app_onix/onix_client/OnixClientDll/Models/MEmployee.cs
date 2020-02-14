@@ -1302,5 +1302,24 @@ namespace Onix.Client.Model
             {
             }
         }
+
+        public String EmployeeAddress
+        {
+            get
+            {
+                if (GetDbObject() == null)
+                {
+                    return ("");
+                }
+
+                return (GetDbObject().GetFieldValue("EMPLOYEE_ADDRESS"));
+            }
+
+            set
+            {
+                GetDbObject().SetFieldValue("EMPLOYEE_ADDRESS", value);
+                NotifyPropertyChanged();
+            }
+        }
     }
 }

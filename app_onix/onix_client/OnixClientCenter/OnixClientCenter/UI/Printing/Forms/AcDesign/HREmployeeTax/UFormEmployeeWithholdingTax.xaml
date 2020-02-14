@@ -203,7 +203,7 @@
 
                                         <StackPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="4" Orientation="Horizontal">
                                             <TextBlock Text="ที่อยู่" Margin="5,2,5,0"  FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                                            <TextBlock Text="{Binding EntityAddress}" Margin="0,2,0,0" Grid.Row="2" Grid.Column="1" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                                            <TextBlock Text="{Binding EmployeeAddress}" Margin="0,2,0,0" Grid.Row="2" Grid.Column="1" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center"/>
                                         </StackPanel>
                                         
                                         <DockPanel Grid.Row="3" Grid.ColumnSpan="4">

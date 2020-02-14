@@ -217,14 +217,27 @@
                                 <RowDefinition Height="40"/>
                                 <RowDefinition Height="40"/>
                                 <RowDefinition Height="40"/>
+                                <RowDefinition Height="40"/>
                             </Grid.RowDefinitions>
 
-                            <Label Name="lblBankAccount" Content="{Binding Source={x:Static lang:CTextLabel.Instance}, Path=bank_account}" 
+
+                            <Label Name="lblEmpAddress" Content="{Binding Source={x:Static lang:CTextLabel.Instance}, Path=address}" 
                                    Grid.Row="0" Grid.Column="0"
                                    VerticalAlignment="Center" VerticalContentAlignment="Center"  
                                    HorizontalContentAlignment="Right" Margin="0,0,0,0"  />
 
                             <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="1">
+                                <TextBox x:Name="txtEmpAddress" Text="{Binding EmployeeAddress}" Width="800" Margin="5,0,0,0" 
+                                         VerticalContentAlignment="Center" HorizontalAlignment="Left" HorizontalContentAlignment="Left"
+                                         TextChanged="DefaultTextBox_TextChanged"/>
+                            </StackPanel>
+                            
+                            <Label Name="lblBankAccount" Content="{Binding Source={x:Static lang:CTextLabel.Instance}, Path=bank_account}" 
+                                   Grid.Row="1" Grid.Column="0"
+                                   VerticalAlignment="Center" VerticalContentAlignment="Center"  
+                                   HorizontalContentAlignment="Right" Margin="0,0,0,0"  />
+
+                            <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="1">
                                 <uc:UComboBox x:Name="cboBank" ItemSources="{Binding Source={x:Static lang:CMasterReference.Instance}, Path=Banks}" IDFieldName="MasterID"
                                                   DisplayMemberPath="Description" SelectedObject="{Binding BankObj}" Width="300"  HorizontalAlignment="Left" Margin="5,0,0,0" 
                                                   Caption="{Binding ElementName=lblBankAccount, Path=Content}" ComboLoadType="BankCombo" 
@@ -243,11 +256,11 @@
                             </StackPanel>
 
                             <Label Name="lblManHourRate" Content="{Binding Source={x:Static lang:CTextLabel.Instance}, Path=hour_rate}" 
-                                   Grid.Row="1" Grid.Column="0"
+                                   Grid.Row="2" Grid.Column="0"
                                    VerticalAlignment="Center" VerticalContentAlignment="Center"  
                                    HorizontalContentAlignment="Right" Margin="0,0,0,0"  />
 
-                            <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="1">
+                            <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="1">
                                 <TextBox x:Name="txtHourRate" Text="{Binding HourRate}" Width="100" Margin="5,0,0,0" 
                                          VerticalContentAlignment="Center" HorizontalAlignment="Left" HorizontalContentAlignment="Right"
                                          PreviewTextInput="DefaultTextBoxNumber_PreviewTextInput"
@@ -259,34 +272,34 @@
                             </StackPanel>
 
                             <Label Name="lblEmpDepartment" Content="{Binding Source={x:Static lang:CTextLabel.Instance}, Path=department}" 
-                                   Grid.Row="2" Grid.Column="0"
+                                   Grid.Row="3" Grid.Column="0"
                                    VerticalAlignment="Center" VerticalContentAlignment="Center"  
                                    HorizontalContentAlignment="Right" Margin="0,0,0,0"  />
 
                             <ComboBox Name="cboPoc" Width="300" VerticalContentAlignment="Center" HorizontalAlignment="Left"
                                       Margin="5,0,0,0"
-                                      Grid.Row="2" Grid.Column="1" SelectionChanged="DefaultComboBox_SelectionChanged"
+                                      Grid.Row="3" Grid.Column="1" SelectionChanged="DefaultComboBox_SelectionChanged"
                                       SelectedItem="ObjSelf" DisplayMemberPath="Description" SelectedValuePath="ObjSelf" SelectedValue="{Binding DepartmentObj}"
                                       ItemsSource="{Binding Source={x:Static lang:CMasterReference.Instance}, Path=EmployeeDepartments}"/>
 
                             <Label Name="lblEmpPosition" Content="{Binding Source={x:Static lang:CTextLabel.Instance}, Path=position}" 
-                                   Grid.Row="3" Grid.Column="0"
+                                   Grid.Row="4" Grid.Column="0"
                                    VerticalAlignment="Center" VerticalContentAlignment="Center"  
                                    HorizontalContentAlignment="Right" Margin="0,0,0,0"  />
 
                             <ComboBox Name="cboPosition" Width="300" VerticalContentAlignment="Center" HorizontalAlignment="Left"
                                       Margin="5,0,0,0"
-                                      Grid.Row="3" Grid.Column="1" SelectionChanged="DefaultComboBox_SelectionChanged"
+                                      Grid.Row="4" Grid.Column="1" SelectionChanged="DefaultComboBox_SelectionChanged"
                                       SelectedItem="ObjSelf" DisplayMemberPath="Description" SelectedValuePath="ObjSelf" SelectedValue="{Binding PositionObj}"
                                       ItemsSource="{Binding Source={x:Static lang:CMasterReference.Instance}, Path=EmployeePositions}"/>
 
 
                             <Label Name="lblSalary" Content="{Binding Source={x:Static lang:CTextLabel.Instance}, Path=salary}" 
-                                   Grid.Row="4" Grid.Column="0"
+                                   Grid.Row="5" Grid.Column="0"
                                    VerticalAlignment="Center" VerticalContentAlignment="Center"  
                                    HorizontalContentAlignment="Right" Margin="0,0,0,0"  />
 
-                            <StackPanel Orientation="Horizontal" Grid.Row="4" Grid.Column="1">
+                            <StackPanel Orientation="Horizontal" Grid.Row="5" Grid.Column="1">
                                 <TextBox x:Name="txtSalary" Text="{Binding Salary}" Width="150" Margin="5,0,0,0" 
                                          VerticalContentAlignment="Center" HorizontalAlignment="Left" HorizontalContentAlignment="Right"
                                          PreviewTextInput="DefaultTextBoxNumber_PreviewTextInput"
@@ -297,7 +310,7 @@
                                    HorizontalContentAlignment="Right" Margin="0,0,0,0"  />
                             </StackPanel>
 
-                            <CheckBox Name="cboResign" Grid.Row="5" Grid.Column="1" IsThreeState="False" 
+                            <CheckBox Name="cboResign" Grid.Row="6" Grid.Column="1" IsThreeState="False" 
                                       Content="{Binding Source={x:Static lang:CTextLabel.Instance}, Path=has_resigned}" 
                                       IsChecked="{Binding Path=HasResignedFlag}" VerticalAlignment="Center"
                                       HorizontalAlignment="Left" Margin="5,0,0,0" 

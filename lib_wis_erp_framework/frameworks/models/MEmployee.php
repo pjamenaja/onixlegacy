@@ -39,7 +39,8 @@ class MEmployee extends MBaseModel
                     'HOUR_RATE:NZ:HOUR_RATE:N',
                     'SALARY:NZ:SALARY:N',
                     'RESIGNED_FLAG:S:RESIGNED_FLAG:Y',
-                    
+                    'EMPLOYEE_ADDRESS:S:EMPLOYEE_ADDRESS:N',
+                                        
                     'NAME_PREFIX:REFID:NAME_PREFIX:N',
                     'GENDER:REFID:GENDER:N',
                     'EMPLOYEE_POSITION:REFID:EMPLOYEE_POSITION:N',
@@ -93,6 +94,7 @@ class MEmployee extends MBaseModel
                     'EP.SALARY:NZ:SALARY:N',
                     'EP.RESIGNED_FLAG:S:RESIGNED_FLAG:Y',
                     'EP.HIRING_DATE:S:HIRING_DATE:N',
+                    'EP.EMPLOYEE_ADDRESS:S:EMPLOYEE_ADDRESS:N',
 
                     'MR1.DESCRIPTION:S:EMPLOYEE_TYPE_NAME:N', 
                     'MR2.DESCRIPTION:S:EMPLOYEE_GROUP_NAME:N',
