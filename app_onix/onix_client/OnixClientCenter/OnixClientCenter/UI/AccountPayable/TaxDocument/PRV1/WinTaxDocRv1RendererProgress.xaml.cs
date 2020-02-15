@@ -117,7 +117,9 @@ namespace Onix.ClientCenter.UI.AccountPayable.TaxDocument.PRV1
 
             fldName = getFormFieldName(-1, -1, "TotalWhAmount");
             pdfFormFields.SetField(fldName, CTaxDocumentUtil.FormatNumberField(actualView.WhAmount));
-            
+
+            fldName = getFormFieldName(-1, -1, "Condition");
+            pdfFormFields.SetField(fldName, "0");
 
             int grpNo = 0;
             foreach (CTaxFormGroupByEmployeeRv1 grp in page.Groups)
@@ -152,6 +154,9 @@ namespace Onix.ClientCenter.UI.AccountPayable.TaxDocument.PRV1
                     fldName = getFormFieldName(grpNo, j, "ExpenseAmt");
                     pdfFormFields.SetField(fldName, CTaxDocumentUtil.FormatNumberField(row.ExpenseAmt));
 
+                    fldName = getFormFieldName(grpNo, j, "Condition");
+                    pdfFormFields.SetField(fldName, "  1");
+
                     j++;
                 }
 
@@ -171,6 +176,8 @@ namespace Onix.ClientCenter.UI.AccountPayable.TaxDocument.PRV1
             registerPdfField(-1, -1, "Text1.0", "CompanyTaxID");
             registerPdfField(-1, -1, "Text1.2", "SheetNo");
             registerPdfField(-1, -1, "Text1.3", "TotalSheet");
+
+            registerPdfField(-1, -1, "Radio Button0", "Condition");
 
             //registerPdfField(-1, -1, "Text6.28", "TotalExpenseAmount");
             //registerPdfField(-1, -1, "Text6.29", "TotalWhAmount");            
@@ -244,7 +251,17 @@ namespace Onix.ClientCenter.UI.AccountPayable.TaxDocument.PRV1
             registerPdfField(4, 0, "Text5.7", "WhAmount");
             registerPdfField(5, 0, "Text6.7", "WhAmount");
             registerPdfField(6, 0, "Text7.7", "WhAmount");
-            registerPdfField(7, 0, "Text8.7", "WhAmount");         
+            registerPdfField(7, 0, "Text8.7", "WhAmount");
+
+            //Condition
+            registerPdfField(0, 0, "Text1.11", "Condition");
+            registerPdfField(1, 0, "Text2.8", "Condition");
+            registerPdfField(2, 0, "Text3.8", "Condition");
+            registerPdfField(3, 0, "Text4.8", "Condition");
+            registerPdfField(4, 0, "Text5.8", "Condition");
+            registerPdfField(5, 0, "Text6.8", "Condition");
+            registerPdfField(6, 0, "Text7.8", "Condition");
+            registerPdfField(7, 0, "Text8.8", "Condition");
         }
 
         private String getFormFieldName(int group, int row, String logicalName)
@@ -376,7 +393,11 @@ namespace Onix.ClientCenter.UI.AccountPayable.TaxDocument.PRV1
                 pdfDetailStamper.FormFlattening = true;
                 pdfDetailStamper.Close();
 
-                pdf.AddDocument(new PdfReader(new MemoryStream(n.ToArray())));
+                PdfReader reader = new PdfReader(new MemoryStream(n.ToArray()));
+                PdfDictionary pd = reader.GetPageN(1);
+                pd.Put(PdfName.ROTATE, new PdfNumber(90));
+
+                pdf.AddDocument(reader);
 
                 UpdateProgress(i, max);
             }
@@ -403,13 +424,10 @@ namespace Onix.ClientCenter.UI.AccountPayable.TaxDocument.PRV1
             pdfFormFields.SetField("Text1.15", company.Zip);
             pdfFormFields.SetField("Text1.16", company.Telephone);
 
-            int idx = 0;
-
             //pdfFormFields.SetField("Radio Button0", "0", true);
             //pdfFormFields.SetField("Radio Button3", "0", true);
 
             pdfFormFields.SetField("Text1.18", actualView.TaxYearBD);
-            idx = 1;
 
             //int month = CUtil.StringToInt(actualView.TaxMonth);
             //int monthIdx = monthMap[month][idx];

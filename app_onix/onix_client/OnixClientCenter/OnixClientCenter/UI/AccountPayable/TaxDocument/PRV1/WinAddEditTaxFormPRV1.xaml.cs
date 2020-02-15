@@ -278,7 +278,6 @@ namespace Onix.ClientCenter.UI.AccountPayable.TaxDocument.PRV1
 
             Assembly assembly = Assembly.GetExecutingAssembly();
             Stream coverPageStream = assembly.GetManifestResourceStream(detailName);
-            //MemoryStream m = new MemoryStream();
             PdfReader pdfReader = new PdfReader(coverPageStream);
 
             StreamWriter file = new StreamWriter(@"D:\temp\pdffields.txt");
@@ -293,7 +292,10 @@ namespace Onix.ClientCenter.UI.AccountPayable.TaxDocument.PRV1
 
                 String fieldName = de.Key.ToString();
                 file.WriteLine(fieldName + " | " + i);
-
+                //if (fieldName.Contains("Radio Button"))
+                //{
+                //    string txt = fieldName;
+                //}
                 pdfFormFields.SetField(fieldName, fieldName);
             }
 
