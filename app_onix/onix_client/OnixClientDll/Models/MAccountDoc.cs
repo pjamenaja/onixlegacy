@@ -3099,12 +3099,23 @@ namespace Onix.Client.Model
 
             } //For Loop
 
-            PricingAmt = totalPricingAmt.ToString();
-            ArApAmt = totalArApAmt.ToString();
+            PricingAmt = totalPricingAmt.ToString();            
             WHTaxAmt = totalWhAmt.ToString();
             VatAmt = totalVatAmt.ToString();
             ItemDiscountAMT = totalItemDiscount.ToString();
             RevenueExpenseAmt = totalRevenueExpenseAmt.ToString();
+
+            double normalizeVat = totalRevenueExpenseAmt * (vatPct / 100);
+            double v1 = Math.Round(normalizeVat, 2, MidpointRounding.AwayFromZero);
+            double v2 = Math.Round(totalVatAmt, 2, MidpointRounding.AwayFromZero);
+            if (v1 != v2)
+            {
+                VatAmt = normalizeVat.ToString();
+                totalArApAmt = totalRevenueExpenseAmt + normalizeVat;
+            }
+
+            ArApAmt = totalArApAmt.ToString();
+
             RevenueExpenseForWhAmt = totalRevenueExpenseForWhAmt.ToString();
             RevenueExpenseForVatAmt = totalRevenueExpenseForVatAmt.ToString();
 
