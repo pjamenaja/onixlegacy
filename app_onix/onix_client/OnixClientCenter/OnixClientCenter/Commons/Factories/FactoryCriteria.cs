@@ -24,6 +24,7 @@ namespace Onix.ClientCenter.Commons.Factories
             criteriaMaps["CCriteriaPayrollDocument"] = "Onix.ClientCenter.UI.HumanResource.PayrollDocument.CCriteriaPayrollDocument";
             criteriaMaps["CCriteriaOTDocument"] = "Onix.ClientCenter.UI.HumanResource.OTDocument.CCriteriaOTDocument";
             criteriaMaps["CCriteriaHrTaxDocument"] = "Onix.ClientCenter.UI.HumanResource.TaxForm.CCriteriaHrTaxDocument";
+            criteriaMaps["CCriteriaHrTaxDocumentKor"] = "Onix.ClientCenter.UI.HumanResource.TaxForm.CCriteriaHrTaxDocumentKor";            
             criteriaMaps["CCriteriaEmployeeLeave"] = "Onix.ClientCenter.UI.HumanResource.Leave.CCriteriaEmployeeLeave";
 
             criteriaMaps["CCriteriaUser"] = "Onix.ClientCenter.UI.Admin.User.CCriteriaUser";

@@ -5821,11 +5821,20 @@ namespace Onix.Client.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ภาษีเงินได้ (พนักงาน).
+        ///   Looks up a localized string similar to ภ.ง.ด. 1 (พนักงาน).
         /// </summary>
-        public static string hr_revenue_tax {
+        public static string hr_revenue_tax_1 {
             get {
-                return ResourceManager.GetString("hr_revenue_tax", resourceCulture);
+                return ResourceManager.GetString("hr_revenue_tax_1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ภ.ง.ด. 1ก (พนักงาน).
+        /// </summary>
+        public static string hr_revenue_tax_1kor {
+            get {
+                return ResourceManager.GetString("hr_revenue_tax_1kor", resourceCulture);
             }
         }
         

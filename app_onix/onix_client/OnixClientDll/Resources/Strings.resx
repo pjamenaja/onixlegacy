@@ -4440,8 +4440,8 @@
   <data name="sort_order" xml:space="preserve">
     <value>ลำดับ</value>
   </data>
-  <data name="hr_revenue_tax" xml:space="preserve">
-    <value>ภาษีเงินได้ (พนักงาน)</value>
+  <data name="hr_revenue_tax_1" xml:space="preserve">
+    <value>ภ.ง.ด. 1 (พนักงาน)</value>
   </data>
   <data name="deduction_type" xml:space="preserve">
     <value>รายการหัก</value>
@@ -4589,5 +4589,8 @@
   </data>
   <data name="hr_employee_witholding_tax" xml:space="preserve">
     <value>ข้อมูลภาษีหัก ณ ที่จ่ายพนักงาน</value>
+  </data>
+  <data name="hr_revenue_tax_1kor" xml:space="preserve">
+    <value>ภ.ง.ด. 1ก (พนักงาน)</value>
   </data>
 </root>

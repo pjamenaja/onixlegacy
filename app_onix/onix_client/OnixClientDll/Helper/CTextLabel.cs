@@ -399,7 +399,15 @@ namespace Onix.Client.Helper
             }
         }
 
-        public String hr_revenue_tax
+        public String hr_revenue_tax_1
+        {
+            get
+            {
+                return (CLanguage.getValueEx());
+            }
+        }
+
+        public String hr_revenue_tax_1kor
         {
             get
             {
