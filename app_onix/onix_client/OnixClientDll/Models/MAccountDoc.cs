@@ -3105,7 +3105,7 @@ namespace Onix.Client.Model
             ItemDiscountAMT = totalItemDiscount.ToString();
             RevenueExpenseAmt = totalRevenueExpenseAmt.ToString();
 
-            double normalizeVat = totalRevenueExpenseAmt * (vatPct / 100);
+            double normalizeVat = totalRevenueExpenseForVatAmt * (vatPct / 100);
             double v1 = Math.Round(normalizeVat, 2, MidpointRounding.AwayFromZero);
             double v2 = Math.Round(totalVatAmt, 2, MidpointRounding.AwayFromZero);
             if (v1 != v2)
