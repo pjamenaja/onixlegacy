@@ -14,7 +14,7 @@ using Wis.WsClientAPI;
 
 namespace Onix.ClientCenter.UI.AccountPayable.TaxDocument.PRV1Kor
 {
-    public partial class WinTaxDocPRv1KorRendererProgress : WinBase
+    public partial class WinTaxDocPRV1KorRendererProgress : WinBase
     {
         private Thread t = null;
         private String pdfName = "";
@@ -37,7 +37,7 @@ namespace Onix.ClientCenter.UI.AccountPayable.TaxDocument.PRV1Kor
 
         private int[][] monthMap = null;
 
-        public WinTaxDocPRv1KorRendererProgress(CWinLoadParam param) : base(param)
+        public WinTaxDocPRV1KorRendererProgress(CWinLoadParam param) : base(param)
         {
             pdfName = String.Format("{0}{1}", Path.GetTempPath(), "rev1.pdf");
             InitializeComponent();
@@ -267,8 +267,8 @@ namespace Onix.ClientCenter.UI.AccountPayable.TaxDocument.PRV1Kor
 
         private String getFormFieldName(int group, int row, String logicalName)
         {
-            String key = CTaxformRv1PdfField.ConstructKey(group, row, logicalName);
-            CTaxformRv1PdfField field = (CTaxformRv1PdfField) pdfFields[key];
+            String key = CTaxformRV1KorPdfField.ConstructKey(group, row, logicalName);
+            CTaxformRV1KorPdfField field = (CTaxformRV1KorPdfField) pdfFields[key];
 
             if (field == null)
             {
@@ -353,8 +353,8 @@ namespace Onix.ClientCenter.UI.AccountPayable.TaxDocument.PRV1Kor
 
         private void RenderPDF(ArrayList pages)
         {
-            String coverName = "Onix.ClientCenter.UI.AccountPayable.TaxDocument.Resources.PP1_SUMMARY.pdf";
-            String detailName = "Onix.ClientCenter.UI.AccountPayable.TaxDocument.Resources.PP1_DETAIL.pdf";
+            String coverName = "Onix.ClientCenter.UI.AccountPayable.TaxDocument.Resources.PP1Kor_SUMMARY.pdf";
+            String detailName = "Onix.ClientCenter.UI.AccountPayable.TaxDocument.Resources.PP1Kor_DETAIL.pdf";
 
             if (File.Exists(pdfName))
             {

@@ -139,8 +139,8 @@
     <Compile Include="UI\AccountPayable\TaxDocument\PRV1Kor\WinAddEditTaxFormPRV1Kor.xaml.cs">
       <DependentUpon>WinAddEditTaxFormPRV1Kor.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\AccountPayable\TaxDocument\PRV1Kor\WinTaxDocPRv1KorRendererProgress.xaml.cs">
-      <DependentUpon>WinTaxDocPRv1KorRendererProgress.xaml</DependentUpon>
+    <Compile Include="UI\AccountPayable\TaxDocument\PRV1Kor\WinTaxDocPRV1KorRendererProgress.xaml.cs">
+      <DependentUpon>WinTaxDocPRV1KorRendererProgress.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\AccountPayable\TaxDocument\PRV1\CTaxFormGroupByEmployeeRv1.cs" />
     <Compile Include="UI\AccountPayable\TaxDocument\PRV1\CTaxFormPageRv1.cs" />
@@ -636,7 +636,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UI\AccountPayable\TaxDocument\PRV1Kor\WinTaxDocPRv1KorRendererProgress.xaml">
+    <Page Include="UI\AccountPayable\TaxDocument\PRV1Kor\WinTaxDocPRV1KorRendererProgress.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -1457,6 +1457,8 @@
     <EmbeddedResource Include="UI\AccountPayable\TaxDocument\Resources\WHT53_041060.pdf" />
     <EmbeddedResource Include="UI\AccountPayable\TaxDocument\Resources\PP1_DETAIL.pdf" />
     <EmbeddedResource Include="UI\AccountPayable\TaxDocument\Resources\PP1_SUMMARY.pdf" />
+    <EmbeddedResource Include="UI\AccountPayable\TaxDocument\Resources\PP1Kor_DETAIL.pdf" />
+    <EmbeddedResource Include="UI\AccountPayable\TaxDocument\Resources\PP1Kor_SUMMARY.pdf" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

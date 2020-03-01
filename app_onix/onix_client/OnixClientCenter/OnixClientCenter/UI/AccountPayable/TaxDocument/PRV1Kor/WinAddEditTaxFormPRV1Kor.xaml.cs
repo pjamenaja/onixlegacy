@@ -205,14 +205,14 @@ namespace Onix.ClientCenter.UI.AccountPayable.TaxDocument.PRV1Kor
                 return;
             }
 
-            //CWinLoadParam parm = new CWinLoadParam();
-            //parm.ActualView = td;
-            //WinTaxDocRv1RendererProgress trp = new WinTaxDocRv1RendererProgress(parm);
-            //trp.ShowDialog();
+            CWinLoadParam parm = new CWinLoadParam();
+            parm.ActualView = td;
+            WinTaxDocPRV1KorRendererProgress trp = new WinTaxDocPRV1KorRendererProgress(parm);
+            trp.ShowDialog();
 
-            //WinPDFViewer wp = new WinPDFViewer(trp.PDFName, this.Title);
-            //wp.ShowDialog();
-            //wp = null;
+            WinPDFViewer wp = new WinPDFViewer(trp.PDFName, this.Title);
+            wp.ShowDialog();
+            wp = null;
         }
 
         private void LsvAccoutItem_PreviewKeyDown(object sender, System.Windows.Input.KeyEventArgs e)
