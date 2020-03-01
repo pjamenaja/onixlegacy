@@ -133,8 +133,14 @@
     <Compile Include="UI\AccountPayable\TaxDocument\PP30\WinAddEditTaxPP30.xaml.cs">
       <DependentUpon>WinAddEditTaxPP30.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\AccountPayable\TaxDocument\PRV1Kor\CTaxFormGroupByEmployeeRv1Kor.cs" />
+    <Compile Include="UI\AccountPayable\TaxDocument\PRV1Kor\CTaxFormPageRv1Kor.cs" />
+    <Compile Include="UI\AccountPayable\TaxDocument\PRV1Kor\CTaxformRV1KorPdfField.cs" />
     <Compile Include="UI\AccountPayable\TaxDocument\PRV1Kor\WinAddEditTaxFormPRV1Kor.xaml.cs">
       <DependentUpon>WinAddEditTaxFormPRV1Kor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\AccountPayable\TaxDocument\PRV1Kor\WinTaxDocPRv1KorRendererProgress.xaml.cs">
+      <DependentUpon>WinTaxDocPRv1KorRendererProgress.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\AccountPayable\TaxDocument\PRV1\CTaxFormGroupByEmployeeRv1.cs" />
     <Compile Include="UI\AccountPayable\TaxDocument\PRV1\CTaxFormPageRv1.cs" />
@@ -627,6 +633,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UI\AccountPayable\TaxDocument\PRV1Kor\WinAddEditTaxFormPRV1Kor.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\AccountPayable\TaxDocument\PRV1Kor\WinTaxDocPRv1KorRendererProgress.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
