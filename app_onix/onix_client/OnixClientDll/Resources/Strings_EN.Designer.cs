@@ -10726,6 +10726,15 @@ namespace Onix.Client.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ภ.ง.ด. 1 ก.
+        /// </summary>
+        public static string rv_tax_1_kor {
+            get {
+                return ResourceManager.GetString("rv_tax_1_kor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Revenue 3.
         /// </summary>
         public static string rv_tax_3 {

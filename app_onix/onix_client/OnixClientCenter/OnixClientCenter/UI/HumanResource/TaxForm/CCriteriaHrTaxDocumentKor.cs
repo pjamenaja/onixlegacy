@@ -136,7 +136,7 @@ namespace Onix.ClientCenter.UI.HumanResource.TaxForm
             CWinLoadParam param = new CWinLoadParam();
             TaxDocumentType dt = (TaxDocumentType) CUtil.StringToInt(actDoc.DocumentType);
 
-            if (dt == TaxDocumentType.TaxDocRev1)
+            if (dt == TaxDocumentType.TaxDocRev1Kor)
             {
                 param.Caption = CUtil.TaxDocTypeToString(dt);
                 param.Mode = "E";
@@ -170,7 +170,7 @@ namespace Onix.ClientCenter.UI.HumanResource.TaxForm
             MVTaxDocument ad = (model as MVTaxDocument);
             CTable tb = ad.GetDbObject();
 
-            tb.SetFieldValue("DOCUMENT_TYPE_SET", "(4)");
+            tb.SetFieldValue("DOCUMENT_TYPE_SET", "(5)");
 
             items = OnixWebServiceAPI.GetListAPI("GetTaxDocList", "TAX_DOC_LIST", tb);
             lastObjectReturned = OnixWebServiceAPI.GetLastObjectReturned();

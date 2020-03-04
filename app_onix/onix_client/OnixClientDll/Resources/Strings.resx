@@ -4593,4 +4593,7 @@
   <data name="hr_revenue_tax_1kor" xml:space="preserve">
     <value>ภ.ง.ด. 1ก (พนักงาน)</value>
   </data>
+  <data name="rv_tax_1_kor" xml:space="preserve">
+    <value>ภ.ง.ด. 1 ก</value>
+  </data>
 </root>

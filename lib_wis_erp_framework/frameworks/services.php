@@ -132,6 +132,7 @@ $ONIX_SERVICES_LIST = [
     'GetTaxDocRv3Rv53List' => [$bp . 'controllers/SalePurchase/TaxDocument.php', 'GetTaxDocRv3Rv53List', $userLvl],
     'ApproveTaxDoc' => [$bp . 'controllers/SalePurchase/TaxDocument.php', 'ApproveTaxDoc', $userLvl],
     'PopulatePayrollItems' => [$bp . 'controllers/SalePurchase/TaxDocument.php', 'PopulatePayrollItems', $userLvl],
+    'PopulateYearlyPayrollItems' => [$bp . 'controllers/SalePurchase/TaxDocument.php', 'PopulateYearlyPayrollItems', $userLvl],
     
     //Company Commission Profile
     'GetCompanyCommProfileInfo' => [$bp . 'controllers/Promotion/CompanyCommProfile.php', 'GetCompanyCommProfileInfo', $userLvl],

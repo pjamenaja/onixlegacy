@@ -51,7 +51,7 @@ namespace Onix.ClientCenter.UI.AccountPayable.TaxDocument.PRV1Kor
         protected override MBaseModel createObject()
         {
             MVTaxDocument mv = new MVTaxDocument(new CTable(""));
-            mv.DocumentType = ((int)TaxDocumentType.TaxDocRev1).ToString();
+            mv.DocumentType = ((int)TaxDocumentType.TaxDocRev1Kor).ToString();
             mv.DocumentStatus = "1";
 
             mv.DocumentDate = DateTime.Now;
@@ -79,7 +79,7 @@ namespace Onix.ClientCenter.UI.AccountPayable.TaxDocument.PRV1Kor
             CTable t = vw.GetDbObject();
 
             CUtil.EnableForm(false, this);
-            CTable obj = OnixWebServiceAPI.SubmitObjectAPI("PopulatePayrollItems", t);
+            CTable obj = OnixWebServiceAPI.SubmitObjectAPI("PopulateYearlyPayrollItems", t);
             CUtil.EnableForm(true, this);
 
             if (obj == null)

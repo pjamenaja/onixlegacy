@@ -88,6 +88,7 @@ namespace Onix.Client.Helper
         TaxDocRev3 = 2,
         TaxDocRev53 = 3,
         TaxDocRev1 = 4,
+        TaxDocRev1Kor = 5,
     }
 
     public enum EmployeeType
@@ -2460,6 +2461,10 @@ namespace Onix.Client.Helper
             else if (dt == TaxDocumentType.TaxDocRev1)
             {
                 tmp = CLanguage.getValue("rv_tax_1");
+            }
+            else if (dt == TaxDocumentType.TaxDocRev1Kor)
+            {
+                tmp = CLanguage.getValue("rv_tax_1_kor");
             }
 
             return (tmp);

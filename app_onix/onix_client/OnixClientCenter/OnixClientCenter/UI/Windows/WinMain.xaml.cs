@@ -391,14 +391,6 @@ namespace Onix.ClientCenter
             }
         }
 
-        private MenuItem createSubMenu(String hdr)
-        {
-            MenuItem mnu = new MenuItem();
-            mnu.Header = hdr;
-
-            return (mnu);
-        }
-
         private void initStatusBar()
         {
             double w1 = stbiUser.Width + stbiServer.Width + stbiVersion.Width;

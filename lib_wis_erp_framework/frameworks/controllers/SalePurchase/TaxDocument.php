@@ -278,6 +278,43 @@ class TaxDocument extends CBaseController
         return(array($param, $accum));
     }
 
+    public static function PopulateYearlyPayrollItems($db, $param, $data)
+    {
+        $year = $data->getFieldValue("TAX_YEAR");
+        $month = $data->getFieldValue("TAX_MONTH");
+        $id = $data->getFieldValue("TAX_DOC_ID");
+
+        if ($id == '')
+        {
+            throw new Exception("TAX_DOC_ID is empty, need to save document first!!!");
+        }
+
+        if ($year == '')
+        {
+            throw new Exception("TAX_YEAR is empty!!!");
+        }
+
+        $fromDate = sprintf("%s/01/01 00:00:00", $year);
+        $toDate = sprintf("%s/12/31 23:59:59", $year);
+
+        $dat = new CTable('');
+
+        $dat->setFieldValue('FROM_DOCUMENT_DATE', $fromDate);
+        $dat->setFieldValue('TO_DOCUMENT_DATE', $toDate);
+        $dat->setFieldValue('DOCUMENT_STATUS', '2');
+        $dat->setFieldValue('EMPLOYEE_TYPE', '2'); //Monthly
+        
+        list($p, $d) = HrPayrollReport::GetEmployeePayrollByDateList($db, $param, $dat);
+
+        $accum = self::processPayrollItems($db, $data, $d);
+        $accum->setFieldValue('FROM_DOCUMENT_DATE', $fromDate);
+        $accum->setFieldValue('TO_DOCUMENT_DATE', $toDate);
+        $accum->setFieldValue('PREVIOUS_RUN_YEAR', $year);
+        $accum->setFieldValue('PREVIOUS_RUN_MONTH', $month);
+
+        return(array($param, $accum));
+    }    
+
     private static function processPayrollItems($db, $origData, $data)
     {
         $deductFlag = $origData->getFieldValue('IS_TAX_DEDUCTABLE');
@@ -330,7 +367,7 @@ class TaxDocument extends CBaseController
 
         return($accum);
     }    
-
+        
     private static function copyPayrollFields($src, $dst)
     {
         $fieldDefaults = [
