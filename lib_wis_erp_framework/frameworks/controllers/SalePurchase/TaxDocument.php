@@ -305,6 +305,7 @@ class TaxDocument extends CBaseController
         $dat->setFieldValue('EMPLOYEE_TYPE', '2'); //Monthly
         
         list($p, $d) = HrPayrollReport::GetEmployeePayrollByDateList($db, $param, $dat);
+        self::convertToYearlyItems($db, $data, $d);
 
         $accum = self::processPayrollItems($db, $data, $d);
         $accum->setFieldValue('FROM_DOCUMENT_DATE', $fromDate);
@@ -314,6 +315,44 @@ class TaxDocument extends CBaseController
 
         return(array($param, $accum));
     }    
+
+    private static function convertToYearlyItems($db, $origData, $data)
+    {
+        $arr = $data->getChildArray('PAYROLL_EMPLOYEE_LIST');
+
+        $map = [];
+        $newArr = [];
+        foreach ($arr as $o)
+        {
+            $revAmt = $o->getFieldValue('RECEIVE_INCOME');
+            $whAmt = $o->getFieldValue('DEDUCT_TAX');
+
+            $key = $o->getFieldValue('EMPLOYEE_ID');
+            $curr = $o;
+
+            $isExist = array_key_exists($key, $map);
+            if ($isExist)
+            {
+                $curr = $map[$key];
+
+                $rv = $curr->getFieldValue('RECEIVE_INCOME');
+                $wh = $curr->getFieldValue('DEDUCT_TAX');
+
+                $totalRev = $rv + $revAmt;
+                $totalWh = $wh + $whAmt;
+
+                $curr->setFieldValue('RECEIVE_INCOME', $totalRev);
+                $curr->setFieldValue('DEDUCT_TAX', $totalWh);
+            }
+            else
+            {
+                $map[$key] = $curr;
+                array_push($newArr, $curr);
+            }            
+        }
+        
+        $data->addChildArray('PAYROLL_EMPLOYEE_LIST', $newArr);
+    }
 
     private static function processPayrollItems($db, $origData, $data)
     {

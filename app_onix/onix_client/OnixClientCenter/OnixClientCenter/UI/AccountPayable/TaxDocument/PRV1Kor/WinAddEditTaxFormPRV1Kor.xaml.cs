@@ -273,15 +273,15 @@ namespace Onix.ClientCenter.UI.AccountPayable.TaxDocument.PRV1Kor
 
         private void CmdTest_Click(object sender, RoutedEventArgs e)
         {
-            //String coverName = "Onix.ClientCenter.UI.AccountPayable.TaxDocument.Resources.PP1_SUMMARY.pdf";
-            String detailName = "Onix.ClientCenter.UI.AccountPayable.TaxDocument.Resources.PP1_DETAIL.pdf";
+            //String coverName = "Onix.ClientCenter.UI.AccountPayable.TaxDocument.Resources.PP1Kor_SUMMARY.pdf";
+            String detailName = "Onix.ClientCenter.UI.AccountPayable.TaxDocument.Resources.PP1Kor_DETAIL.pdf";
 
             Assembly assembly = Assembly.GetExecutingAssembly();
             Stream coverPageStream = assembly.GetManifestResourceStream(detailName);
             PdfReader pdfReader = new PdfReader(coverPageStream);
 
             StreamWriter file = new StreamWriter(@"D:\temp\pdffields.txt");
-            string newFile = @"D:\temp\PP1_DETAIL.pdf";
+            string newFile = @"D:\temp\PP1Kor_DETAIL.pdf";
             PdfStamper pdfStamper = new PdfStamper(pdfReader, new FileStream(newFile, FileMode.Create));
             AcroFields pdfFormFields = pdfStamper.AcroFields;
 
