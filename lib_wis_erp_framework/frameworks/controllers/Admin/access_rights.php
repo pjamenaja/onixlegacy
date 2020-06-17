@@ -232,5 +232,6 @@ $cfg_access_right =
     ['CASH_REPORT_MENU', 'Enable/Disable generating cash report', 'N', 'YYY'], 
     ['PURCHASE_REPORT_MENU', 'Enable/Disable generating purchase report', 'N', 'YYY'], 
     ['GENERAL_REPORT_MENU', 'Enable/Disable generating general report', 'N', 'YYY'], 
-    ['SALE_REPORT_MENU', 'Enable/Disable generating sale report', 'N', 'YYY'],    
+    ['SALE_REPORT_MENU', 'Enable/Disable generating sale report', 'N', 'YYY'],
+    ['INVENTORY_REPORT_MENU', 'Enable/Disable generating inventory report', 'N', 'YYY'],    
 ];
