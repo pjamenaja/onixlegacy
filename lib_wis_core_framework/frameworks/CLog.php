@@ -17,28 +17,6 @@ class CLog
 
     public static function Open($param, $data)
     {
-        $host = gethostname();
-        $fname = $param->GetFieldValue("FUNCTION_NAME");
-        $dtm = date('Y-m-d_H:i:s');
-        $pid = getmypid();
-        $dir = $_ENV['LOG_DIR'];
-        $logname = "$dir/$host.$dtm.$fname.$pid.log";
-        self::$logName = $logname;
-
-        $stage = $_ENV['STAGE'];
-
-        if ($stage == 'dev')
-        {
-            self::$fh = fopen("$logname", "w");
-        }
-        elseif (array_key_exists('API_LOG_DUMP', $_ENV))
-        {
-            $dumpLog = $_ENV['API_LOG_DUMP'];
-            if ($dumpLog)
-            {
-                self::$fh = fopen("$logname", "w");
-            }
-        }
     }
 
     public static function WriteLn($msg)
