@@ -389,14 +389,6 @@ namespace Onix.ClientCenter
             }
         }
 
-        private MenuItem createSubMenu(String hdr)
-        {
-            MenuItem mnu = new MenuItem();
-            mnu.Header = hdr;
-
-            return (mnu);
-        }
-
         private void initStatusBar()
         {
             double w1 = stbiUser.Width + stbiServer.Width + stbiVersion.Width;
@@ -623,7 +615,12 @@ namespace Onix.ClientCenter
 				}
 				else if (name.Equals("mnuInventoryReport"))
 				{
-					CUtil.EnableForm(false, this);
+                    if (!CHelper.VerifyAccessRight("INVENTORY_REPORT_MENU"))
+                    {
+                        return;
+                    }
+
+                    CUtil.EnableForm(false, this);
 					uleft = new UBlank();
 
 					Grid.SetRow(uleft, 0);
@@ -641,7 +638,12 @@ namespace Onix.ClientCenter
 				}
 				else if (name.Equals("mnuSaleReport"))
 				{
-					CUtil.EnableForm(false, this);
+                    if (!CHelper.VerifyAccessRight("SALE_REPORT_MENU"))
+                    {
+                        return;
+                    }
+
+                    CUtil.EnableForm(false, this);
 					uleft = new UBlank();
 
 					Grid.SetRow(uleft, 0);
@@ -659,6 +661,11 @@ namespace Onix.ClientCenter
 				}
                 else if (name.Equals("mnuGeneralReport"))
                 {
+                    if (!CHelper.VerifyAccessRight("GENERAL_REPORT_MENU"))
+                    {
+                        return;
+                    }
+
                     CUtil.EnableForm(false, this);
                     uleft = new UBlank();
 
@@ -677,6 +684,11 @@ namespace Onix.ClientCenter
                 }
                 else if (name.Equals("mnuPurchaseReport"))
                 {
+                    if (!CHelper.VerifyAccessRight("PURCHASE_REPORT_MENU"))
+                    {
+                        return;
+                    }
+
                     CUtil.EnableForm(false, this);
                     uleft = new UBlank();
 
@@ -694,7 +706,12 @@ namespace Onix.ClientCenter
                     CUtil.EnableForm(true, this);
                 }
                 else if (name.Equals("mnuCashReport"))
-                {
+                {                    
+                    if (!CHelper.VerifyAccessRight("CASH_REPORT_MENU"))
+                    {
+                        return;
+                    }
+
                     CUtil.EnableForm(false, this);
                     uleft = new UBlank();
 
