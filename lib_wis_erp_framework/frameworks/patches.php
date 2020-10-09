@@ -32,6 +32,7 @@ $ONIX_PATCH_LIST = [
     ['1.5.13', 'ONIX_1.5.13.20190208.sql'],
     ['1.5.14', 'ONIX_1.5.14.20190317.sql'],
     ['1.5.15', 'ONIX_1.5.15.20190608.sql'],
+    ['1.5.16', 'ONIX_1.5.16.20190926.sql'],    
 ];
 
 //DO NOT use CUSTOM PATCH if possible, please use POST PATCH instead.
@@ -78,6 +79,7 @@ $ONIX_POST_PATCH_LIST = [
     ['UpdateAccessRight5', "phar://onix_erp_framework.phar/controllers/Patch/PostPatch.php"],
     ['UpdateAccountDocRedeemed', "phar://onix_erp_framework.phar/controllers/Patch/PostPatch.php"],
     ['UpdateAccessRight6', "phar://onix_erp_framework.phar/controllers/Patch/PostPatch.php"],
+    ['UpdateAccessRight7', "phar://onix_erp_framework.phar/controllers/Patch/PostPatch.php"],
 ];
 
 //Is being used in GetStaticPatchHistoryList()

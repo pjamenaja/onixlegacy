@@ -41,7 +41,8 @@ namespace Onix.Client.Helper
         private static ObservableCollection<MMasterRef> salePaymentDocTypes = new ObservableCollection<MMasterRef>();        
         private static ObservableCollection<MMasterRef> purchaseWhDocTypes = new ObservableCollection<MMasterRef>();
         private static ObservableCollection<MMasterRef> purchasePaymentDocTypes = new ObservableCollection<MMasterRef>();
-        
+        private static ObservableCollection<MMasterRef> leaveDurations = new ObservableCollection<MMasterRef>();
+
         private static ObservableCollection<MMasterRef> saleRevenueDocTypes = new ObservableCollection<MMasterRef>();
         private static ObservableCollection<MMasterRef> revenueTaxTypes = new ObservableCollection<MMasterRef>();
         private static ObservableCollection<MMasterRef> taxDocTypes = new ObservableCollection<MMasterRef>();
@@ -1179,6 +1180,32 @@ namespace Onix.Client.Helper
                 return (serviceCategories);
             }
         }
+        
+        public ObservableCollection<MMasterRef> LeaveDurations
+        {
+            get
+            {
+                if (leaveDurations.Count <= 0)
+                {
+                    MMasterRef p1 = new MMasterRef(new CTable(""));
+                    p1.Description = "";
+                    p1.MasterID = "0.00";
+                    leaveDurations.Add(p1);
+
+                    MMasterRef p3 = new MMasterRef(new CTable(""));
+                    p3.Description = "ครึ่งวัน";
+                    p3.MasterID = "0.50";
+                    leaveDurations.Add(p3);
+
+                    MMasterRef p3_1 = new MMasterRef(new CTable(""));
+                    p3_1.Description = "เต็มวัน";
+                    p3_1.MasterID = "1.00";
+                    leaveDurations.Add(p3_1);                    
+                }
+
+                return (leaveDurations);
+            }
+        }
 
         public ObservableCollection<MMasterRef> PoPayments
         {
@@ -1288,6 +1315,11 @@ namespace Onix.Client.Helper
                     e4.Description = CLanguage.getValue("expense_vehicle");
                     e4.MasterID = "4";
                     payrollExpenseTypes.Add(e4);
+
+                    MMasterRef e5 = new MMasterRef(new CTable(""));
+                    e5.Description = CLanguage.getValue("expense_other");
+                    e5.MasterID = "5";
+                    payrollExpenseTypes.Add(e5);
                 }
 
                 return (payrollExpenseTypes);
@@ -1322,6 +1354,12 @@ namespace Onix.Client.Helper
                     e3.MasterID = "3";
                     e3.Code = "minute";
                     payrollDeductionTypes.Add(e3);
+
+                    MMasterRef e4 = new MMasterRef(new CTable(""));
+                    e4.Description = "อื่น ๆ";
+                    e4.MasterID = "4";
+                    e4.Code = "minute";
+                    payrollDeductionTypes.Add(e4);
                 }
 
                 return (payrollDeductionTypes);
@@ -2441,7 +2479,12 @@ namespace Onix.Client.Helper
                 MMasterRef mr = new MMasterRef(t);
 
                 mr.MasterID = o.GetFieldValue("DIRECTORY_ID");
-                mr.Description = o.GetFieldValue("PATH");
+                string s = o.GetFieldValue("PATH");
+                mr.Description = s;
+                if (s.Length >= 1)
+                {
+                    mr.Description = s.Substring(1);
+                }
 
                 colls.Add(mr);
             }

@@ -70,6 +70,7 @@
                                     <RowDefinition Height="30"/>
                                     <RowDefinition Height="30"/>
                                     <RowDefinition Height="30"/>
+                                    <RowDefinition Height="30"/>
                                 </Grid.RowDefinitions>
 
                                 <Grid.ColumnDefinitions>
@@ -102,6 +103,15 @@
                                 </Border>
 
                                 <Border Grid.Row="2" Grid.Column="4" Grid.ColumnSpan="3" BorderThickness="1,0,1,1" BorderBrush="Black">
+                                    <TextBlock Text="มูลค่ารวมส่วนลด" Margin="5,0,5,0" Style="{StaticResource ResourceKey=H2TextFont}" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                                </Border>
+                                <Border Grid.Row="2" Grid.Column="7" BorderThickness="0,0,0,1" BorderBrush="Black">
+                                    <TextBlock Text="{Binding RevenueExpenseAmtFmt}" Margin="5,0,5,0" Grid.Row="0" Grid.Column="1" 
+                                               Visibility="{Binding ElementName=rootElement, Path=VisibleLastPage}"
+                                               Style="{StaticResource ResourceKey=H2TextFont}" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                                </Border>
+
+                                <Border Grid.Row="3" Grid.Column="4" Grid.ColumnSpan="3" BorderThickness="1,0,1,1" BorderBrush="Black">
                                     <StackPanel Orientation="Horizontal">
                                         <TextBlock Text="ภาษีมูลค่าเพิ่ม / VAT" Margin="5,0,5,0" Style="{StaticResource ResourceKey=H2TextFont}" HorizontalAlignment="Left" 
                                            VerticalAlignment="Center"/>
@@ -113,16 +123,16 @@
                                            VerticalAlignment="Center"/>
                                     </StackPanel>
                                 </Border>
-                                <Border Grid.Row="2" Grid.Column="7" BorderThickness="0,0,0,1" BorderBrush="Black">
+                                <Border Grid.Row="3" Grid.Column="7" BorderThickness="0,0,0,1" BorderBrush="Black">
                                     <TextBlock Text="{Binding VatAmtFmt}" Margin="5,0,5,0" Style="{StaticResource ResourceKey=H2TextFont}" 
                                                Visibility="{Binding ElementName=rootElement, Path=VisibleLastPage}"
                                                HorizontalAlignment="Right" VerticalAlignment="Center"/>
                                 </Border>
 
-                                <Border Grid.Row="3" Grid.Column="4" Grid.ColumnSpan="3" BorderThickness="1,0,1,0" BorderBrush="Black" >
+                                <Border Grid.Row="4" Grid.Column="4" Grid.ColumnSpan="3" BorderThickness="1,0,1,0" BorderBrush="Black" >
                                     <TextBlock Text="รวม / NET TOTAL" Margin="5,0,5,0" Style="{StaticResource ResourceKey=H2TextFont}" HorizontalAlignment="Left" VerticalAlignment="Center"/>
                                 </Border>
-                                <Border Grid.Row="3" Grid.Column="7" BorderThickness="0,0,0,0" BorderBrush="Black">
+                                <Border Grid.Row="4" Grid.Column="7" BorderThickness="0,0,0,0" BorderBrush="Black">
                                     <TextBlock Text="{Binding ElementName=rootElement, Path=ArApAmtFmt}" Margin="5,0,5,0" Style="{StaticResource ResourceKey=H2TextFont}" 
                                                Visibility="{Binding ElementName=rootElement, Path=VisibleLastPage}"
                                                HorizontalAlignment="Right" VerticalAlignment="Center"/>

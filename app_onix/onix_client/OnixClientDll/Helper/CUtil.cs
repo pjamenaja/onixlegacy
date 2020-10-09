@@ -88,6 +88,7 @@ namespace Onix.Client.Helper
         TaxDocRev3 = 2,
         TaxDocRev53 = 3,
         TaxDocRev1 = 4,
+        TaxDocRev1Kor = 5,
     }
 
     public enum EmployeeType
@@ -460,6 +461,25 @@ namespace Onix.Client.Helper
             }
 
             double d = StringToDouble(str);
+            String s = String.Format("{0:n}", d);
+
+            return (s);
+        }
+
+        public static String FormatNumberDash(String str)
+        {
+            if (str.Equals(""))
+            {
+                return ("-");
+            }
+
+            double d = StringToDouble(str);
+
+            if (d == 0.00)
+            {
+                return ("-");
+            }
+
             String s = String.Format("{0:n}", d);
 
             return (s);
@@ -2441,6 +2461,10 @@ namespace Onix.Client.Helper
             else if (dt == TaxDocumentType.TaxDocRev1)
             {
                 tmp = CLanguage.getValue("rv_tax_1");
+            }
+            else if (dt == TaxDocumentType.TaxDocRev1Kor)
+            {
+                tmp = CLanguage.getValue("rv_tax_1_kor");
             }
 
             return (tmp);

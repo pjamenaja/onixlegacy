@@ -8,6 +8,7 @@ namespace Onix.Client.Model
     public class MEmployee : MBaseModel
     {
         private MCommissionProfile csp = new MCommissionProfile(new CTable(""));
+        private MEmployeeTax empTax = new MEmployeeTax(new CTable(""));
 
         public MEmployee(CTable obj) : base(obj)
         {
@@ -15,6 +16,18 @@ namespace Onix.Client.Model
 
         public void CreateDefaultValue()
         {
+        }
+
+        public MEmployeeTax EmployeeTax
+        {
+            get
+            {
+                return empTax;
+            }
+
+            set
+            {
+            }
         }
 
         public override void createToolTipItems()
@@ -1085,6 +1098,7 @@ namespace Onix.Client.Model
                 if (m != null)
                 {
                     DepartmentID = m.MasterID;
+                    DepartmentName = m.Description;
                 }
             }
 
@@ -1154,6 +1168,7 @@ namespace Onix.Client.Model
                 if (m != null)
                 {
                     PositionID = m.MasterID;
+                    PositionName = m.Description;
                 }
             }
 
@@ -1238,6 +1253,71 @@ namespace Onix.Client.Model
                 }
 
                 GetDbObject().SetFieldValue("RESIGNED_FLAG", flag);
+                NotifyPropertyChanged();
+            }
+        }
+
+        public DateTime HiringDate
+        {
+            get
+            {
+                if (GetDbObject() == null)
+                {
+                    return (DateTime.Now);
+                }
+
+                String str = GetDbObject().GetFieldValue("HIRING_DATE");
+                DateTime dt = CUtil.InternalDateToDate(str);
+
+                return (dt);
+            }
+
+            set
+
+            {
+                String str = CUtil.DateTimeToDateStringInternal(value);
+
+                GetDbObject().SetFieldValue("HIRING_DATE", str);
+                NotifyPropertyChanged();
+            }
+        }
+
+        public String HiringDateFmt
+        {
+            get
+            {
+                if (GetDbObject() == null)
+                {
+                    return ("");
+                }
+
+                String str = GetDbObject().GetFieldValue("HIRING_DATE");
+                DateTime dt = CUtil.InternalDateToDate(str);
+                String str2 = CUtil.DateTimeToDateString(dt);
+
+                return (str2);
+            }
+
+            set
+            {
+            }
+        }
+
+        public String EmployeeAddress
+        {
+            get
+            {
+                if (GetDbObject() == null)
+                {
+                    return ("");
+                }
+
+                return (GetDbObject().GetFieldValue("EMPLOYEE_ADDRESS"));
+            }
+
+            set
+            {
+                GetDbObject().SetFieldValue("EMPLOYEE_ADDRESS", value);
                 NotifyPropertyChanged();
             }
         }

@@ -210,9 +210,11 @@ namespace Onix.ClientCenter
             //Start HR
             addMenuItem("hr", "mnuEmployeeInfo", "employee", "bmpEmployee", 1, "CCriteriaEmployee", "HR_EMPLOYEE_MENU", mnuModule_Click, "YYY");
             addMenuItem("hr", "mnuOrganizeChart", "organize_chart", "bmpUser", 2, "", "HR_ORGCHART_MENU", mnuModule_Click, "YYY");
+            addMenuItem("hr", "mnuLeave", "leave", "bmpLeave", 3, "CCriteriaEmployeeLeave", "HR_LEAVE_MENU", mnuModule_Click, "YYY");
             addMenuItem("hr", "mnuOTDocument", "hr_ot_form", "bmpCycleCalendar", 3, "CCriteriaOTDocument", "HR_OT_MENU", mnuModule_Click, "YYY");
             addMenuItem("hr", "mnuPayroll", "payroll", "bmpCashDepositAp", 3, "CCriteriaPayrollDocument", "HR_PAYROLL_MENU", mnuModule_Click, "YYY");
-            addMenuItem("hr", "mnuHrTaxForm", "hr_revenue_tax", "bmpTaxReport", 4, "CCriteriaHrTaxDocument", "HR_TAXFORM_MENU", mnuModule_Click, "YYY");
+            addMenuItem("hr", "mnuHrTaxForm1", "hr_revenue_tax_1", "bmpTaxReport", 4, "CCriteriaHrTaxDocument", "HR_TAXFORM_MENU", mnuModule_Click, "YYY");
+            addMenuItem("hr", "mnuHrTaxForm2", "hr_revenue_tax_1kor", "bmpTaxReport", 4, "CCriteriaHrTaxDocumentKor", "HR_TAXFORM_MENU", mnuModule_Click, "YYY");
             addMenuItem("hr", "mnuHr", "hr_report", "bmpReport", 5, "", "HR_REPORT_MENU", mnuModule_Click, "YYY");
             //End HR
 

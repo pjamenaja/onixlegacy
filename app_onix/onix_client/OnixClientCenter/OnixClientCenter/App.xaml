@@ -236,6 +236,6 @@
 
         <BitmapImage x:Key="bmpLoading" UriSource="pack://application:,,,/OnixClient;component/Images/loading.gif" />
         <BitmapImage x:Key="bmpCost" UriSource="pack://application:,,,/OnixClient;component/Images/money-in.png" />
-        
+        <BitmapImage x:Key="bmpLeave" UriSource="pack://application:,,,/OnixClient;component/Images/disk-icon.png" />
     </Application.Resources>
 </Application>

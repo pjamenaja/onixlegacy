@@ -79,6 +79,190 @@ namespace Onix.Client.Helper
 
         #region Properties        
         
+        public String adjust_amount
+        {
+            get
+            {
+                return (CLanguage.getValueEx());
+            }
+        }
+
+        public String hiring_duration
+        {
+            get
+            {
+                return (CLanguage.getValueEx());
+            }
+        }
+
+        public String jan
+        {
+            get
+            {
+                return (CLanguage.getValueEx());
+            }
+        }
+
+        public String feb
+        {
+            get
+            {
+                return (CLanguage.getValueEx());
+            }
+        }
+
+        public String mar
+        {
+            get
+            {
+                return (CLanguage.getValueEx());
+            }
+        }
+
+        public String apr
+        {
+            get
+            {
+                return (CLanguage.getValueEx());
+            }
+        }
+
+        public String may
+        {
+            get
+            {
+                return (CLanguage.getValueEx());
+            }
+        }
+
+        public String jun
+        {
+            get
+            {
+                return (CLanguage.getValueEx());
+            }
+        }
+
+        public String jul
+        {
+            get
+            {
+                return (CLanguage.getValueEx());
+            }
+        }
+
+        public String aug
+        {
+            get
+            {
+                return (CLanguage.getValueEx());
+            }
+        }
+
+        public String sep
+        {
+            get
+            {
+                return (CLanguage.getValueEx());
+            }
+        }
+
+        public String oct
+        {
+            get
+            {
+                return (CLanguage.getValueEx());
+            }
+        }
+
+        public String nov
+        {
+            get
+            {
+                return (CLanguage.getValueEx());
+            }
+        }
+
+        public String dec
+        {
+            get
+            {
+                return (CLanguage.getValueEx());
+            }
+        }
+
+        public String hiring_date
+        {
+            get
+            {
+                return (CLanguage.getValueEx());
+            }
+        }
+
+        public String abnormal_leave
+        {
+            get
+            {
+                return (CLanguage.getValueEx());
+            }
+        }
+
+        public String deduction_leave
+        {
+            get
+            {
+                return (CLanguage.getValueEx());
+            }
+        }
+
+        public String annual_leave
+        {
+            get
+            {
+                return (CLanguage.getValueEx());
+            }
+        }
+
+        public String extra_personal_leave
+        {
+            get
+            {
+                return (CLanguage.getValueEx());
+            }
+        }
+
+        public String personal_leave
+        {
+            get
+            {
+                return (CLanguage.getValueEx());
+            }
+        }
+
+        public String late
+        {
+            get
+            {
+                return (CLanguage.getValueEx());
+            }
+        }
+
+        public String sick_leave
+        {
+            get
+            {
+                return (CLanguage.getValueEx());
+            }
+        }
+
+        public String leave
+        {
+            get
+            {
+                return (CLanguage.getValueEx());
+            }
+        }
+
         public String PromptPayID
         {
             get
@@ -215,7 +399,15 @@ namespace Onix.Client.Helper
             }
         }
 
-        public String hr_revenue_tax
+        public String hr_revenue_tax_1
+        {
+            get
+            {
+                return (CLanguage.getValueEx());
+            }
+        }
+
+        public String hr_revenue_tax_1kor
         {
             get
             {

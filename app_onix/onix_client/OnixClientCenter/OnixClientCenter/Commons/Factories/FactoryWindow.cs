@@ -29,6 +29,7 @@ namespace Onix.ClientCenter.Commons.Factories
             windowMaps["WinAddEditSupplier"] = "Onix.ClientCenter.UI.General.Entity.WinAddEditSupplier";
 
             windowMaps["WinAddEditEmployeeInfo"] = "Onix.ClientCenter.UI.HumanResource.EmployeeInfo.WinAddEditEmployeeInfo";
+            windowMaps["WinAddEditEmployeeLeave"] = "Onix.ClientCenter.UI.HumanResource.Leave.WinAddEditEmployeeLeave";            
             windowMaps["WinAddEditOrgChart"] = "Onix.ClientCenter.UI.HumanResource.OrgChart.WinAddEditOrgChart";
             windowMaps["WinAddEditPayrollDoc"] = "Onix.ClientCenter.UI.HumanResource.PayrollDocument.WinAddEditPayrollDoc";
             windowMaps["WinAddEditPayrollDocItem"] = "Onix.ClientCenter.UI.HumanResource.PayrollDocument.WinAddEditPayrollDocItem";
@@ -50,6 +51,7 @@ namespace Onix.ClientCenter.Commons.Factories
             windowMaps["WinAddEditTaxPP30"] = "Onix.ClientCenter.UI.AccountPayable.TaxDocument.PP30.WinAddEditTaxPP30";
             windowMaps["WinAddEditTaxFormPRV3_53"] = "Onix.ClientCenter.UI.AccountPayable.TaxDocument.PRV3_53.WinAddEditTaxFormPRV3_53";
             windowMaps["WinAddEditTaxFormPRV1"] = "Onix.ClientCenter.UI.AccountPayable.TaxDocument.PRV1.WinAddEditTaxFormPRV1";
+            windowMaps["WinAddEditTaxFormPRV1Kor"] = "Onix.ClientCenter.UI.AccountPayable.TaxDocument.PRV1Kor.WinAddEditTaxFormPRV1Kor";
             windowMaps["WinAddEditCostDocument"] = "Onix.ClientCenter.UI.AccountPayable.StockCost.WinAddEditCostDocument";            
         }
 

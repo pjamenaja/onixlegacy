@@ -10,6 +10,7 @@ namespace Onix.ClientCenter.UI.HumanResource.OTDocument
     {
         private Boolean forDelete = false;
         private String oldFlag = "";
+        private int seq = 0;
 
         public MVPayrollExpenseItem(CTable obj) : base(obj)
         {
@@ -17,7 +18,21 @@ namespace Onix.ClientCenter.UI.HumanResource.OTDocument
 
         public void CreateDefaultValue()
         {
-        }        
+        }
+
+        public int Seq
+        {
+            get
+            {
+                return (seq);
+            }
+
+            set
+            {
+                GetDbObject().SetFieldValue("INTERNAL_SEQ", value.ToString());
+                seq = value;
+            }
+        }
 
         public bool IsDeleted
         {
@@ -53,6 +68,7 @@ namespace Onix.ClientCenter.UI.HumanResource.OTDocument
                     ExpenseType = m.MasterID;
                     ExpenseTypeDesc = m.Description;
                     NotifyPropertyChanged();
+                    updateFlag();
                 }
             }
 

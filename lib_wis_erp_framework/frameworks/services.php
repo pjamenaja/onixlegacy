@@ -132,6 +132,7 @@ $ONIX_SERVICES_LIST = [
     'GetTaxDocRv3Rv53List' => [$bp . 'controllers/SalePurchase/TaxDocument.php', 'GetTaxDocRv3Rv53List', $userLvl],
     'ApproveTaxDoc' => [$bp . 'controllers/SalePurchase/TaxDocument.php', 'ApproveTaxDoc', $userLvl],
     'PopulatePayrollItems' => [$bp . 'controllers/SalePurchase/TaxDocument.php', 'PopulatePayrollItems', $userLvl],
+    'PopulateYearlyPayrollItems' => [$bp . 'controllers/SalePurchase/TaxDocument.php', 'PopulateYearlyPayrollItems', $userLvl],
     
     //Company Commission Profile
     'GetCompanyCommProfileInfo' => [$bp . 'controllers/Promotion/CompanyCommProfile.php', 'GetCompanyCommProfileInfo', $userLvl],
@@ -182,7 +183,7 @@ $ONIX_SERVICES_LIST = [
     'UpdateEmployee' => [$bp . 'controllers/General/Employee.php', 'UpdateEmployee', $userLvl],
     'DeleteEmployee' => [$bp . 'controllers/General/Employee.php', 'DeleteEmployee', $userLvl],
     'CopyEmployee' => [$bp . 'controllers/General/Employee.php', 'CopyEmployee', $userLvl],
-
+    
     //Voucher Template
     'GetVoucherTemplateList' => [$bp . 'controllers/Promotion/VoucherTemplate.php', 'GetVoucherTemplateList', $userLvl],
     'GetVoucherTemplateInfo' => [$bp . 'controllers/Promotion/VoucherTemplate.php', 'GetVoucherTemplateInfo', $userLvl],
@@ -296,6 +297,8 @@ $ONIX_SERVICES_LIST = [
     'GetProfitByDocTypeProject' => [$bp . 'controllers/SalePurchase/SalePurchaseReport.php', 'GetProfitByDocTypeProject', $userLvl],
     'GetProfitByDocTypeProjectGroup' => [$bp . 'controllers/SalePurchase/SalePurchaseReport.php', 'GetProfitByDocTypeProjectGroup', $userLvl],
     'GetVatAmountByDocTypeInMonth' => [$bp . 'controllers/SalePurchase/SalePurchaseReport.php', 'GetVatAmountByDocTypeInMonth', $userLvl],
+    'GetPurchaseInvoiceTxList' => [$bp . 'controllers/SalePurchase/SalePurchaseReport.php', 'GetPurchaseInvoiceTxList', $userLvl],
+    'GetPurchasePoTxList' => [$bp . 'controllers/SalePurchase/SalePurchaseReport.php', 'GetPurchasePoTxList', $userLvl],
     
     //Global Variable
     'GetGlobalVariableList' => [$bp . 'controllers/General/GlobalVariable.php', 'GetGlobalVariableList', $userLvl],
@@ -361,6 +364,15 @@ $ONIX_SERVICES_LIST = [
     'VerifyCheque' => [$bp . 'controllers/Cash/Cheque.php', 'VerifyCheque', $userLvl],    
     'GetChequeListAll' => [$bp . 'controllers/Cash/ChequeReport.php', 'GetChequeListAll', $userLvl],
     
+    //EmployeeLeave
+    'GetEmployeeLeaveDocList' => [$bp . 'controllers/HR/EmployeeLeave.php', 'GetEmployeeLeaveDocList', $userLvl],
+    'GetEmployeeLeaveDocInfo' => [$bp . 'controllers/HR/EmployeeLeave.php', 'GetEmployeeLeaveDocInfo', $userLvl],
+    'CreateEmployeeLeaveDoc' => [$bp . 'controllers/HR/EmployeeLeave.php', 'CreateEmployeeLeaveDoc', $userLvl],
+    'UpdateEmployeeLeaveDoc' => [$bp . 'controllers/HR/EmployeeLeave.php', 'UpdateEmployeeLeaveDoc', $userLvl],
+    'SaveEmployeeLeaveDoc' => [$bp . 'controllers/HR/EmployeeLeave.php', 'SaveEmployeeLeaveDoc', $userLvl],
+    'GetEmployeeLeaveInfo' => [$bp . 'controllers/HR/EmployeeLeave.php', 'GetEmployeeLeaveInfo', $userLvl],
+    'GetEmployeeLeaveSummary' => [$bp . 'controllers/HR/EmployeeLeave.php', 'GetEmployeeLeaveSummary', $userLvl],
+
     //PayrollDocument
     'GetPayrollDocList' => [$bp . 'controllers/HR/PayrollDocument.php', 'GetPayrollDocList', $userLvl],
     'GetPayrollDocInfo' => [$bp . 'controllers/HR/PayrollDocument.php', 'GetPayrollDocInfo', $userLvl],
@@ -382,7 +394,12 @@ $ONIX_SERVICES_LIST = [
     'GetEmployeePayrollByDateList' => [$bp . 'controllers/HR/HrPayrollReport.php', 'GetEmployeePayrollByDateList', $userLvl],
     'GetEmployeePayrollByEmployeeList' => [$bp . 'controllers/HR/HrPayrollReport.php', 'GetEmployeePayrollByEmployeeList', $userLvl],
     'GetEmployeePayrollAccumulate' => [$bp . 'controllers/HR/HrPayrollReport.php', 'GetEmployeePayrollAccumulate', $userLvl],
-
+    'GetEmployeeTaxMonthSummary' => [$bp . 'controllers/HR/HrPayrollReport.php', 'GetEmployeeTaxMonthSummary', $userLvl],
+    'GetEmployeeSocialInsuranceMonthSummary' => [$bp . 'controllers/HR/HrPayrollReport.php', 'GetEmployeeSocialInsuranceMonthSummary', $userLvl],
+    'GetEmployeeRevenueMonthSummary' => [$bp . 'controllers/HR/HrPayrollReport.php', 'GetEmployeeRevenueMonthSummary', $userLvl],
+    'GetEmployeeYearlySummary' => [$bp . 'controllers/HR/HrPayrollReport.php', 'GetEmployeeYearlySummary', $userLvl],
+    'GetEmployeeTaxYearSummary' => [$bp . 'controllers/HR/HrPayrollReport.php', 'GetEmployeeTaxYearSummary', $userLvl],
+    
     //Custom for ACDesign
     'AcdGetProfitByDocTypeMonth' => [$bp . 'controllers/SalePurchase/ACDesign/AcdSalePurchaseReport.php', 'AcdGetProfitByDocTypeMonth', $userLvl],
 

@@ -760,6 +760,46 @@ namespace Onix.ClientCenter.UI.HumanResource.OTDocument
             }
         }
 
+        public String OtAdjustAmount
+        {
+            get
+            {
+                if (GetDbObject() == null)
+                {
+                    return ("");
+                }
+
+                return (GetDbObject().GetFieldValue("OT_ADJUST_AMOUNT"));
+            }
+
+            set
+            {
+                GetDbObject().SetFieldValue("OT_ADJUST_AMOUNT", value);
+                NotifyPropertyChanged();
+                CalculateTotalFields();
+            }
+        }
+
+        public String AdjustAmount
+        {
+            get
+            {
+                if (GetDbObject() == null)
+                {
+                    return ("");
+                }
+
+                return (GetDbObject().GetFieldValue("ADJUST_AMOUNT"));
+            }
+
+            set
+            {
+                GetDbObject().SetFieldValue("ADJUST_AMOUNT", value);
+                NotifyPropertyChanged();
+                CalculateTotalFields();
+            }
+        }
+
         public String DeductionHourRoundedTotal
         {
             get
@@ -1071,6 +1111,8 @@ namespace Onix.ClientCenter.UI.HumanResource.OTDocument
                 deductMinuteTotal = deductMinuteTotal + CUtil.StringToDouble(exp.DurationMin);
             }
 
+            double adjust = CUtil.StringToDouble(AdjustAmount);
+            double otAdjust = CUtil.StringToDouble(OtAdjustAmount);
             double rate = CUtil.StringToDouble(OtRate);
             double roundedHour = roundHour(deductMinuteTotal / 60.00);
             if (roundedHour < 1.00)
@@ -1079,10 +1121,12 @@ namespace Onix.ClientCenter.UI.HumanResource.OTDocument
                 roundedHour = 0.00;
             }
             deduction = roundedHour * rate * 1.50; //คิดหักที่ 1.5 เท่า
+            deduction = deduction - adjust;
+
             DeductionHourRoundedTotal = roundedHour.ToString();
 
             ItemCount = i.ToString();
-            ReceiveAmount = received.ToString(); //OT
+            ReceiveAmount = (received-otAdjust).ToString(); //OT
             WorkedAmount = workedAmt.ToString(); //ค่าแรงสำหรับรายวัน
 
             DeductionAmount = deduction.ToString(); //ขาด ลา สาย in hour 
@@ -1090,7 +1134,7 @@ namespace Onix.ClientCenter.UI.HumanResource.OTDocument
             DeductionMinuteTotal = deductMinuteTotal.ToString();
 
             ExpenseItemCount = expenseCount.ToString();
-            ExpenseAmount = expense.ToString();
+            ExpenseAmount = expense.ToString();            
         }
 
         private double roundHour(double num)

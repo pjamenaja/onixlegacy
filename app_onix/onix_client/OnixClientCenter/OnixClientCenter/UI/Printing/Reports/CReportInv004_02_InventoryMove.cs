@@ -273,7 +273,6 @@ namespace Onix.ClientCenter.Reports
 				doneFunc(false, false);
 			}
 
-            //ArrayList arr = OnixWebServiceAPI.GetInventoryItemMovementList(Parameter);
             if (Parameter.GetFieldValue("COSTING_TYPE").Equals("MOVE"))
                 Parameter.SetFieldValue("DOCUMENT_TYPE", "3");
             ArrayList arr = OnixWebServiceAPI.GetInventoryTransactionList(Parameter);

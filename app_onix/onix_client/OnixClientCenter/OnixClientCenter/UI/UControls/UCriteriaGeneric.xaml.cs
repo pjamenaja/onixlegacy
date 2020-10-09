@@ -45,9 +45,11 @@ namespace Onix.ClientCenter.UControls
         private void renderAddButton()
         {
             Button btn = criteria.GetButton();
-            pnlAddButton.Children.Add(btn);
-
-            btn.IsEnabled = criteria.IsAddEnable();
+            if (btn != null)
+            {
+                pnlAddButton.Children.Add(btn);
+                btn.IsEnabled = criteria.IsAddEnable();
+            }
         }
 
         private void renderGridColumns()

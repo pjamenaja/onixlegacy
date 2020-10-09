@@ -19,7 +19,7 @@ namespace Onix.Client.Resources {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class Strings_EN {
@@ -75,6 +75,24 @@ namespace Onix.Client.Resources {
         public static string a4 {
             get {
                 return ResourceManager.GetString("a4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Without Pay.
+        /// </summary>
+        public static string abnormal_leave {
+            get {
+                return ResourceManager.GetString("abnormal_leave", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ขาดงาน (ช.ม.).
+        /// </summary>
+        public static string abnormal_leave_hr {
+            get {
+                return ResourceManager.GetString("abnormal_leave_hr", resourceCulture);
             }
         }
         
@@ -700,6 +718,15 @@ namespace Onix.Client.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Adjust Amt..
+        /// </summary>
+        public static string adjust_amount {
+            get {
+                return ResourceManager.GetString("adjust_amount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Adjustment By Delta.
         /// </summary>
         public static string adjust_by_delta {
@@ -1011,6 +1038,15 @@ namespace Onix.Client.Resources {
         public static string amt_bef_vat {
             get {
                 return ResourceManager.GetString("amt_bef_vat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Annual Leave.
+        /// </summary>
+        public static string annual_leave {
+            get {
+                return ResourceManager.GetString("annual_leave", resourceCulture);
             }
         }
         
@@ -3076,6 +3112,24 @@ namespace Onix.Client.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Deduction Leave.
+        /// </summary>
+        public static string deduction_leave {
+            get {
+                return ResourceManager.GetString("deduction_leave", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ทำงานไม่ครบ (ช.ม.).
+        /// </summary>
+        public static string deduction_leave_hr {
+            get {
+                return ResourceManager.GetString("deduction_leave_hr", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Deduction Type.
         /// </summary>
         public static string deduction_type {
@@ -4138,6 +4192,15 @@ namespace Onix.Client.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Date [{0}] is already exist.
+        /// </summary>
+        public static string ERROR_DUPLICATE_DATE {
+            get {
+                return ResourceManager.GetString("ERROR_DUPLICATE_DATE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to This &apos;{0}&apos; -&gt; &apos;{1}&apos; already exist.
         /// </summary>
         public static string ERROR_DUPLICATE_KEY {
@@ -4237,6 +4300,15 @@ namespace Onix.Client.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Summation more than [{0}] 1 day.
+        /// </summary>
+        public static string ERROR_LEAVE_OVER_DAY {
+            get {
+                return ResourceManager.GetString("ERROR_LEAVE_OVER_DAY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Unable to login into system [{0}].
         /// </summary>
         public static string ERROR_LOGIN {
@@ -4314,6 +4386,15 @@ namespace Onix.Client.Resources {
         public static string ERROR_NO_SELECTED {
             get {
                 return ResourceManager.GetString("ERROR_NO_SELECTED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Date need to be in the same month!!! [{0}].
+        /// </summary>
+        public static string ERROR_NOT_IN_SAME_MONTH {
+            get {
+                return ResourceManager.GetString("ERROR_NOT_IN_SAME_MONTH", resourceCulture);
             }
         }
         
@@ -4687,6 +4768,15 @@ namespace Onix.Client.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Others.
+        /// </summary>
+        public static string expense_other {
+            get {
+                return ResourceManager.GetString("expense_other", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Tollway.
         /// </summary>
         public static string expense_tollway {
@@ -4755,6 +4845,15 @@ namespace Onix.Client.Resources {
         public static string external_cash_xfer {
             get {
                 return ResourceManager.GetString("external_cash_xfer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Extra Leave.
+        /// </summary>
+        public static string extra_personal_leave {
+            get {
+                return ResourceManager.GetString("extra_personal_leave", resourceCulture);
             }
         }
         
@@ -5353,11 +5452,29 @@ namespace Onix.Client.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ข้อมูลการลา.
+        /// </summary>
+        public static string grpHRLeave {
+            get {
+                return ResourceManager.GetString("grpHRLeave", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Payroll Slip.
         /// </summary>
         public static string grpHRSlip {
             get {
                 return ResourceManager.GetString("grpHRSlip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Employee Tax.
+        /// </summary>
+        public static string grpHRTax {
+            get {
+                return ResourceManager.GetString("grpHRTax", resourceCulture);
             }
         }
         
@@ -5524,6 +5641,24 @@ namespace Onix.Client.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Hiring Date.
+        /// </summary>
+        public static string hiring_date {
+            get {
+                return ResourceManager.GetString("hiring_date", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hiring Period.
+        /// </summary>
+        public static string hiring_duration {
+            get {
+                return ResourceManager.GetString("hiring_duration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Home No..
         /// </summary>
         public static string home_no {
@@ -5574,6 +5709,24 @@ namespace Onix.Client.Resources {
         public static string hr_allowance_form {
             get {
                 return ResourceManager.GetString("hr_allowance_form", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ข้อมูลการลาพนักงาน.
+        /// </summary>
+        public static string hr_employee_leave {
+            get {
+                return ResourceManager.GetString("hr_employee_leave", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Employee Widtholding Tax.
+        /// </summary>
+        public static string hr_employee_witholding_tax {
+            get {
+                return ResourceManager.GetString("hr_employee_witholding_tax", resourceCulture);
             }
         }
         
@@ -6762,6 +6915,33 @@ namespace Onix.Client.Resources {
         public static string last_name_eng {
             get {
                 return ResourceManager.GetString("last_name_eng", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Late.
+        /// </summary>
+        public static string late {
+            get {
+                return ResourceManager.GetString("late", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to สาย (นาที).
+        /// </summary>
+        public static string late_min {
+            get {
+                return ResourceManager.GetString("late_min", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Leave Records.
+        /// </summary>
+        public static string leave {
+            get {
+                return ResourceManager.GetString("leave", resourceCulture);
             }
         }
         
@@ -8485,6 +8665,15 @@ namespace Onix.Client.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Personal Leave.
+        /// </summary>
+        public static string personal_leave {
+            get {
+                return ResourceManager.GetString("personal_leave", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Default Price.
         /// </summary>
         public static string pkg_default_price {
@@ -10006,6 +10195,15 @@ namespace Onix.Client.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to HR001_03 - Employee Leave Records.
+        /// </summary>
+        public static string rpt_employee_leave {
+            get {
+                return ResourceManager.GetString("rpt_employee_leave", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to HR001_02 - รายงานรับจ่ายเงินเดือนพนักงานตามพนักงาน.
         /// </summary>
         public static string rpt_employee_payroll_by_date {
@@ -10020,6 +10218,42 @@ namespace Onix.Client.Resources {
         public static string rpt_employee_payroll_list {
             get {
                 return ResourceManager.GetString("rpt_employee_payroll_list", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to HR001_06 - Employee Revenue Report.
+        /// </summary>
+        public static string rpt_employee_revenue {
+            get {
+                return ResourceManager.GetString("rpt_employee_revenue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to HR001_05 - Employee Social Insurance Records.
+        /// </summary>
+        public static string rpt_employee_social_insurance {
+            get {
+                return ResourceManager.GetString("rpt_employee_social_insurance", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to HR001_04 - Employee Tax Records.
+        /// </summary>
+        public static string rpt_employee_tax {
+            get {
+                return ResourceManager.GetString("rpt_employee_tax", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to HR001_07 - Yearly Revenue &amp; Tax Report.
+        /// </summary>
+        public static string rpt_employee_yearly_tax {
+            get {
+                return ResourceManager.GetString("rpt_employee_yearly_tax", resourceCulture);
             }
         }
         
@@ -10132,6 +10366,15 @@ namespace Onix.Client.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to PS004_01 - Purchase transaction by invoice..
+        /// </summary>
+        public static string rpt_invoice_detail {
+            get {
+                return ResourceManager.GetString("rpt_invoice_detail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Sales Manager.
         /// </summary>
         public static string rpt_lb_salesManager {
@@ -10146,6 +10389,15 @@ namespace Onix.Client.Resources {
         public static string rpt_operator {
             get {
                 return ResourceManager.GetString("rpt_operator", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to PS005_01 - Purchase Transaction By PO.
+        /// </summary>
+        public static string rpt_po_detail {
+            get {
+                return ResourceManager.GetString("rpt_po_detail", resourceCulture);
             }
         }
         
@@ -10470,6 +10722,15 @@ namespace Onix.Client.Resources {
         public static string rv_tax_1 {
             get {
                 return ResourceManager.GetString("rv_tax_1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ภ.ง.ด. 1 ก.
+        /// </summary>
+        public static string rv_tax_1_kor {
+            get {
+                return ResourceManager.GetString("rv_tax_1_kor", resourceCulture);
             }
         }
         
@@ -11177,6 +11438,15 @@ namespace Onix.Client.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Sick Leave.
+        /// </summary>
+        public static string sick_leave {
+            get {
+                return ResourceManager.GetString("sick_leave", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Simulation Code.
         /// </summary>
         public static string simulation_code {
@@ -11281,6 +11551,15 @@ namespace Onix.Client.Resources {
         public static string so_no {
             get {
                 return ResourceManager.GetString("so_no", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Social Insurance.
+        /// </summary>
+        public static string social_insurance {
+            get {
+                return ResourceManager.GetString("social_insurance", resourceCulture);
             }
         }
         
