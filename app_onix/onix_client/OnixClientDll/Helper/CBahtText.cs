@@ -22,10 +22,12 @@ namespace Onix.Client.Helper
             {
                 result = result + Speak(s1) + "ล้าน";
             }
-            if (s2.Length > 0)
+
+            if ((s2.Length > 0) || (s1.Length > 0))
             {
                 result = result + Speak(s2) + "บาท";
             }
+
             if (s3.Length > 0)
             {
                 result = result + speakStang(s3) + "สตางค์";
@@ -34,6 +36,7 @@ namespace Onix.Client.Helper
             {
                 result = result + "ถ้วน";
             }
+
             return (result);
         }
 

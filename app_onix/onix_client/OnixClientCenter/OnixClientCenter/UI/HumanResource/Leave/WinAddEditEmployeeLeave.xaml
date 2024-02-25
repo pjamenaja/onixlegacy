@@ -24,8 +24,28 @@
 
     <DockPanel LastChildFill="True">
         <DockPanel DockPanel.Dock="Top">
-            
-            <StackPanel DockPanel.Dock="Right" Orientation="Vertical"/>
+
+            <StackPanel DockPanel.Dock="Right" Orientation="Vertical" Width="200">
+                <Button Name="cmdLeaveReport" Content="ข้อมูลการลา" MinWidth="120"  Margin="20,20,20,0" Click="CmdLeaveReport_Click"/>
+                <Button Name="cmdMonthChange" Content="เปลี่ยนเดือน" MinWidth="120"  Margin="20,20,20,0" Click="CmdMonthChange_Click">
+                    <Button.ContextMenu>
+                        <ContextMenu>
+                            <MenuItem Name="mnuJan" Header="{Binding Source={x:Static lang:CTextLabel.Instance}, Path=jan}" Tag="1" Click="MnuMonth_Click"/>
+                            <MenuItem Name="mnuFeb" Header="{Binding Source={x:Static lang:CTextLabel.Instance}, Path=feb}" Tag="2" Click="MnuMonth_Click"/>
+                            <MenuItem Name="mnuMar" Header="{Binding Source={x:Static lang:CTextLabel.Instance}, Path=mar}" Tag="3" Click="MnuMonth_Click"/>
+                            <MenuItem Name="mnuApr" Header="{Binding Source={x:Static lang:CTextLabel.Instance}, Path=apr}" Tag="4" Click="MnuMonth_Click"/>
+                            <MenuItem Name="mnuMay" Header="{Binding Source={x:Static lang:CTextLabel.Instance}, Path=may}" Tag="5" Click="MnuMonth_Click"/>
+                            <MenuItem Name="mnuJun" Header="{Binding Source={x:Static lang:CTextLabel.Instance}, Path=jun}" Tag="6" Click="MnuMonth_Click"/>
+                            <MenuItem Name="mnuJul" Header="{Binding Source={x:Static lang:CTextLabel.Instance}, Path=jul}" Tag="7" Click="MnuMonth_Click"/>
+                            <MenuItem Name="mnuAug" Header="{Binding Source={x:Static lang:CTextLabel.Instance}, Path=aug}" Tag="8" Click="MnuMonth_Click"/>
+                            <MenuItem Name="mnuSep" Header="{Binding Source={x:Static lang:CTextLabel.Instance}, Path=sep}" Tag="9" Click="MnuMonth_Click"/>
+                            <MenuItem Name="mnuOct" Header="{Binding Source={x:Static lang:CTextLabel.Instance}, Path=oct}" Tag="10" Click="MnuMonth_Click"/>
+                            <MenuItem Name="mnuNov" Header="{Binding Source={x:Static lang:CTextLabel.Instance}, Path=nov}" Tag="11" Click="MnuMonth_Click"/>
+                            <MenuItem Name="mnuDec" Header="{Binding Source={x:Static lang:CTextLabel.Instance}, Path=dec}" Tag="12" Click="MnuMonth_Click"/>
+                        </ContextMenu>
+                    </Button.ContextMenu>
+                </Button>
+            </StackPanel>
 
             <Grid DockPanel.Dock="Left">
                 <Grid.ColumnDefinitions>
@@ -48,18 +68,6 @@
                     <RowDefinition Height="0"/>
                     <RowDefinition Height="20"/>
                 </Grid.RowDefinitions>
-
-                <!-- Start Employee Code -->
-                <!--<TextBox Name="txtEmployeeCode" Grid.Row="1" Grid.Column="1" Width="200" HorizontalAlignment="Left" Text="{Binding EmployeeCode}"
-                         Margin="5,0,0,5" VerticalContentAlignment="Center"  TextChanged="txtText_TextChanged"/>-->
-
-                <!-- End Employee Code -->
-
-                <!-- Start Prefix -->
-                <!-- End Prefix -->
-
-                <!-- Start Gender -->
-
 
                 <Label Grid.Column="0" Grid.Row="2" Content="เดือน"  Name="lblYear"
                        VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" Margin="5,0,0,0"/>
@@ -91,25 +99,6 @@
                 <TextBox Name="txtLastNameTh" Grid.Row="3" Grid.Column="3" Width="300" HorizontalAlignment="Left" Text="{Binding EmployeeLastName}"
                          IsReadOnly="True"
                          Margin="5,0,0,5" VerticalContentAlignment="Center"  TextChanged="DefaultTextBox_TextChanged"/>
-                <!-- End Name Th -->
-
-                <!-- Start Name Eng -->
-                <!-- End Name Eng -->
-
-                <!-- Start Email and Phone -->
-                <!-- End Email and Phone -->
-
-                <!-- Start Department and Position -->
-
-                <!--<Label Name="lblPosition" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" Grid.Column="2" Grid.Row="6"
-                       Content="{Binding Source={x:Static lang:CTextLabel.Instance}, Path=position}" HorizontalAlignment="Right"/>
-
-                <TextBox Name="txtPosition" Grid.Row="6" Grid.Column="3" Width="300" HorizontalAlignment="Left" Text="{Binding PositionName}"
-                         Margin="5,0,0,5" VerticalContentAlignment="Center" IsEnabled="False" TextChanged="DefaultTextBox_TextChanged"/>-->
-                <!-- End Department and Position -->
-
-                <!-- Start Line ID -->
-                <!-- End Line ID -->
             </Grid>
         </DockPanel>
 
@@ -124,10 +113,11 @@
                     </StackPanel>
                 </Button.Content>
             </Button>
-            
+
             <Button Name="cmdSave" Content="{Binding Source={x:Static lang:CTextLabel.Instance}, Path=save}" MinWidth="80"  Margin="5,0,0,5"
                     Click="CmdSave_Click"/>
-            <Button Name="cmdCancel" IsCancel="True" Content="{Binding Source={x:Static lang:CTextLabel.Instance}, Path=cancel}" MinWidth="80"  Margin="5,0,0,5"/>
+            
+            <Button Name="cmdCancel" IsCancel="True" Content="{Binding Source={x:Static lang:CTextLabel.Instance}, Path=cancel}" MinWidth="80"  Margin="100,0,0,5"/>
         </StackPanel>
         
         <TabControl Margin="5, 0, 5, 5" DockPanel.Dock="Bottom">
@@ -144,7 +134,9 @@
                     <DockPanel LastChildFill="True">
                         <StackPanel DockPanel.Dock="Right" Orientation="Vertical" >
                             <Button Name="cmdAdd1" Content="เพิ่ม" HorizontalAlignment="Center" Width="80"  Margin="5,5,5,5" Click="CmdAdd_Click"/>
-                        </StackPanel>
+
+                        
+                    </StackPanel>
 
                     <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" Margin="0,5,0,0">
                         <Grid>

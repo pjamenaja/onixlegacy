@@ -134,6 +134,15 @@
     <Compile Include="UI\AccountPayable\TaxDocument\PP30\WinAddEditTaxPP30.xaml.cs">
       <DependentUpon>WinAddEditTaxPP30.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\AccountPayable\TaxDocument\PRV1Kor\CTaxFormGroupByEmployeeRv1Kor.cs" />
+    <Compile Include="UI\AccountPayable\TaxDocument\PRV1Kor\CTaxFormPageRv1Kor.cs" />
+    <Compile Include="UI\AccountPayable\TaxDocument\PRV1Kor\CTaxformRV1KorPdfField.cs" />
+    <Compile Include="UI\AccountPayable\TaxDocument\PRV1Kor\WinAddEditTaxFormPRV1Kor.xaml.cs">
+      <DependentUpon>WinAddEditTaxFormPRV1Kor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\AccountPayable\TaxDocument\PRV1Kor\WinTaxDocPRV1KorRendererProgress.xaml.cs">
+      <DependentUpon>WinTaxDocPRV1KorRendererProgress.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\AccountPayable\TaxDocument\PRV1\CTaxFormGroupByEmployeeRv1.cs" />
     <Compile Include="UI\AccountPayable\TaxDocument\PRV1\CTaxFormPageRv1.cs" />
     <Compile Include="UI\AccountPayable\TaxDocument\PRV1\CTaxformRv1PdfField.cs" />
@@ -192,8 +201,13 @@
     <Compile Include="UI\HumanResource\PayrollDocument\WinAddEditPayrollDoc.xaml.cs">
       <DependentUpon>WinAddEditPayrollDoc.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\HumanResource\TaxForm\CCriteriaHrTaxDocumentKor.cs" />
     <Compile Include="UI\HumanResource\TaxForm\CCriteriaHrTaxDocument.cs" />
     <Compile Include="UI\HumanResource\Utils\HRUtils.cs" />
+    <Compile Include="UI\Printing\Forms\AcDesign\HREmployeeTax\CFormEmployeeWithholdingTax.cs" />
+    <Compile Include="UI\Printing\Forms\AcDesign\HREmployeeTax\UFormEmployeeWithholdingTax.xaml.cs">
+      <DependentUpon>UFormEmployeeWithholdingTax.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\Printing\Forms\AcDesign\HRPayrollDeposit\CFormPayrollDeposit.cs" />
     <Compile Include="UI\Printing\Forms\AcDesign\HRPayrollDeposit\UFormPayrollDeposit.xaml.cs">
       <DependentUpon>UFormPayrollDeposit.xaml</DependentUpon>
@@ -210,6 +224,10 @@
     <Compile Include="UI\Printing\Forms\AcDesign\HRPayrollSlip\UFormPayrollSlip.xaml.cs">
       <DependentUpon>UFormPayrollSlip.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\Printing\Reports\CReportEmployee00_05_EmployeeYearlyTax.cs" />
+    <Compile Include="UI\Printing\Reports\CReportEmployee00_04_EmployeeRevenue.cs" />
+    <Compile Include="UI\Printing\Reports\CReportEmployee00_03_EmployeeSocialInsure.cs" />
+    <Compile Include="UI\Printing\Reports\CReportEmployee00_02_EmployeeTax.cs" />
     <Compile Include="UI\Printing\Reports\CReportFactory.cs" />
     <Compile Include="Commons\Windows\WinPDFViewer.xaml.cs">
       <DependentUpon>WinPDFViewer.xaml</DependentUpon>
@@ -226,6 +244,8 @@
     <Compile Include="Commons\CriteriaConfig\CCriteriaEntry.cs" />
     <Compile Include="UI\Printing\Reports\CReportInventory000_01_ItemList.cs" />
     <Compile Include="UI\Printing\Reports\CReportEmployee00_01_EmployeeLeave.cs" />
+    <Compile Include="UI\Printing\Reports\CReportInvoice005_PoTransaction.cs" />
+    <Compile Include="UI\Printing\Reports\CReportInvoice004_01_InvoiceTransaction.cs" />
     <Compile Include="UI\Printing\Reports\CReportPayroll001_02_EmployeeListPayroll.cs" />
     <Compile Include="UI\Printing\Reports\CReportPayroll001_01_EmployeeListPayroll.cs" />
     <Compile Include="UI\ZCriteria\CCriteriaAuxilaryDocSale.cs" />
@@ -613,6 +633,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UI\AccountPayable\TaxDocument\PRV1Kor\WinAddEditTaxFormPRV1Kor.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\AccountPayable\TaxDocument\PRV1Kor\WinTaxDocPRV1KorRendererProgress.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="UI\AccountPayable\TaxDocument\PRV1\WinAddEditTaxFormPRV1.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -658,6 +686,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="UI\HumanResource\PayrollDocument\WinAddEditPayrollDoc.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Printing\Forms\AcDesign\HREmployeeTax\UFormEmployeeWithholdingTax.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -1426,6 +1458,8 @@
     <EmbeddedResource Include="UI\AccountPayable\TaxDocument\Resources\WHT53_041060.pdf" />
     <EmbeddedResource Include="UI\AccountPayable\TaxDocument\Resources\PP1_DETAIL.pdf" />
     <EmbeddedResource Include="UI\AccountPayable\TaxDocument\Resources\PP1_SUMMARY.pdf" />
+    <EmbeddedResource Include="UI\AccountPayable\TaxDocument\Resources\PP1Kor_DETAIL.pdf" />
+    <EmbeddedResource Include="UI\AccountPayable\TaxDocument\Resources\PP1Kor_SUMMARY.pdf" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

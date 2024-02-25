@@ -891,7 +891,8 @@ namespace Onix.ClientCenter.Windows
                 MAuxilaryDocSubItem mi = new MAuxilaryDocSubItem(new CTable(""));
                 mi.Description = String.Format("{0}-{1} {2}", pd.FromSalaryDateFmt, pd.ToSalaryDateFmt, pd.EmployeeTypeDesc);
                 mi.SubItemDate = pd.ToSalaryDate;
-                mi.UnitPrice = pd.RemainAmount;
+                mi.UnitPrice = pd.ReceiveAmount;
+
                 if (type == 2)
                 {
                     mi.UnitPrice = pd.SocialSecurityCompanyAmount;

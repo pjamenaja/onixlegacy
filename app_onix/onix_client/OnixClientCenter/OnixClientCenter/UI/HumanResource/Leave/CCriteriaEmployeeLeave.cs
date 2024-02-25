@@ -70,6 +70,8 @@ namespace Onix.ClientCenter.UI.HumanResource.Leave
 
         private void loadRelatedReferences()
         {
+            CMasterReference.LoadEmployeeDepartments();
+            CMasterReference.LoadEmployeePositions();
         }
 
         #region Criteria Configure

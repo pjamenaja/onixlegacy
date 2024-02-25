@@ -27,36 +27,24 @@ namespace Onix.ClientCenter.Reports
         private void configReport()
         {
             addConfig("L1", 10, "number", HorizontalAlignment.Center, HorizontalAlignment.Center, HorizontalAlignment.Center, "", "RN", false);
-            addConfig("L1", 23, "date", HorizontalAlignment.Center, HorizontalAlignment.Left, HorizontalAlignment.Center, "FROM_SALARY_DATE", "DT", false);
             addConfig("L1", 20, "code", HorizontalAlignment.Center, HorizontalAlignment.Left, HorizontalAlignment.Center, "EMPLOYEE_CODE", "S", false);
             addConfig("L1", 30, "employee_name", HorizontalAlignment.Center, HorizontalAlignment.Left, HorizontalAlignment.Center, "EMPLOYEE_NAME_LASTNAME", "S", false);
 
-            addConfig("L1", 20, "salary", HorizontalAlignment.Center, HorizontalAlignment.Right, HorizontalAlignment.Right, "RECEIVE_INCOME", "D", true);
-            addConfig("L1", 20, "ot", HorizontalAlignment.Center, HorizontalAlignment.Right, HorizontalAlignment.Right, "RECEIVE_OT", "D", true);
-            addConfig("L1", 20, "revenue_position", HorizontalAlignment.Center, HorizontalAlignment.Right, HorizontalAlignment.Right, "RECEIVE_POSITION", "D", true);
-            addConfig("L1", 20, "revenue_bonus", HorizontalAlignment.Center, HorizontalAlignment.Right, HorizontalAlignment.Right, "RECEIVE_BONUS", "D", true);
-            addConfig("L1", 20, "revenue_transportation", HorizontalAlignment.Center, HorizontalAlignment.Right, HorizontalAlignment.Right, "RECEIVE_TRANSPORTATION", "D", true);
-            addConfig("L1", 20, "revenue_telephone", HorizontalAlignment.Center, HorizontalAlignment.Right, HorizontalAlignment.Right, "RECEIVE_TELEPHONE", "D", true);
-            addConfig("L1", 20, "revenue_allowance", HorizontalAlignment.Center, HorizontalAlignment.Right, HorizontalAlignment.Right, "RECEIVE_ALLOWANCE", "D", true);
-            addConfig("L1", 20, "revenue_commission", HorizontalAlignment.Center, HorizontalAlignment.Right, HorizontalAlignment.Right, "RECEIVE_COMMISSION", "D", true);
-
-            addConfig("L1", 20, "revenue_total", HorizontalAlignment.Center, HorizontalAlignment.Right, HorizontalAlignment.Right, "EMP_RECEIVED_TOTAL", "D", true);
-
-            addConfig("L1", 20, "tax", HorizontalAlignment.Center, HorizontalAlignment.Right, HorizontalAlignment.Right, "DEDUCT_TAX", "D", true);
-            addConfig("L1", 20, "social_security", HorizontalAlignment.Center, HorizontalAlignment.Right, HorizontalAlignment.Right, "DEDUCT_SOCIAL_SECURITY", "D", true);
-            addConfig("L1", 20, "absent_late", HorizontalAlignment.Center, HorizontalAlignment.Right, HorizontalAlignment.Right, "DEDUCT_PENALTY", "D", true);
-
-            addConfig("L1", 20, "deduct_total", HorizontalAlignment.Center, HorizontalAlignment.Right, HorizontalAlignment.Right, "EMP_DEDUCT_TOTAL", "D", true);
-
-            addConfig("L1", 20, "return_advance", HorizontalAlignment.Center, HorizontalAlignment.Right, HorizontalAlignment.Right, "RECEIVE_REFUND", "D", true);
-            addConfig("L1", 20, "coverage", HorizontalAlignment.Center, HorizontalAlignment.Right, HorizontalAlignment.Right, "DEDUCT_COVERAGE", "D", true);
-
-            addConfig("L1", 20, "total_receive_emp", HorizontalAlignment.Center, HorizontalAlignment.Right, HorizontalAlignment.Right, "EMP_AMOUNT_TOTAL", "D", true);
+            addConfig("L1", 20, "hiring_date", HorizontalAlignment.Center, HorizontalAlignment.Center, HorizontalAlignment.Center, "HIRING_DATE", "DT", false);
+            addConfig("L1", 0, "hiring_duration", HorizontalAlignment.Center, HorizontalAlignment.Right, HorizontalAlignment.Right, "HIRING_DURATION", "S", false);
+            
+            addConfig("L1", 15, "sick_leave", HorizontalAlignment.Center, HorizontalAlignment.Right, HorizontalAlignment.Right, "SICK_LEAVE", "DD", true);
+            addConfig("L1", 15, "personal_leave", HorizontalAlignment.Center, HorizontalAlignment.Right, HorizontalAlignment.Right, "PERSONAL_LEAVE", "DD", true);
+            addConfig("L1", 20, "extra_personal_leave", HorizontalAlignment.Center, HorizontalAlignment.Right, HorizontalAlignment.Right, "EXTRA_LEAVE", "DD", true);
+            addConfig("L1", 20, "annual_leave", HorizontalAlignment.Center, HorizontalAlignment.Right, HorizontalAlignment.Right, "ANNUAL_LEAVE", "DD", true);
+            addConfig("L1", 20, "late_min", HorizontalAlignment.Center, HorizontalAlignment.Right, HorizontalAlignment.Right, "LATE", "DD", true);
+            addConfig("L1", 25, "deduction_leave_hr", HorizontalAlignment.Center, HorizontalAlignment.Right, HorizontalAlignment.Right, "DEDUCTION_LEAVE", "DD", true);
+            addConfig("L1", 25, "abnormal_leave_hr", HorizontalAlignment.Center, HorizontalAlignment.Right, HorizontalAlignment.Right, "ABNORMAL_LEAVE", "DD", true);
         }
 
         protected override ArrayList getRecordSet()
         {
-            ArrayList arr = OnixWebServiceAPI.GetListAPI("GetEmployeePayrollByEmployeeList", "PAYROLL_EMPLOYEE_LIST", Parameter);
+            ArrayList arr = OnixWebServiceAPI.GetListAPI("GetEmployeeLeaveSummary", "EMPLOYEE_LEAVE_RECORDS", Parameter);
             return (arr);
         }
 
@@ -186,17 +174,6 @@ namespace Onix.ClientCenter.Reports
                     prevKeyId = keyId;
                 }
 
-                if (!keyId.Equals(prevKeyId))
-                {
-                    prevKeyId = keyId;
-
-                    h = addNewFooterRow(rowdef, rpp, "FOOTER_LEVEL1", "L1", "total", entitySums);
-                    newh = newh - h;
-
-                    //Reset
-                    entitySums = new ArrayList();
-                }
-
                 h = addNewDataRow(rowdef, rpp, "DATA_LEVEL1", "L1", row, o);
                 //newh = newh - h;
 
@@ -208,9 +185,6 @@ namespace Onix.ClientCenter.Reports
 
                 if (row == rowcount - 1)
                 {
-                    h = addNewFooterRow(rowdef, rpp, "FOOTER_LEVEL1", "L1", "total", entitySums);
-                    newh = newh - h;
-
                     h = addNewFooterRow(rowdef, rpp, "FOOTER_LEVEL1", "L1", "total", sums);
                     newh = newh - h;
                 }
@@ -242,18 +216,26 @@ namespace Onix.ClientCenter.Reports
         private void LoadMonthCombo(ComboBox cbo, String id)
         {
             CUtil.LoadComboFromCollection(cbo, false, id, CMasterReference.Instance.Months);
-        }        
+        }
+
+        private void LoadEmployeeTypeCombo(ComboBox cbo, String id)
+        {
+            CUtil.LoadComboFromCollection(cbo, false, id, CMasterReference.Instance.EmployeeTypes);
+        }
 
         public override ArrayList GetReportInputEntries()
         {
             CEntry entry = null;
             ArrayList entries = new ArrayList();
 
-            entry = new CEntry("year", EntryType.ENTRY_TEXT_BOX, 200, true, "LEAVE_YEAR");
+            entry = new CEntry("year", EntryType.ENTRY_TEXT_BOX, 200, false, "LEAVE_YEAR");
             entries.Add(entry);
 
-            entry = new CEntry("month", EntryType.ENTRY_COMBO_BOX, 200, true, "LEAVE_MONTH");
-            entry.SetComboLoadAndInit(LoadMonthCombo, InitCombo, ObjectToIndex);
+            entry = new CEntry("employee_type", EntryType.ENTRY_COMBO_BOX, 200, true, "DOCUMENT_STATUS");
+            entry.SetComboLoadAndInit(LoadEmployeeTypeCombo, InitCombo, ObjectToIndex);
+            entries.Add(entry);
+
+            entry = new CEntry("has_resigned", EntryType.ENTRY_CHECK_BOX, 200, true, "RESIGNED_FLAG");
             entries.Add(entry);
 
             entry = new CEntry("employee_code", EntryType.ENTRY_TEXT_BOX, 200, true, "EMPLOYEE_CODE");

@@ -1,6 +1,6 @@
 substitutions:
-  _VERSION: "0.0.969"
-  _DOCKER_VERSION: "latest"
+  _VERSION: "2.0.1"
+  _DOCKER_VERSION: "2.0.1"
 
 steps:    
 - name: 'gcr.io/cloud-builders/docker'

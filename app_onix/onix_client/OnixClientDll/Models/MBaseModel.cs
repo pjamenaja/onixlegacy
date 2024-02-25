@@ -345,6 +345,20 @@ namespace Onix.Client.Model
         {
         }
 
+
+        protected void ClearAssociateItems(String arrName)
+        {
+            CTable o = GetDbObject();
+            ArrayList arr = o.GetChildArray(arrName);
+
+            if (arr == null)
+            {
+                return;
+            }
+
+            arr.Clear();
+        }
+
         protected void removeAssociateItems(MBaseModel vp, String arrName, String seqField, String idField)
         {
             CTable o = GetDbObject();

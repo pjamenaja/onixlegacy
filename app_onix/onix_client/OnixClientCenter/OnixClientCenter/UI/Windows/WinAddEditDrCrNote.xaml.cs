@@ -551,7 +551,7 @@ namespace Onix.ClientCenter.Windows
 
                 vw.ReloadEntityAddresses(en.AddressItems);
 
-                if (en.AddressItems.Count > 0)
+                if ((en.AddressItems.Count > 0) && (cboAddress != null))
                 {
                     cboAddress.SelectedIndex = 0;
                 }

@@ -35,29 +35,10 @@ namespace Onix.ClientCenter.Forms.AcDesign.HREmployeeLeave
             //}
 
             //item.InitializeAfterLoaded();
-            PopulateDummyRecords(leaveDoc);
+            //PopulateDummyRecords(leaveDoc);
 
             DataContext = leaveDoc;
-            InitializeComponent();
-        }
-
-        private void PopulateDummyRecords(MEmployeeLeave leaveDoc)
-        {
-            leaveDoc.EmployeeCode = "dt74696";
-            leaveDoc.EmployeeName = "สืบพงษ์";
-            leaveDoc.EmployeeLastName = "มนต์สา";
-            leaveDoc.DepartmentName = "แผนกไอที";
-            leaveDoc.PositionName = "โปรแกรมเมอร์";
-            leaveDoc.LeaveYear = "2019";
-            leaveDoc.Salary = "20000";
-
-            for (int i = 1; i <= 12; i++)
-            {
-                MLeaveRecord lr = new MLeaveRecord(new Wis.WsClientAPI.CTable(""));
-                lr.Late = "100";
-                lr.LeaveMonth = i.ToString();
-                leaveDoc.AddLeaveRecord(lr);
-            }
+            InitializeComponent();        
         }
     }
 }

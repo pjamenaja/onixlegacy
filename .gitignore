@@ -6,6 +6,7 @@ app_onix/onix_client/OnixClientCenter/bin/WisAutoUpdate.exe
 app_onix/onix_client/OnixClientCenter/bin/Updater.exe
 app_onix/onix_client/OnixClientCenter/bin/*.exe
 app_onix/onix_client/OnixClientCenter/bin/onix.xml
+app_onix/onix_client/OnixClientCenter/bin/onix.*.xml
 app_onix/onix_client/OnixClientCenter/bin/onix.xml*
 app_onix/onix_client/OnixClientDll/bin/Debug/.*
 app_onix/onix_client/OnixClientDll/obj/Debug/.*

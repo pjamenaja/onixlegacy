@@ -34,7 +34,7 @@ namespace Onix.ClientCenter.Forms.AcDesign.HREmployeeLeave
         {
             MEmployeeLeave ad = (MEmployeeLeave)dataSource;
 
-            ArrayList arr = createPageParamEasy(ad.LeaveRecords, 1);
+            ArrayList arr = createPageParamEasy(ad.LeaveRecords, 12);
             return (arr);
         }
 
@@ -46,15 +46,6 @@ namespace Onix.ClientCenter.Forms.AcDesign.HREmployeeLeave
         public override MReportConfig CreateDefaultConfigValues()
         {
             MReportConfig rc = new MReportConfig(new Wis.WsClientAPI.CTable(""));
-
-            rc.SetConfigValue("Column1Width", "10", "String", "Width");
-            rc.SetConfigValue("Column2Width", "10", "String", "Width");
-            rc.SetConfigValue("Column3Width", "10", "String", "Width");
-            rc.SetConfigValue("Column4Width", "10", "String", "Width");
-            rc.SetConfigValue("Column5Width", "10", "String", "Width");
-            rc.SetConfigValue("Column6Width", "10", "String", "Width");
-            rc.SetConfigValue("Column7Width", "10", "String", "Width");
-            rc.SetConfigValue("Column8Width", "10", "String", "Width");
 
             populateDefaultReportConfig(rc);
 

@@ -50,6 +50,12 @@ namespace Onix.Client.Model
             CalculateLeaveTotal();
         }
 
+        public void ClearLeaveRecord()
+        {
+            ClearAssociateItems("EMPLOYEE_LEAVE_RECORDS");
+            leaveItems.Clear();
+        }
+
         public void RemoveLeaveRecord(MLeaveRecord item)
         {
             removeAssociateItems(item, "EMPLOYEE_LEAVE_RECORDS", "INTERNAL_SEQ", "EMP_LEAVE_REC_ID");
@@ -141,6 +147,24 @@ namespace Onix.Client.Model
             {
                 GetDbObject().SetFieldValue("LATE", value);
                 NotifyPropertyChanged("LateFmt");
+            }
+        }
+
+        public String EmpLeaveDocId
+        {
+            get
+            {
+                if (GetDbObject() == null)
+                {
+                    return ("");
+                }
+
+                return (GetDbObject().GetFieldValue("EMP_LEAVE_DOC_ID"));
+            }
+
+            set
+            {
+                GetDbObject().SetFieldValue("EMP_LEAVE_DOC_ID", value);
             }
         }
 
@@ -691,6 +715,11 @@ namespace Onix.Client.Model
 
             set
             {
+                if (GetDbObject() == null)
+                {
+                    return;
+                }
+
                 GetDbObject().SetFieldValue("POSITION_NAME", value);
                 //updateFlag();
                 NotifyPropertyChanged();
@@ -711,6 +740,11 @@ namespace Onix.Client.Model
 
             set
             {
+                if (GetDbObject() == null)
+                {
+                    return;
+                }
+
                 GetDbObject().SetFieldValue("DEPARTMENT_NAME", value);
                 //updateFlag();
                 NotifyPropertyChanged();

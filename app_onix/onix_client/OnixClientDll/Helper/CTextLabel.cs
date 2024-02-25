@@ -78,6 +78,118 @@ namespace Onix.Client.Helper
 		}
 
         #region Properties        
+        
+        public String adjust_amount
+        {
+            get
+            {
+                return (CLanguage.getValueEx());
+            }
+        }
+
+        public String hiring_duration
+        {
+            get
+            {
+                return (CLanguage.getValueEx());
+            }
+        }
+
+        public String jan
+        {
+            get
+            {
+                return (CLanguage.getValueEx());
+            }
+        }
+
+        public String feb
+        {
+            get
+            {
+                return (CLanguage.getValueEx());
+            }
+        }
+
+        public String mar
+        {
+            get
+            {
+                return (CLanguage.getValueEx());
+            }
+        }
+
+        public String apr
+        {
+            get
+            {
+                return (CLanguage.getValueEx());
+            }
+        }
+
+        public String may
+        {
+            get
+            {
+                return (CLanguage.getValueEx());
+            }
+        }
+
+        public String jun
+        {
+            get
+            {
+                return (CLanguage.getValueEx());
+            }
+        }
+
+        public String jul
+        {
+            get
+            {
+                return (CLanguage.getValueEx());
+            }
+        }
+
+        public String aug
+        {
+            get
+            {
+                return (CLanguage.getValueEx());
+            }
+        }
+
+        public String sep
+        {
+            get
+            {
+                return (CLanguage.getValueEx());
+            }
+        }
+
+        public String oct
+        {
+            get
+            {
+                return (CLanguage.getValueEx());
+            }
+        }
+
+        public String nov
+        {
+            get
+            {
+                return (CLanguage.getValueEx());
+            }
+        }
+
+        public String dec
+        {
+            get
+            {
+                return (CLanguage.getValueEx());
+            }
+        }
 
         public String hiring_date
         {
@@ -287,7 +399,15 @@ namespace Onix.Client.Helper
             }
         }
 
-        public String hr_revenue_tax
+        public String hr_revenue_tax_1
+        {
+            get
+            {
+                return (CLanguage.getValueEx());
+            }
+        }
+
+        public String hr_revenue_tax_1kor
         {
             get
             {

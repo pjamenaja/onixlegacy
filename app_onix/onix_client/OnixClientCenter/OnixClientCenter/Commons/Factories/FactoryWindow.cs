@@ -51,6 +51,7 @@ namespace Onix.ClientCenter.Commons.Factories
             windowMaps["WinAddEditTaxPP30"] = "Onix.ClientCenter.UI.AccountPayable.TaxDocument.PP30.WinAddEditTaxPP30";
             windowMaps["WinAddEditTaxFormPRV3_53"] = "Onix.ClientCenter.UI.AccountPayable.TaxDocument.PRV3_53.WinAddEditTaxFormPRV3_53";
             windowMaps["WinAddEditTaxFormPRV1"] = "Onix.ClientCenter.UI.AccountPayable.TaxDocument.PRV1.WinAddEditTaxFormPRV1";
+            windowMaps["WinAddEditTaxFormPRV1Kor"] = "Onix.ClientCenter.UI.AccountPayable.TaxDocument.PRV1Kor.WinAddEditTaxFormPRV1Kor";
             windowMaps["WinAddEditCostDocument"] = "Onix.ClientCenter.UI.AccountPayable.StockCost.WinAddEditCostDocument";            
         }
 

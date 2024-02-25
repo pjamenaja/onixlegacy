@@ -4507,4 +4507,52 @@
   <data name="hiring_date" xml:space="preserve">
     <value>Hiring Date</value>
   </data>
+  <data name="hiring_duration" xml:space="preserve">
+    <value>Hiring Period</value>
+  </data>
+  <data name="abnormal_leave_hr" xml:space="preserve">
+    <value>ขาดงาน (ช.ม.)</value>
+  </data>
+  <data name="deduction_leave_hr" xml:space="preserve">
+    <value>ทำงานไม่ครบ (ช.ม.)</value>
+  </data>
+  <data name="late_min" xml:space="preserve">
+    <value>สาย (นาที)</value>
+  </data>
+  <data name="expense_other" xml:space="preserve">
+    <value>Others</value>
+  </data>
+  <data name="adjust_amount" xml:space="preserve">
+    <value>Adjust Amt.</value>
+  </data>
+  <data name="rpt_invoice_detail" xml:space="preserve">
+    <value>PS004_01 - Purchase transaction by invoice.</value>
+  </data>
+  <data name="rpt_employee_tax" xml:space="preserve">
+    <value>HR001_04 - Employee Tax Records</value>
+  </data>
+  <data name="rpt_employee_social_insurance" xml:space="preserve">
+    <value>HR001_05 - Employee Social Insurance Records</value>
+  </data>
+  <data name="rpt_employee_revenue" xml:space="preserve">
+    <value>HR001_06 - Employee Revenue Report</value>
+  </data>
+  <data name="rpt_po_detail" xml:space="preserve">
+    <value>PS005_01 - Purchase Transaction By PO</value>
+  </data>
+  <data name="rpt_employee_yearly_tax" xml:space="preserve">
+    <value>HR001_07 - Yearly Revenue &amp; Tax Report</value>
+  </data>
+  <data name="social_insurance" xml:space="preserve">
+    <value>Social Insurance</value>
+  </data>
+  <data name="grpHRTax" xml:space="preserve">
+    <value>Employee Tax</value>
+  </data>
+  <data name="hr_employee_witholding_tax" xml:space="preserve">
+    <value>Employee Widtholding Tax</value>
+  </data>
+  <data name="rv_tax_1_kor" xml:space="preserve">
+    <value>ภ.ง.ด. 1 ก</value>
+  </data>
 </root>

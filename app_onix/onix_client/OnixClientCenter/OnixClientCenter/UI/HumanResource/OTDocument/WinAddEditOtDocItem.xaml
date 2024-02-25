@@ -143,8 +143,8 @@
 
             <StackPanel Orientation="Horizontal" Grid.Row="4" Grid.Column="1" >
                 <TextBox Name="txtWorkAmount" Margin="5,5,0,0" Width="150"  HorizontalAlignment="Left" 
-                         HorizontalContentAlignment="Right" IsEnabled="False"
-                         Text="{Binding WorkAmountFmt}" PreviewTextInput="DefaultTextBoxNumber_PreviewTextInput" 
+                         HorizontalContentAlignment="Right"
+                         Text="{Binding WorkAmount}" PreviewTextInput="DefaultTextBoxNumber_PreviewTextInput" 
                          TextChanged="DefaultTextBox_TextChanged" VerticalContentAlignment="Center"/>
             </StackPanel>
         </Grid>
